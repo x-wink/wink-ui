@@ -1,0 +1,11 @@
+{
+    "name": "@wink-ui/utils",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "main": "src/main.ts",
+    "types": "src/main.ts",
+    "peerDependencies": {
+        "vue": "^3.3.4"
+    }
+}

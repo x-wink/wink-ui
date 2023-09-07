@@ -1,0 +1,120 @@
+@import './color.less';
+@fade: 20%;
+@light: #ccc;
+@dark: #444;
+:root {
+    /* 颜色 */
+    // 基础颜色
+    --x-red: @red;
+    --x-orange: @orange;
+    --x-yellow: @yellow;
+    --x-olive: @olive;
+    --x-green: @green;
+    --x-cyan: @cyan;
+    --x-blue: @blue;
+    --x-purple: @purple;
+    --x-mauve: @mauve;
+    --x-pink: @pink;
+    --x-brown: @brown;
+    --x-black: @black;
+    --x-grey: @grey;
+    --x-gray: @gray;
+    --x-white: @white;
+    // 特定颜色
+    --x-primary: var(--x-purple);
+    --x-second: var(--x-mauve);
+    --x-error: var(--x-red);
+    --x-warn: var(--x-yellow);
+    --x-info: var(--x-blue);
+    --x-success: var(--x-green);
+    --x-bg: var(--x-white);
+    --x-fg: var(--x-black);
+    --x-border: var(--x-gray);
+    --x-shadow: var(--x-grey);
+    // 亮色
+    --x-light-red: hardlight(@red, @light);
+    --x-light-orange: hardlight(@orange, @light);
+    --x-light-yellow: hardlight(@yellow, @light);
+    --x-light-olive: hardlight(@olive, @light);
+    --x-light-green: hardlight(@green, @light);
+    --x-light-cyan: hardlight(@cyan, @light);
+    --x-light-blue: hardlight(@blue, @light);
+    --x-light-purple: hardlight(@purple, @light);
+    --x-light-mauve: hardlight(@mauve, @light);
+    --x-light-pink: hardlight(@pink, @light);
+    --x-light-brown: hardlight(@brown, @light);
+    --x-light-black: hardlight(@black, @light);
+    --x-light-grey: hardlight(@grey, @light);
+    --x-light-gray: hardlight(@gray, @light);
+    --x-light-white: hardlight(@white, @light);
+    // 暗色
+    --x-dark-red: hardlight(@red, @dark);
+    --x-dark-orange: hardlight(@orange, @dark);
+    --x-dark-yellow: hardlight(@yellow, @dark);
+    --x-dark-olive: hardlight(@olive, @dark);
+    --x-dark-green: hardlight(@green, @dark);
+    --x-dark-cyan: hardlight(@cyan, @dark);
+    --x-dark-blue: hardlight(@blue, @dark);
+    --x-dark-purple: hardlight(@purple, @dark);
+    --x-dark-mauve: hardlight(@mauve, @dark);
+    --x-dark-pink: hardlight(@pink, @dark);
+    --x-dark-brown: hardlight(@brown, @dark);
+    --x-dark-black: hardlight(@black, @dark);
+    --x-dark-grey: hardlight(@grey, @dark);
+    --x-dark-gray: hardlight(@gray, @dark);
+    --x-dark-white: hardlight(@white, @dark);
+    // 透明色
+    --x-fade-red: fade(@red, @fade);
+    --x-fade-orange: fade(@orange, @fade);
+    --x-fade-yellow: fade(@yellow, @fade);
+    --x-fade-olive: fade(@olive, @fade);
+    --x-fade-green: fade(@green, @fade);
+    --x-fade-cyan: fade(@cyan, @fade);
+    --x-fade-blue: fade(@blue, @fade);
+    --x-fade-purple: fade(@purple, @fade);
+    --x-fade-mauve: fade(@mauve, @fade);
+    --x-fade-pink: fade(@pink, @fade);
+    --x-fade-brown: fade(@brown, @fade);
+    --x-fade-black: fade(@black, @fade);
+    --x-fade-grey: fade(@grey, @fade);
+    --x-fade-gray: fade(@gray, @fade);
+    --x-fade-white: fade(@white, @fade);
+    // 渐变色
+    --x-red-pink: linear-gradient(45deg, @red, @pink);
+    --x-orange-red: linear-gradient(45deg, @orange, @red);
+    --x-green-olive: linear-gradient(45deg, @green, @olive);
+    --x-purple-mauve: linear-gradient(45deg, @purple, @mauve);
+    --x-pink-purple: linear-gradient(45deg, @pink, @purple);
+    --x-blue-cyan: linear-gradient(45deg, @blue, @cyan);
+
+    /* 间距 */
+    --x-space-mini: 5px;
+    --x-space-small: 10px;
+    --x-space: 15px;
+    --x-space-large: 20px;
+    --x-space-super: 30px;
+    /* 圆角 */
+    --x-border-radius-mini: 2px;
+    --x-border-radius-small: 3px;
+    --x-border-radius: 5px;
+    --x-border-radius-large: 7px;
+    --x-border-radius-super: 10px;
+    /* 高度 */
+    --x-height-mini: 20px;
+    --x-height-small: 24px;
+    --x-height: 30px;
+    --x-height-large: 36px;
+    --x-height-super: 44px;
+    /* 宽度 */
+    --x-width-mini: 100px;
+    --x-width-small: 120px;
+    --x-width: 160px;
+    --x-width-large: 200px;
+    --x-width-super: 240px;
+    /* 字体 */
+    --x-size-mini: 12px;
+    --x-size-small: 16px;
+    --x-size: 20px;
+    --x-size-large: 24px;
+    --x-size-super: 32px;
+}

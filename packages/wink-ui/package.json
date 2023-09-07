@@ -1,0 +1,33 @@
+{
+    "name": "wink-ui",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "author": {
+        "name": "向文可",
+        "email": "13202090601@163.com",
+        "url": "https://github.com/x-wink"
+    },
+    "main": "src/main.ts",
+    "types": "src/main.ts",
+    "scripts": {
+        "build": "tsc && vite build"
+    },
+    "optionalDependencies": {
+        "vue-router": "^4.1.6"
+    },
+    "peerDependencies": {
+        "vue": "^3.3.4"
+    },
+    "dependencies": {
+        "@wink-ui/components": "workspace:^",
+        "@wink-ui/icons": "workspace:^",
+        "@wink-ui/theme": "workspace:^",
+        "@wink-ui/utils": "workspace:^"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-legacy": "^3.0.2",
+        "@vitejs/plugin-vue": "^4.3.4",
+        "vite": "^4.4.9"
+    }
+}

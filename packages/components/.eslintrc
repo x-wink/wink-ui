@@ -1,0 +1,12 @@
+{
+    "root": true,
+    "extends": ["@xwink/eslint-config/vue"],
+    "rules": {
+        "vue/attribute-hyphenation": "warn",
+        "vue/prop-name-casing": "warn"
+    },
+    "globals": {
+        "defineModel": "readonly",
+        "HTMLElementTagNameMap": "readonly"
+    }
+}

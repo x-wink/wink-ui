@@ -1,0 +1,25 @@
+{
+    "name": "@wink-ui/components",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "main": "main.ts",
+    "types": "main.ts",
+    "scripts": {
+        "gen": "ts-node-esm ../../scripts/gen/main.ts"
+    },
+    "optionalDependencies": {
+        "vue-router": "^4.1.6"
+    },
+    "peerDependencies": {
+        "vue": "^3.3.4"
+    },
+    "dependencies": {
+        "@wink-ui/icons": "workspace:^",
+        "marked": "^5.0.5"
+    },
+    "devDependencies": {
+        "@types/marked": "^5.0.0",
+        "less": "^4.1.3"
+    }
+}

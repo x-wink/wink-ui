@@ -1,0 +1,26 @@
+{
+    "name": "@wink-ui/icons",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "author": {
+        "name": "向文可",
+        "email": "13202090601@163.com",
+        "url": "https://github.com/x-wink"
+    },
+    "types": "src/main.ts",
+    "main": "dist/icons.js",
+    "scripts": {
+        "build": "tsc && vite build",
+        "dev": "ts-node-esm scripts/fetch.ts"
+    },
+    "peerDependencies": {
+        "vue": "^3.3.4"
+    },
+    "devDependencies": {
+        "@types/xmldom": "^0.1.31",
+        "vite": "^4.0.0",
+        "vite-svg-loader": "^4.0.0",
+        "xmldom": "^0.6.0"
+    }
+}
