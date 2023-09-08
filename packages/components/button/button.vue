@@ -13,7 +13,8 @@
 </template>
 
 <script setup lang="ts">
-    import { ThemeColor, XIcon, IconName } from '../';
+    import type { ThemeColor, IconName } from '../';
+    import { XIcon } from '../';
     import { computed, useSlots } from 'vue';
 
     defineOptions({

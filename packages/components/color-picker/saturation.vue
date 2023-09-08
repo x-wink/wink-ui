@@ -7,7 +7,8 @@
 
 <script setup lang="ts">
     import { computed, nextTick, onMounted, ref, watch } from 'vue';
-    import { RGB, RGBA, createDragContainer, rgba2Hex, colorDiff } from '../../utils';
+    import type { RGB, RGBA } from '../../utils';
+    import { createDragContainer, rgba2Hex, colorDiff } from '../../utils';
 
     defineOptions({
         name: 'XColorSaturation',

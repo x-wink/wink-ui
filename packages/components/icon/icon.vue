@@ -3,9 +3,10 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from 'vue';
+    import type { IconName } from '@wink-ui/icons';
     import * as svgs from '@wink-ui/icons';
-    import { IconAnimation, IconName } from './types';
+    import { computed } from 'vue';
+    import type { IconAnimation } from './types';
     defineOptions({
         name: 'XIcon',
     });

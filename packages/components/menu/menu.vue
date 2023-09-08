@@ -7,12 +7,12 @@
             :class="{ active: props.active === index }"
             :title="item.title"
         >
-            <x-button class="x-flex row-center" text :title="item.title" @click="handleClick(item, index)">
-                <x-icon v-if="item.icon" :name="item.icon" />
+            <XButton class="x-flex row-center" text :title="item.title" @click="handleClick(item, index)">
+                <XIcon v-if="item.icon" :name="item.icon" />
                 <span v-if="!item.link && item.title">
                     {{ item.title }}
                 </span>
-            </x-button>
+            </XButton>
         </div>
     </div>
 </template>

@@ -46,7 +46,8 @@
 
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { XPopup, XBox, XButton, XInput, ModalInputValue, InputType, ModalCloseReason } from '../';
+    import type { ModalInputValue, InputType, ModalCloseReason } from '../';
+    import { XPopup, XBox, XButton, XInput } from '../';
     defineOptions({
         name: 'XModal',
     });

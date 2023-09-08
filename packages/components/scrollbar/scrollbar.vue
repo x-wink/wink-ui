@@ -32,7 +32,7 @@
 <script setup lang="ts">
     import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
     import Bar from './bar.vue';
-    import { HTMLElementTagName } from '../';
+    import type { HTMLElementTagName } from '../';
 
     defineOptions({
         name: 'XScrollbar',

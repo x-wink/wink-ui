@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
     import { computed } from 'vue';
-    import { ThemeColor } from '.';
+    import type { ThemeColor } from '.';
 
     defineOptions({
         name: 'XText',

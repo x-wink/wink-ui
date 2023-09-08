@@ -4,7 +4,8 @@
 
 <script setup lang="ts">
     import { computed } from 'vue';
-    import { RGB, color2Hue, hue2Color, rgba2Hex } from '../../utils';
+    import type { RGB } from '../../utils';
+    import { color2Hue, hue2Color, rgba2Hex } from '../../utils';
     import XColorSlider from './slider.vue';
 
     const color = defineModel<RGB>({ required: true });

@@ -23,13 +23,15 @@
 
 <script setup lang="ts">
     import { watch, ref, computed } from 'vue';
-    import { ColorPickerFormat, XPopover } from '../';
+    import type { ColorPickerFormat } from '../';
+    import { XPopover } from '../';
     import XColorBlock from './block.vue';
     import XColorSaturation from './saturation.vue';
     import XColorHue from './hue.vue';
     import XColorOpacity from './opacity.vue';
     import XColorPreview from './preview.vue';
-    import { parseColor, rgba2Hex, RGB, RGBA, rgba2String } from '../../utils';
+    import type { RGB, RGBA } from '../../utils';
+    import { parseColor, rgba2Hex, rgba2String } from '../../utils';
     defineOptions({
         name: 'XColorPicker',
     });

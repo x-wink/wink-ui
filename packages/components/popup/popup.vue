@@ -9,7 +9,7 @@
 <script setup lang="ts">
     import { computed, onMounted, onUnmounted, ref, useAttrs, watch } from 'vue';
     import { isClientSide, useClickOutside } from '../../utils';
-    import { PopupPlacement } from './types';
+    import type { PopupPlacement } from './types';
     defineOptions({
         name: 'XPopup',
         inheritAttrs: false,

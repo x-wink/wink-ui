@@ -6,7 +6,8 @@
 
 <script setup lang="ts">
     import { onMounted, ref, watch } from 'vue';
-    import { RGBA, rgba2Hex } from '../../utils';
+    import type { RGBA } from '../../utils';
+    import { rgba2Hex } from '../../utils';
 
     defineOptions({
         name: 'XColorPreview',
