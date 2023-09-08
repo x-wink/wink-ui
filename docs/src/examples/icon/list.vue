@@ -3,7 +3,7 @@
         <ul>
             <li v-for="(item, index) in icons" :key="index">
                 <XIcon :name="item" />
-                <p>{{ item }}</p>
+                <label>{{ item }}</label>
             </li>
         </ul>
     </div>
@@ -32,8 +32,8 @@
 
                 padding: var(--x-space) 0;
                 margin: 0;
-                color: var(--x-white);
-                background: var(--x-fade-white);
+                color: var(--x-primary);
+                background: var(--x-fade-black);
                 border-radius: var(--x-border-radius);
                 cursor: pointer;
                 transition: all 0.3s;
@@ -42,17 +42,16 @@
                     background: none;
 
                     .x-icon {
-                        transform: scale(1.2);
+                        transform: scale(1.5);
+                    }
+                    label {
+                        font-weight: bolder;
                     }
                 }
 
                 .x-icon {
                     font-size: 32px;
                     margin: var(--x-space) 0;
-                }
-
-                p {
-                    margin: 0;
                 }
             }
         }

@@ -19,8 +19,9 @@ title: 图标
 
 ## 使用方式
 
-### 直接使用图标名称作为组件名
+### 图标作为组件
 
+渲染结果为 `svg` 元素，宽高默认为 `1em`，填充颜色为 `currentColor`
 <br />
 <IconUse1 />
 
@@ -30,7 +31,9 @@ title: 图标
 
 :::
 
-### 使用 XIcon 组件 并通过 name 传值图标名称
+### 使用 XIcon 组件
+
+图标名称通过 `name` 属性传值，渲染结果为类名为 `x-icon` 的 `i` 标签包裹着 `svg` 元素
 
 <br />
 <IconUse2 />
@@ -41,13 +44,26 @@ title: 图标
 
 :::
 
+### 图标动画
+
+<br />
+<IconUse3 />
+
+::: details 查看代码
+
+<<< @/examples/icon/use3.vue
+
+:::
+
 ## API 参考
 
 ### 属性
 
-| 名称 |   说明   |  类型  | 默认值 |
-| :--: | :------: | :----: | :----: |
-| name | 图标名称 | string |  必填  |
+|   名称    |   说明   |              类型              | 默认值 |
+| :-------: | :------: | :----------------------------: | :----: |
+|   name    | 图标名称 |   [IconName](#iconname-type)   |  必填  |
+|   size    | 图标尺寸 |             String             |  1em   |
+| animation | 图标动画 | [XAnimation](#xanimation-type) |   -    |
 
 ### 事件
 
@@ -77,8 +93,22 @@ title: 图标
 
 图标名称联合类型，可选值[点击这里](#图标列表)
 
+### XAnimation `type`
+
+动画联合类型，可选值：
+
+<ul>
+    <li v-for="(item, index) in animations" :key="index">{{ item }}</li>
+</ul>
+
+### animations `const`
+
+动画枚举列表，类型为 [`XAnimation[]`](#XAnimation-type)
+
 <script setup>
+import { animations } from 'wink-ui';
 import IconUse1 from './use1.vue';
 import IconUse2 from './use2.vue';
+import IconUse3 from './use3.vue';
 import IconList from './list.vue';
 </script>

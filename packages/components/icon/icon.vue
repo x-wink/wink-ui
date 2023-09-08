@@ -1,29 +1,30 @@
 <template>
-    <component :is="iconComponent" :class="classList" />
+    <i class="x-icon" :class="iconClass">
+        <component :is="iconComponent" />
+    </i>
 </template>
 
 <script setup lang="ts">
     import type { IconName } from '@wink-ui/icons';
     import * as svgs from '@wink-ui/icons';
     import { computed } from 'vue';
-    import type { IconAnimation } from './types';
+    import type { XAnimation } from './types';
     defineOptions({
         name: 'XIcon',
     });
     const props = withDefaults(
         defineProps<{
             name: IconName;
-            size?: string | number;
-            animation?: IconAnimation;
+            size?: string;
+            animation?: XAnimation;
         }>(),
         {
             size: '1em',
         }
     );
-    const classList = computed(() => {
+    const iconClass = computed(() => {
         return {
-            'x-icon': true,
-            [`x-${props.animation}`]: props.animation,
+            [`x-animation-${props.animation}`]: props.animation,
         };
     });
     const iconComponent = computed(() => svgs[props.name]);

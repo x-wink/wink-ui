@@ -1,4 +1,4 @@
-@keyframes spin {
+@keyframes XSpin {
     0% {
         transform: rotate(0);
     }
@@ -6,7 +6,7 @@
         transform: rotate(359deg);
     }
 }
-@keyframes heart {
+@keyframes XHeart {
     0% {
         transform: scale(1);
     }
@@ -15,7 +15,7 @@
         opacity: 0.6;
     }
 }
-@keyframes shake {
+@keyframes XShake {
     10%,
     90% {
         transform: translate3d(-1px, 0, 0);
@@ -35,33 +35,33 @@
     }
 }
 
-@keyframes breathe {
+@keyframes XBreathe {
     from {
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 0 var(--x-space-mini) #0003);
     }
     50% {
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+        filter: drop-shadow(0 0 var(--x-space) var(--x-primary));
     }
     to {
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 0 var(--x-space-mini) #0003);
     }
 }
 
-.x-spin {
-    animation: spin 2s infinite linear;
+.x-animation-spin {
+    animation: XSpin 2s infinite linear;
 }
 
-.x-pulse {
-    animation: spin 1s infinite steps(6);
+.x-animation-pulse {
+    animation: XSpin 1s infinite steps(6);
 }
 
-.x-heart {
-    animation: heart 0.6s infinite ease-in;
+.x-animation-heart {
+    animation: XHeart 0.6s infinite ease-in;
 }
-.x-shake {
-    animation: shake 0.82s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+.x-animation-shake {
+    animation: XShake 0.82s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
-.x-breathe {
-    animation: breathe 2s infinite linear;
+.x-animation-breathe {
+    animation: XBreathe 2s infinite linear;
 }
