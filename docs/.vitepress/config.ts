@@ -28,7 +28,6 @@ export default defineConfig({
                         { text: '图标', link: '/examples/icon' },
                         { text: '文本', link: '/examples/text' },
                         { text: '按钮', link: '/examples/button' },
-                        { text: '盒子', link: '/examples/box' },
                         { text: '滚动条', link: '/examples/scrollbar' },
                     ],
                 },
@@ -52,6 +51,7 @@ export default defineConfig({
                 {
                     text: '花里胡哨',
                     items: [
+                        { text: '盒子', link: '/examples/box' },
                         { text: '代码雨', link: '/examples/rain' },
                         { text: '照片墙', link: '/examples/photo-wall' },
                         { text: '富文本', link: '/examples/markdown' },
