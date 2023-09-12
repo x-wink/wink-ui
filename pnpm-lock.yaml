@@ -72,6 +72,9 @@ importers:
       '@wink-ui/icons':
         specifier: workspace:^
         version: link:../icons
+      '@wink-ui/utils':
+        specifier: workspace:^
+        version: link:../utils
       marked:
         specifier: ^5.0.5
         version: 5.0.5

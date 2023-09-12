@@ -45,6 +45,7 @@ export default defineConfig({
                         { text: '浮层', link: '/examples/popup' },
                         { text: '弹出气泡', link: '/examples/popover' },
                         { text: '弹窗', link: '/examples/modal' },
+                        { text: '虚拟列表', link: '/examples/virtual-list' },
                         { text: '菜单', link: '/examples/menu' },
                     ],
                 },

@@ -80,16 +80,18 @@ title: 滚动条
 
 ### 属性
 
-|   名称    |         说明         |                                 类型                                  | 默认值  |
-| :-------: | :------------------: | :-------------------------------------------------------------------: | :-----: |
-|    tag    | 滚动区域包裹元素标签 | [HTMLElementTagName](/examples/text/index.md#htmlelementtagname-type) |   div   |
-|   width   |       固定宽度       |                                string                                 |  auto   |
-|  height   |       固定高度       |                                string                                 |  auto   |
-| maxWidth  |       最大宽度       |                                string                                 |    -    |
-| maxHeight |       最大高度       |                                string                                 |    -    |
-|  always   |    滚动条总是显示    |                                boolean                                | `false` |
-| noresize  |    不响应尺寸变化    |                                boolean                                | `false` |
-|  native   |    使用原生滚动条    |                                boolean                                | `false` |
+|      名称      |         说明         |                                 类型                                  | 默认值  |
+| :------------: | :------------------: | :-------------------------------------------------------------------: | :-----: |
+|      tag       | 滚动区域包裹元素标签 | [HTMLElementTagName](/examples/text/index.md#htmlelementtagname-type) |   div   |
+|     width      |       固定宽度       |                                string                                 |  auto   |
+|     height     |       固定高度       |                                string                                 |  auto   |
+|    maxWidth    |       最大宽度       |                                string                                 |    -    |
+|   maxHeight    |       最大高度       |                                string                                 |    -    |
+|     always     |    滚动条总是显示    |                                boolean                                | `false` |
+|    noresize    |    不响应尺寸变化    |                                boolean                                | `false` |
+|     native     |    使用原生滚动条    |                                boolean                                | `false` |
+| containerStyle |     滚动容器样式     |                                Object                                 |    -    |
+|  wrapperStyle  |     内容包裹样式     |                                Object                                 |    -    |
 
 ### 事件
 

@@ -6,8 +6,14 @@
         @mouseleave="handleMouseLeave"
         @mousewheel="handleMouseWheel"
     >
-        <div ref="refsContainer" class="x-scrollbar__container" :class="containerClass" @scroll="handleScroll">
-            <component :is="props.tag" ref="refsWrapper" class="x-scrollbar__wrapper">
+        <div
+            ref="refsContainer"
+            class="x-scrollbar__container"
+            :class="containerClass"
+            :style="props.containerStyle"
+            @scroll="handleScroll"
+        >
+            <component :is="props.tag" ref="refsWrapper" class="x-scrollbar__wrapper" :style="props.wrapperStyle">
                 <slot></slot>
             </component>
         </div>
@@ -47,6 +53,8 @@
             always?: boolean;
             noresize?: boolean;
             native?: boolean;
+            containerStyle?: Record<string, unknown>;
+            wrapperStyle?: Record<string, unknown>;
         }>(),
         {
             tag: 'div',

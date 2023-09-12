@@ -78,6 +78,12 @@ title: 弹窗
 
 ## API 参考
 
+::: tip
+
+基础 API 参考前往 [浮层 Popup](/examples/popup) 查看
+
+:::
+
 ### 属性
 
 | 名称 | 说明 | 类型 | 默认值 |

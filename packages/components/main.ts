@@ -14,3 +14,4 @@ export * from './input';
 export * from './input-number';
 export * from './text';
 export * from './scrollbar';
+export * from './virtual-list';

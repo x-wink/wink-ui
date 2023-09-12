@@ -5,7 +5,9 @@
     "scripts": {
         "dev": "pnpm -F @wink-ui/docs dev",
         "dev:icons": "pnpm -F @wink-ui/icons dev",
+        "build:docs": "pnpm -F @wink-ui/docs build",
         "build:icons": "pnpm -F @wink-ui/icons build",
+        "preview": "pnpm build:docs && pnpm -F @wink-ui/docs preview",
         "gen:docs": "pnpm -F @wink-ui/docs gen",
         "gen:components": "pnpm -F @wink-ui/components gen",
         "gen": "run-p \"gen:* {1} {2}\"",

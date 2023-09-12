@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@wink-ui/icons": "workspace:^",
+        "@wink-ui/utils": "workspace:^",
         "marked": "^5.0.5"
     },
     "devDependencies": {
