@@ -18,7 +18,7 @@
         "@commitlint/cli": "^17.4.1",
         "@commitlint/config-conventional": "^17.4.0",
         "@types/node": "^18.14.6",
-        "@xwink/eslint-config": "^1.0.0",
+        "@xwink/eslint-config": "^1.0.1",
         "@xwink/sftp": "^1.0.2",
         "eslint": "^8.22.0",
         "husky": "^8.0.3",

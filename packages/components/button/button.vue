@@ -13,7 +13,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { ThemeColor, IconName } from '../';
+    import type { IconName } from '@wink-ui/icons';
+    import type { ThemeColor } from '../';
     import { XIcon } from '../';
     import { computed, useSlots } from 'vue';
 
