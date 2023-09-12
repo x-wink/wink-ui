@@ -196,7 +196,7 @@
         transition: left 0s, top 0s;
         color: var(--x-white);
         background: var(--x-primary);
-        padding: var(--x-space-small);
+        padding: var(--x-gap-small);
 
         &.--relative {
             position: absolute;
@@ -214,8 +214,8 @@
             &::before {
                 content: '';
                 display: block;
-                width: var(--x-space-small);
-                height: var(--x-space-small);
+                width: var(--x-gap-small);
+                height: var(--x-gap-small);
                 background: inherit;
                 position: absolute;
                 z-index: -1;
@@ -230,11 +230,11 @@
                 }
 
                 &.--arrow-left::before {
-                    right: var(--x-space-small);
+                    right: var(--x-gap-small);
                 }
 
                 &.--arrow-right::before {
-                    left: var(--x-space-small);
+                    left: var(--x-gap-small);
                 }
             }
 
@@ -247,11 +247,11 @@
                 }
 
                 &.--arrow-bottom::before {
-                    top: var(--x-space-small);
+                    top: var(--x-gap-small);
                 }
 
                 &.--arrow-top::before {
-                    bottom: var(--x-space-small);
+                    bottom: var(--x-gap-small);
                 }
             }
 

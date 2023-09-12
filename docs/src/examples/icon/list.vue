@@ -22,7 +22,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             grid-auto-rows: auto;
-            grid-gap: var(--x-space-mini);
+            grid-gap: var(--x-gap-mini);
 
             li {
                 display: flex;
@@ -30,7 +30,7 @@
                 justify-content: center;
                 align-items: center;
 
-                padding: var(--x-space) 0;
+                padding: var(--x-gap) 0;
                 margin: 0;
                 color: var(--x-primary);
                 background: var(--x-fade-black);
@@ -51,7 +51,7 @@
 
                 .x-icon {
                     font-size: 32px;
-                    margin: var(--x-space) 0;
+                    margin: var(--x-gap) 0;
                 }
             }
         }

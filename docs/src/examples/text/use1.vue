@@ -10,7 +10,7 @@
     .container {
         .x-text {
             + .x-text {
-                margin-left: var(--x-space);
+                margin-left: var(--x-gap);
             }
         }
     }

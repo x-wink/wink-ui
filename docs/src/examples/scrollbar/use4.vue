@@ -17,16 +17,16 @@
 </script>
 <style scoped lang="less">
     .x-scrollbar {
-        margin-top: var(--x-space);
+        margin-top: var(--x-gap);
         .content {
             background-color: #0003;
             display: flex;
-            padding: var(--x-space) 0;
+            padding: var(--x-gap) 0;
             width: fit-content;
             div {
                 white-space: nowrap;
                 + div {
-                    margin-left: var(--x-space);
+                    margin-left: var(--x-gap);
                 }
             }
         }

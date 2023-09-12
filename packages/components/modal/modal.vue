@@ -94,14 +94,14 @@
         padding: 0;
         min-width: var(--x-width);
         &__header {
-            padding: var(--x-space-mini) var(--x-space-small);
+            padding: var(--x-gap-mini) var(--x-gap-small);
             border-bottom: 1px solid var(--x-primary);
             font-size: 1rem;
         }
         &__close {
             position: absolute;
-            right: var(--x-space-mini);
-            top: var(--x-space-mini);
+            right: var(--x-gap-mini);
+            top: var(--x-gap-mini);
             .x-button {
                 padding: 3px;
                 min-width: fit-content;
@@ -109,12 +109,12 @@
             }
         }
         &__body {
-            padding: var(--x-space-small);
+            padding: var(--x-gap-small);
             .x-modal__content {
                 text-align: center;
             }
             .x-modal__input {
-                margin-top: var(--x-space-mini);
+                margin-top: var(--x-gap-mini);
             }
         }
         &__footer {

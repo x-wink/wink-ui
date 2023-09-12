@@ -66,13 +66,13 @@
             &.--horizontal {
                 width: 100%;
                 height: var(--x-border-radius);
-                bottom: var(--x-space-mini);
+                bottom: var(--x-gap-mini);
                 left: 0;
             }
             &.--vertical {
                 width: var(--x-border-radius);
                 height: 100%;
-                right: var(--x-space-mini);
+                right: var(--x-gap-mini);
                 top: 0;
             }
         }

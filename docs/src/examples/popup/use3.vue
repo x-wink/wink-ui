@@ -16,7 +16,7 @@
         margin: 60px 0;
         .target {
             border-radius: var(--x-border-radius);
-            padding: var(--x-space);
+            padding: var(--x-gap);
             background: var(--x-white);
             color: var(--x-primary);
         }

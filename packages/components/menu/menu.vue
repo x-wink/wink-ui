@@ -58,7 +58,7 @@
     .x-menu {
         &.row {
             .x-menu-item {
-                margin: 0 var(--x-space-mini);
+                margin: 0 var(--x-gap-mini);
             }
         }
         &.col {

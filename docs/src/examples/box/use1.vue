@@ -15,7 +15,7 @@
         line-height: var(--x-width-mini);
         text-align: center;
         + .x-box {
-            margin-left: var(--x-space);
+            margin-left: var(--x-gap);
         }
     }
 </style>

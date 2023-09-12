@@ -207,11 +207,11 @@
 
         &__icon {
             + span:not(:empty) {
-                margin-left: var(--x-space-mini);
+                margin-left: var(--x-gap-mini);
             }
         }
         & + & {
-            margin-left: var(--x-space-small);
+            margin-left: var(--x-gap-small);
         }
     }
 </style>

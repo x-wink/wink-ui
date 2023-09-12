@@ -17,7 +17,7 @@
 </script>
 <style scoped lang="less">
     .x-scrollbar {
-        margin-top: var(--x-space);
+        margin-top: var(--x-gap);
         .content {
             background-color: #0003;
         }

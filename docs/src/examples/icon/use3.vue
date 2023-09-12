@@ -16,10 +16,10 @@
                 color: var(--x-primary);
             }
             label {
-                margin-top: var(--x-space-mini);
+                margin-top: var(--x-gap-mini);
             }
             + .item {
-                margin-left: var(--x-space);
+                margin-left: var(--x-gap);
             }
         }
     }

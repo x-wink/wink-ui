@@ -23,7 +23,7 @@
         flex-wrap: wrap;
         align-items: center;
         .x-button {
-            margin: var(--x-space-mini);
+            margin: var(--x-gap-mini);
         }
     }
 </style>

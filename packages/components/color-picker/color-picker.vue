@@ -92,14 +92,14 @@
                 flex-grow: 1;
             }
             > * + * {
-                margin-left: var(--x-space-small);
+                margin-left: var(--x-gap-small);
             }
         }
         &__preview {
-            margin-top: var(--x-space-small);
+            margin-top: var(--x-gap-small);
         }
         &__value {
-            margin-top: var(--x-space-small);
+            margin-top: var(--x-gap-small);
         }
     }
 </style>

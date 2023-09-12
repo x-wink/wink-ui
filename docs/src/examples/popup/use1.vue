@@ -1,7 +1,7 @@
 <template>
     <div class="x-flex">
         <XPopup v-model="visible" static>普通浮层</XPopup>
-        <XPopup v-model="visible" arrow static style="margin-left: var(--x-space)">带有箭头</XPopup>
+        <XPopup v-model="visible" arrow static style="margin-left: var(--x-gap)">带有箭头</XPopup>
     </div>
 </template>
 <script setup lang="ts">

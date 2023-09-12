@@ -36,7 +36,7 @@
     .container {
         :deep(.x-popover-target) {
             + .x-popover-target {
-                margin-left: var(--x-space);
+                margin-left: var(--x-gap);
             }
         }
     }

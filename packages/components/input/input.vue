@@ -208,13 +208,13 @@
 
         &__prefix {
             &:not(:has(.x-button)) {
-                padding-left: var(--x-space-mini);
+                padding-left: var(--x-gap-mini);
             }
         }
 
         &__suffix {
             &:not(:has(.x-button)) {
-                padding-right: var(--x-space-mini);
+                padding-right: var(--x-gap-mini);
             }
         }
 
@@ -222,7 +222,7 @@
             overflow: hidden;
             height: 100%;
             width: var(--x-width);
-            padding: 0 var(--x-space-mini);
+            padding: 0 var(--x-gap-mini);
 
             input {
                 width: 100%;
@@ -258,7 +258,7 @@
             .x-input__show {
                 &.--active {
                     transform: scale(1);
-                    margin-left: var(--x-space-mini);
+                    margin-left: var(--x-gap-mini);
                 }
             }
         }
