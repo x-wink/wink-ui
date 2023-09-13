@@ -26,7 +26,7 @@
             transform: `translate${props.vertical ? 'Y' : 'X'}(${props.position * 100}%)`,
         };
     });
-    const actived = ref(false);
+    const active = ref(false);
     let destroy: undefined | (() => void);
     const refsThumb = ref<HTMLElement>();
     watch(
@@ -35,10 +35,10 @@
             if (container && el) {
                 destroy = createDragableElement(el, container, {
                     start: () => {
-                        actived.value = true;
+                        active.value = true;
                     },
                     end: () => {
-                        actived.value = false;
+                        active.value = false;
                     },
                     move: (x, y) => {
                         if (props.vertical) {
@@ -55,7 +55,7 @@
         },
         { immediate: true }
     );
-    const horizontalVisible = computed(() => props.visible || actived.value);
+    const horizontalVisible = computed(() => props.visible || active.value);
 </script>
 
 <style lang="less">

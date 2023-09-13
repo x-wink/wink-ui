@@ -51,7 +51,7 @@
     });
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     @import url('../../theme/src/styles/flex.less');
     .x-divider {
         .x-flex();

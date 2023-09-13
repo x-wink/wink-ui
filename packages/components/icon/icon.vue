@@ -1,5 +1,5 @@
 <template>
-    <i class="x-icon" :class="iconClass">
+    <i class="x-icon" :class="iconClass" :style="{ '--size': props.size }">
         <component :is="iconComponent" />
     </i>
 </template>
@@ -32,7 +32,9 @@
 
 <style lang="less">
     .x-icon {
-        font-size: v-bind('props.size');
+        font-size: var(--size);
+        width: fit-content;
+        height: fit-content;
         display: inline-block;
         color: inherit;
         line-height: 0;

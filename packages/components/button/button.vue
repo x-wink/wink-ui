@@ -30,18 +30,12 @@
             simple?: boolean;
             round?: boolean;
             circle?: boolean;
+            block?: boolean;
             loading?: boolean;
             disabled?: boolean;
         }>(),
         {
             theme: 'default',
-            disabled: false,
-            loading: false,
-            text: false,
-            link: false,
-            circle: false,
-            round: false,
-            simple: false,
         }
     );
     const slots = useSlots();
@@ -54,16 +48,20 @@
             '--simple': props.simple,
             '--round': props.round,
             '--circle': props.circle,
+            '--block': props.block,
             '--loading': props.loading,
         };
     });
 </script>
 
 <style lang="less">
+    @import url('../../theme/src/styles/flex.less');
+    @import url('../../theme/src/styles/status.less');
     .x-button {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        .x-flex();
+        .inline();
+        .row-center();
+        .col-center();
         white-space: nowrap;
         text-align: center;
         font-size: inherit;
@@ -188,21 +186,24 @@
             }
         }
 
+        &.--block {
+            width: 100%;
+        }
+
         &:hover {
-            filter: brightness(120%);
+            .x-hover();
         }
 
         &:active {
-            filter: brightness(80%);
+            .x-active();
         }
 
         &:disabled {
-            cursor: not-allowed;
-            filter: brightness(66%) grayscale(66%);
+            .x-disabled();
         }
 
         &.--loading {
-            cursor: wait;
+            .x-loading();
         }
 
         &__icon {
@@ -210,7 +211,7 @@
                 margin-left: var(--x-gap-mini);
             }
         }
-        & + & {
+        &:not(.x-flex.col > &) + & {
             margin-left: var(--x-gap-small);
         }
     }

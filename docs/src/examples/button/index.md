@@ -148,6 +148,7 @@ title: 按钮
 |   link   | 链接风格 |                        boolean                        |   `false`   |
 |  circle  | 圆形风格 |                        boolean                        |   `false`   |
 |  round   | 圆角风格 |                        boolean                        |   `false`   |
+|  block   | 块状风格 |                        boolean                        |   `false`   |
 
 ### 事件
 

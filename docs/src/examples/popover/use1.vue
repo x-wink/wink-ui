@@ -1,19 +1,19 @@
 <template>
     <div class="container x-flex">
         <XPopover trigger="hover">
-            <template #target>
+            <template #trigger>
                 <XButton theme="primary">鼠标移入</XButton>
             </template>
             这里是弹窗内容
         </XPopover>
         <XPopover trigger="click">
-            <template #target>
+            <template #trigger>
                 <XButton theme="primary">鼠标单击</XButton>
             </template>
             这里是弹窗内容
         </XPopover>
         <XPopover v-model="visible" trigger="manual" @clickOutside="handleClose">
-            <template #target>
+            <template #trigger>
                 <XButton theme="primary" @click="handleOpen">手动控制</XButton>
             </template>
             将在3秒后自动关闭，点击外面立即关闭

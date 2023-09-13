@@ -1,13 +1,23 @@
 <template>
     <Teleport :disabled="props.static" to="body">
-        <dialog v-bind="attrs" ref="popup" class="x-popup" :class="classList" :style="popupStyle">
-            <slot></slot>
-        </dialog>
+        <Transition name="popup-fade">
+            <dialog
+                v-if="visible"
+                v-bind="attrs"
+                ref="refsPopup"
+                class="x-popup"
+                :class="classList"
+                :style="popupStyle"
+                @close="handleClose"
+            >
+                <slot></slot>
+            </dialog>
+        </Transition>
     </Teleport>
 </template>
 
 <script setup lang="ts">
-    import { computed, onMounted, onUnmounted, ref, useAttrs, watch } from 'vue';
+    import { computed, ref, useAttrs, watch } from 'vue';
     import { isClientSide, useClickOutside } from '../../utils';
     import type { PopupPlacement } from './types';
     defineOptions({
@@ -25,6 +35,7 @@
             position?: [number, number];
             target?: HTMLElement;
             closeOnClickOutside?: boolean;
+            disabled?: boolean;
         }>(),
         {
             placement: 'bottom',
@@ -51,7 +62,7 @@
               };
     });
 
-    const popup = ref<HTMLDialogElement>();
+    const refsPopup = ref<HTMLDialogElement>();
     const emits = defineEmits<{
         clickOutside: [];
         open: [];
@@ -66,7 +77,9 @@
     });
 
     const handleOpen = () => {
-        visible.value = true;
+        if (!props.disabled) {
+            visible.value = true;
+        }
     };
     const handleClose = () => {
         visible.value = false;
@@ -141,8 +154,8 @@
         return [left, top];
     };
     const updatePosition = () => {
-        if (props.target && popup.value) {
-            pos.value = calculatePopupPosition(popup.value, props.target, props.placement);
+        if (props.target && refsPopup.value) {
+            pos.value = calculatePopupPosition(refsPopup.value, props.target, props.placement);
         }
         requestAnimationFrame(updatePosition);
     };
@@ -153,17 +166,20 @@
         props.closeOnClickOutside && handleClose();
     });
     watch(
-        [visible, popup],
-        ([visible, el]) => {
+        [visible, () => props.disabled, refsPopup],
+        ([visible, disabled, el]) => {
             if (el) {
                 if (visible) {
-                    const show = props.modal && !props.static ? el.showModal : el.show;
-                    show.call(el);
-                    setTimeout(() => {
-                        observe(() => el);
-                    }, 100);
+                    if (disabled) {
+                        handleClose();
+                    } else {
+                        const show = props.modal && !props.static ? el.showModal : el.show;
+                        show.call(el);
+                        setTimeout(() => {
+                            observe(() => el);
+                        }, 100);
+                    }
                 } else {
-                    el.close();
                     unobserve(() => el);
                 }
             }
@@ -172,12 +188,6 @@
             immediate: true,
         }
     );
-    onMounted(() => {
-        popup.value!.addEventListener('close', handleClose);
-    });
-    onUnmounted(() => {
-        popup.value?.removeEventListener('close', handleClose);
-    });
 
     defineExpose({
         open: handleOpen,
@@ -281,6 +291,20 @@
                     right: 0;
                     transform: translateX(50%) rotate(45deg);
                 }
+            }
+        }
+        &.popup-fade {
+            &-enter-active {
+                transition: opacity 300ms ease-out;
+            }
+
+            &-leave-active {
+                transition: opacity 150ms ease-out;
+            }
+
+            &-enter-from,
+            &-leave-active {
+                opacity: 0;
             }
         }
     }

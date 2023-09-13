@@ -57,6 +57,7 @@ title: 浮层
 |  position  |          浮层位置           |            [number, number]            | [0, 0]  |
 |   offset   |         浮层偏移量          |            [number, number]            | [0, 0]  |
 |   target   | 定位目标，会覆盖 `position` |              HTMLElement               |    -    |
+|  disabled  |          禁用状态           |                boolean                 |  false  |
 
 ### 事件
 

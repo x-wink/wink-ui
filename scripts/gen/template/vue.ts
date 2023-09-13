@@ -10,7 +10,7 @@ export default /* ts */ `<template>
     });
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .x-@@name {
         //
     }

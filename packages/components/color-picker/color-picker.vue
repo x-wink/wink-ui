@@ -12,7 +12,7 @@
                     <input v-model.lazy="fmtColor" />
                 </div>
             </div>
-            <template #target>
+            <template #trigger>
                 <slot>
                     <XColorBlock class="x-color-picker__picked" :color="modelValue" />
                 </slot>

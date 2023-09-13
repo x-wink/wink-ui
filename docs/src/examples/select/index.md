@@ -10,12 +10,25 @@ title: 选择器
 
 ## 使用方式
 
+### 下拉框状态
+
 <br />
 <SelectUse1 />
 
 ::: details 查看代码
 
 <<< @/examples/select/use1.vue
+
+:::
+
+### 多选
+
+<br />
+<SelectUse2 />
+
+::: details 查看代码
+
+<<< @/examples/select/use2.vue
 
 :::
 
@@ -45,6 +58,17 @@ title: 选择器
 | :--: | :--: | :------: |
 |  -   |  -   |    -     |
 
+## 附加内容
+
+### SelectValue `type`
+
+下拉选择框值联合类型
+
+```ts
+type SelectValue = string | number | boolean;
+```
+
 <script setup>
 import SelectUse1 from './use1.vue';
+import SelectUse2 from './use2.vue';
 </script>

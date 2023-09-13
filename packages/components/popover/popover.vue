@@ -5,14 +5,15 @@
         arrow
         class="x-popover"
         :close-on-click-outside="props.trigger === 'click'"
-        :target="refsTarget"
+        :disabled="props.disabled"
+        :target="refsTrigger"
         @mouseenter="handleEnterPopover"
         @mouseleave="handleLeavePopover"
     >
         <slot></slot>
     </XPopup>
-    <div ref="refsTarget" class="x-popover-target" v-on="triggerEvent">
-        <slot name="target"></slot>
+    <div ref="refsTrigger" class="x-popover__trigger" :class="props.triggerClass" v-on="triggerEvent">
+        <slot name="trigger"></slot>
     </div>
 </template>
 
@@ -29,7 +30,9 @@
     const props = withDefaults(
         defineProps<{
             trigger?: PopoverTrigger;
+            triggerClass?: string;
             dalay?: number;
+            disabled?: boolean;
         }>(),
         {
             trigger: 'hover',
@@ -39,7 +42,7 @@
 
     const visible = defineModel<boolean>({ required: false, default: false, local: true });
 
-    const refsTarget = ref<HTMLDivElement>();
+    const refsTrigger = ref<HTMLDivElement>();
 
     const active = ref(false);
     const triggerEvent = computed(() => {
@@ -55,8 +58,10 @@
             : {};
     });
     const handleActive = () => {
-        active.value = true;
-        visible.value = true;
+        if (!props.disabled) {
+            active.value = true;
+            visible.value = true;
+        }
     };
     const handleInactive = () => {
         active.value = false;
@@ -78,9 +83,9 @@
     };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .x-popover {
-        &-target {
+        &__trigger {
             cursor: pointer;
             width: fit-content;
         }
