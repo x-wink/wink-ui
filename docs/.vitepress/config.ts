@@ -43,6 +43,7 @@ export default defineConfig({
                         { text: '输入框', link: '/examples/input' },
                         { text: '数字输入框', link: '/examples/input-number' },
                         { text: '颜色选择器', link: '/examples/color-picker' },
+                        { text: '下拉选择框', link: '/examples/select' },
                     ],
                 },
                 {

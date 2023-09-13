@@ -8,6 +8,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import { XDivider } from 'wink-ui';
+    import { XDivider } from 'wink-ui';
 </script>
 <style scoped lang="less"></style>
