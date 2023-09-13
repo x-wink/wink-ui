@@ -1,18 +1,17 @@
 <template>
     <Teleport :disabled="props.static" to="body">
-        <Transition name="popup-fade">
-            <dialog
-                v-if="visible"
-                v-bind="attrs"
-                ref="refsPopup"
-                class="x-popup"
-                :class="classList"
-                :style="popupStyle"
-                @close="handleClose"
-            >
-                <slot></slot>
-            </dialog>
-        </Transition>
+        <!-- <Transition name="popup-fade"> -->
+        <dialog
+            v-bind="attrs"
+            ref="refsPopup"
+            class="x-popup"
+            :class="classList"
+            :style="popupStyle"
+            @close="handleClose"
+        >
+            <slot></slot>
+        </dialog>
+        <!-- </Transition> -->
     </Teleport>
 </template>
 
@@ -180,6 +179,7 @@
                         }, 100);
                     }
                 } else {
+                    el.close();
                     unobserve(() => el);
                 }
             }

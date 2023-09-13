@@ -32,6 +32,28 @@ title: 选择器
 
 :::
 
+### 标签
+
+<br />
+<SelectUse3 />
+
+::: details 查看代码
+
+<<< @/examples/select/use3.vue
+
+:::
+
+### 禁用选项
+
+<br />
+<SelectUse4 />
+
+::: details 查看代码
+
+<<< @/examples/select/use4.vue
+
+:::
+
 ## API 参考
 
 ### 属性
@@ -71,4 +93,6 @@ type SelectValue = string | number | boolean;
 <script setup>
 import SelectUse1 from './use1.vue';
 import SelectUse2 from './use2.vue';
+import SelectUse3 from './use3.vue';
+import SelectUse4 from './use4.vue';
 </script>

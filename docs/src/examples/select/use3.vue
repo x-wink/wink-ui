@@ -1,26 +1,24 @@
 <template>
     <div class="container x-flex">
-        <XSelect v-model="value" :options="opts" />
-        <XSelect v-model="value" disabled :options="opts" />
-        <XSelect v-model="value" loading :options="opts" />
-        <XSelect v-model="value" clearable :options="opts" />
+        <XSelect v-model="value" :options="opts" tags />
+        <XSelect v-model="value" :max-tag-count="1" :options="opts" tags />
     </div>
 </template>
 <script setup lang="ts">
     import { ref } from 'vue';
     import { XSelect } from 'wink-ui';
-    const value = ref('a');
+    const value = ref(['a', 'b', 'c']);
     const opts = [
         {
-            label: 'AAA',
+            label: 'AAAAA',
             value: 'a',
         },
         {
-            label: 'BBB',
+            label: 'BBBBB',
             value: 'b',
         },
         {
-            label: 'CCC',
+            label: 'CCCCC',
             value: 'c',
         },
     ];

@@ -2,32 +2,68 @@
     <div class="x-select" :class="selectClass">
         <XPopover
             v-model="visible"
+            close-on-click-outside
             :disabled="props.disabled || loading"
             style="width: var(--x-width); padding: var(--x-gap-mini) 0"
             trigger="click"
         >
             <template #trigger>
-                <XBox class="x-select__container" v-bind="attrs">
+                <XBox
+                    class="x-select__container"
+                    v-bind="attrs"
+                    @click="visible = !visible"
+                    @mouseenter="isHover = true"
+                    @mouseleave="isHover = false"
+                >
                     <div v-if="isEmpty" class="x-select__placeholder">{{ props.placeholder }}</div>
                     <div v-else class="x-select__selection">
                         <template v-if="props.tags">
-                            <div v-for="(item, index) in selection" :key="index" class="x-select__tag">
-                                <span>{{ item }}</span>
-                                <XButton
-                                    circle
-                                    class="x-select__remove"
-                                    icon="Close"
-                                    text
-                                    theme="error"
-                                    @click.stop="handleRemove(item)"
-                                />
-                            </div>
+                            <XSelectTag
+                                v-for="(item, index) in limitTags"
+                                :key="index"
+                                removeable
+                                @remove="handleRemove(index)"
+                            >
+                                {{ item }}
+                            </XSelectTag>
+                            <XPopover v-if="tagOverflow > 0">
+                                <template #trigger>
+                                    <XSelectTag
+                                        v-for="(item, index) in limitTags"
+                                        :key="index"
+                                        class="x-select__tag --overflow"
+                                    >
+                                        +{{ tagOverflow }}
+                                    </XSelectTag>
+                                </template>
+                                <XSelectTag
+                                    v-for="(item, index) in restTags"
+                                    :key="index"
+                                    removeable
+                                    @remove="handleRemove(limitTags.length + index)"
+                                >
+                                    {{ item }}
+                                </XSelectTag>
+                            </XPopover>
                         </template>
                         <XText v-else ellipsis>
                             {{ selection.join(',') }}
                         </XText>
                     </div>
-                    <XIcon name="ArrowDown" :style="arrowStyle" />
+                    <XButton
+                        v-if="props.clearable && !isEmpty && isHover"
+                        circle
+                        class="x-select__clear"
+                        :class="{ '--active': !!internalValue }"
+                        icon="Close"
+                        text
+                        theme="error"
+                        @click.stop="handleClear"
+                    />
+                    <template v-else>
+                        <XIcon v-if="loading" animation="spin" name="Loading" />
+                        <XIcon v-else name="ArrowDown" :style="arrowStyle" />
+                    </template>
                 </XBox>
             </template>
             <div class="x-select__popover">
@@ -35,12 +71,13 @@
                     v-for="(item, index) in props.options"
                     :key="index"
                     class="x-select__option"
-                    :class="{ '--active': internalValue.includes(getItemValue(item)) }"
+                    :class="optionClass(item)"
                 >
                     <XIcon class="x-select__picked" name="Select" />
                     <XButton
                         block
                         class="x-select__label"
+                        :disabled="isItemDisabled(item)"
                         theme="primary"
                         :title="getItemTitle(item)"
                         @click="handlePick(item)"
@@ -56,6 +93,7 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
     import type { SelectValue } from '../';
     import { XBox, XPopover, XIcon, XButton, XText } from '../';
+    import XSelectTag from './tag.vue';
     import { computed, ref, useAttrs } from 'vue';
     defineOptions({
         name: 'XSelect',
@@ -71,6 +109,8 @@
             content?: string;
             multipart?: boolean;
             tags?: boolean;
+            maxTagCount?: number;
+            clearable?: boolean;
             disabled?: boolean;
             placeholder?: string;
         }>(),
@@ -79,6 +119,7 @@
             value: 'value',
             title: 'label',
             content: 'label',
+            maxTagCount: 0,
             placeholder: '请选择',
         }
     );
@@ -91,6 +132,12 @@
 
     const isMultipart = computed(() => props.tags || props.multipart);
     const isEmpty = computed(() => internalValue.value.length === 0);
+    const isHover = ref(false);
+    const tagOverflow = computed(() =>
+        props.maxTagCount && internalValue.value.length > props.maxTagCount
+            ? internalValue.value.length - props.maxTagCount
+            : 0
+    );
 
     const outernalValue = defineModel<undefined | SelectValue | SelectValue[]>({ required: false });
     const internalValue = computed({
@@ -115,6 +162,12 @@
             transform: visible.value ? 'scaleY(-1)' : '',
         };
     });
+    const optionClass = computed(() => (item: T) => {
+        return {
+            '--active': internalValue.value.includes(getItemValue(item)),
+            '--disabled': isItemDisabled(item),
+        };
+    });
 
     const handlePick = (item: T) => {
         const value = getItemValue(item);
@@ -132,23 +185,37 @@
             visible.value = false;
         }
     };
-    const handleRemove = (value: SelectValue) => {
-        internalValue.value.splice(internalValue.value.indexOf(value), 1);
+    const handleRemove = (index: number) => {
+        internalValue.value.splice(index, 1);
+    };
+    const handleClear = () => {
+        internalValue.value = [];
     };
 
     const getItemValue = (item: T) => item[props.value] as SelectValue;
     const getItemContent = (item: T) => item[props.content] as string;
     const getItemTitle = (item: T) => item[props.title] as string;
+    const isItemDisabled = (item: T) => {
+        const disabled = item.disabled as undefined | boolean | (() => boolean);
+        return typeof disabled === 'function' ? disabled() : !!disabled;
+    };
     const calcItemLabel = (value: SelectValue) =>
         (props.options.find((opt) => getItemValue(opt) === value)?.[props.label] ?? value) as string;
     const selection = computed(() => {
         return internalValue.value.map(calcItemLabel);
+    });
+    const limitTags = computed(() => {
+        return internalValue.value.slice(0, props.maxTagCount || internalValue.value.length).map(calcItemLabel);
+    });
+    const restTags = computed(() => {
+        return internalValue.value.slice(props.maxTagCount || internalValue.value.length).map(calcItemLabel);
     });
 </script>
 
 <style lang="less">
     @import url('../../theme/src/styles/flex.less');
     @import url('../../theme/src/styles/status.less');
+
     .x-select {
         &__container {
             .x-flex();
@@ -159,48 +226,46 @@
             color: fieldtext;
             background-color: field;
         }
+
+        &__clear {
+            min-width: unset !important;
+            min-height: unset !important;
+            padding: 2px !important;
+        }
+
         &__placeholder {
             .x-flex.fill();
             color: var(--x-gray);
         }
+
         &__selection {
             .x-flex.fill();
             .x-flex();
             .wrap();
             overflow: hidden;
         }
-        &__tag {
-            .x-flex();
-            .col-center();
-            background-color: var(--x-fade-white);
-            margin: 2px;
-            padding: 2px var(--x-gap-mini);
-            border-radius: var(--x-border-radius);
-        }
-        &__remove {
-            min-width: unset !important;
-            min-height: unset !important;
-            padding: 2px !important;
-            margin-left: var(--x-gap-mini);
-            font-size: var(--x-size-mini);
-        }
+
         &__popover {
             .x-flex();
             .col();
             width: 100%;
         }
+
         &__option {
             position: relative;
+
             &.--active {
                 .x-select__picked {
                     opacity: 1;
                 }
+
                 .x-select__label {
                     background-color: var(--x-light-purple);
                     color: var(--x-primary);
                 }
             }
         }
+
         &__picked {
             opacity: 0;
             position: absolute;
@@ -211,11 +276,13 @@
             margin: auto;
             color: var(--x-primary);
         }
+
         &.--disabled {
             .x-select__container {
                 .x-disabled();
             }
         }
+
         &.--loading {
             .x-select__container {
                 .x-loading();

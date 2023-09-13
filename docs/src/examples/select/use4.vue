@@ -12,10 +12,12 @@
         },
         {
             label: 'BBBBB',
+            disabled: true,
             value: 'b',
         },
         {
             label: 'CCCCC',
+            disabled: () => value.value.length === 2,
             value: 'c',
         },
     ];

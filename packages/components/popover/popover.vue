@@ -57,8 +57,9 @@
               }
             : {};
     });
-    const handleActive = () => {
+    const handleActive = (e: MouseEvent) => {
         if (!props.disabled) {
+            e.stopPropagation();
             active.value = true;
             visible.value = true;
         }
