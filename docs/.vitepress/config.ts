@@ -28,7 +28,13 @@ export default defineConfig({
                         { text: '图标', link: '/examples/icon' },
                         { text: '文本', link: '/examples/text' },
                         { text: '按钮', link: '/examples/button' },
+                    ],
+                },
+                {
+                    text: '布局组件',
+                    items: [
                         { text: '滚动条', link: '/examples/scrollbar' },
+                        { text: '分割线', link: '/examples/divider' },
                     ],
                 },
                 {

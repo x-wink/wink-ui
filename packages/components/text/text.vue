@@ -16,6 +16,7 @@
             theme?: ThemeColor;
             tag?: keyof HTMLElementTagNameMap;
             ellipsis?: boolean;
+            vertical?: boolean;
         }>(),
         {
             theme: 'default',
@@ -24,7 +25,8 @@
     );
     const textClass = computed(() => {
         return {
-            ellipsis: props.ellipsis,
+            '--ellipsis': props.ellipsis,
+            '--vertical': props.vertical,
             [`--${props.theme}`]: true,
         };
     });
@@ -34,12 +36,15 @@
     .x-text {
         word-break: break-all;
 
-        &.ellipsis {
+        &.--ellipsis {
             display: inline-block;
             max-width: 100%;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+        }
+        &.--vertical {
+            writing-mode: vertical-rl;
         }
 
         @themes: default, primary, second, info, success, warn, error;
@@ -47,7 +52,7 @@
             var(--x-red);
         each(@themes, {
             &.--@{value} {
-                color: extract(@fcs, @index);
+                color: extract(@fcs, @index) !important;
             }
         });
     }

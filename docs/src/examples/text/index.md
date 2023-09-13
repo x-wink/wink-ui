@@ -76,7 +76,7 @@ title: 文本
 
 ### themeColors `const`
 
-主题颜色枚举列表，类型为 [`ThemeColor[]`](#ThemeColor-type)
+主题颜色枚举列表，类型为 [`ThemeColor[]`](#themecolor-type)
 
 <script setup>
 import { themeColors } from 'wink-ui';
