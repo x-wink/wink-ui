@@ -61,13 +61,12 @@
 
 <script setup lang="ts" generic="T extends Record<string, unknown>">
     import type { SelectOption, SelectOptionConfig, SelectValue } from '../';
-    import { XBox, XPopover, selectOptionFields } from '../';
+    import { XBox, XPopover, selectOptionDefaultConfig } from '../';
     import XSelection from './selection.vue';
     import XSuffix from './suffix.vue';
     import XPanel from './panel.vue';
     import { computed, ref, useAttrs } from 'vue';
-    import type { ValueProvider } from '@wink-ui/utils';
-    import { defaults, getValue } from '@wink-ui/utils';
+    import { getValue, resolveConfig, resolveOptions } from '@wink-ui/utils';
     defineOptions({
         name: 'XSelect',
         inheritAttrs: false,
@@ -145,34 +144,20 @@
         internalValue.value = [];
     };
 
-    const resolvedConfig = computed(() => {
-        return defaults(
-            {},
-            Object.fromEntries(
-                selectOptionFields.map((item) => [item, item === 'content' ? 'label' : item])
-            ) as SelectOptionConfig,
-            props.config
-        );
-    });
     const calcItemLabel = (value: SelectValue) => {
-        const item = props.options.find(
-            (opt) => getValue<SelectValue>(opt[resolvedConfig.value.value] as ValueProvider<SelectValue>)! === value
-        );
-        return getValue<string>(item?.[resolvedConfig.value.label] as ValueProvider<string>, String(value))!;
+        const item = props.options.find((opt) => (getValue(opt[resolvedConfig.value.value]) as SelectValue) === value);
+        return getValue(item?.[resolvedConfig.value.label], String(value)) as string;
     };
     const selection = computed(() => {
         return internalValue.value.map(calcItemLabel);
     });
+    const resolvedConfig = computed(() => resolveConfig<SelectOption>(props.config, selectOptionDefaultConfig));
     const resolvedOptions = computed<SelectOption[]>(() =>
-        props.options.map((item) => {
-            const value = getValue<SelectValue>(item[resolvedConfig.value.value] as ValueProvider<SelectValue>)!;
+        resolveOptions<SelectOption>(props.options, resolvedConfig.value).map((item) => {
             return {
-                value,
-                label: calcItemLabel(value),
-                title: getValue<string>(item[resolvedConfig.value.title] as ValueProvider<string>)!,
-                content: getValue<string>(item[resolvedConfig.value.content] as ValueProvider<string>)!,
-                disabled: getValue<boolean>(item[resolvedConfig.value.disabled] as ValueProvider<boolean>)!,
-                active: internalValue.value.includes(value),
+                ...item,
+                label: calcItemLabel(item.value),
+                active: internalValue.value.includes(item.value),
             };
         })
     );
