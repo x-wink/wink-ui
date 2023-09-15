@@ -59,7 +59,7 @@
     </div>
 </template>
 
-<script setup lang="ts" generic="T extends Record<string, unknown>">
+<script setup lang="ts">
     import type { SelectOption, SelectOptionConfig, SelectValue } from '../';
     import { XBox, XPopover, selectOptionDefaultConfig } from '../';
     import XSelection from './selection.vue';
@@ -74,7 +74,7 @@
     const attrs = useAttrs();
     const props = withDefaults(
         defineProps<{
-            options: T[];
+            options: Record<string, unknown>[];
             config?: Partial<SelectOptionConfig>;
             multipart?: boolean;
             tags?: boolean;
@@ -145,7 +145,7 @@
     };
 
     const resolvedConfig = computed(() => defaults<SelectOptionConfig>({}, selectOptionDefaultConfig, props.config));
-    const resolvedOptions = computed<SelectOption[]>(() =>
+    const resolvedOptions = computed(() =>
         mapConvert<SelectOption>(props.options, resolvedConfig.value).map((item) => {
             return {
                 ...item,

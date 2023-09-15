@@ -19,21 +19,14 @@
 
 <script setup lang="ts">
     import { getCurrentInstance } from 'vue';
+    import type { MenuOption } from '../';
     import { XIcon, XButton } from '../';
     import type { Router } from 'vue-router';
-    import type { IconName } from '@wink-ui/icons';
-    interface Menu {
-        name?: string;
-        title?: string;
-        icon?: IconName;
-        route?: string;
-        link?: boolean;
-    }
     defineOptions({
         name: 'XMenu',
     });
     const props = defineProps<{
-        menus: Menu[];
+        menus: MenuOption[];
         active?: number;
         vertical?: boolean;
     }>();
@@ -42,7 +35,7 @@
     const emits = defineEmits<{
         'update:active': [value: number];
     }>();
-    const handleClick = (menu: Menu, index: number): void => {
+    const handleClick = (menu: MenuOption, index: number): void => {
         if (menu.route) {
             if (menu.link) {
                 window.open(menu.route, '_blank');

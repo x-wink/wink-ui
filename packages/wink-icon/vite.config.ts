@@ -1,5 +1,6 @@
 import svgLoader from 'vite-svg-loader';
-import { UserConfig } from 'vite';
+import type { UserConfig } from 'vite';
+import { name } from './package.json';
 
 // https://vitejs.dev/config/
 export default () => {
@@ -8,7 +9,8 @@ export default () => {
             outDir: 'dist',
             lib: {
                 entry: './src/main.ts',
-                name: 'icons',
+                name,
+                fileName: 'index',
                 formats: ['es'],
             },
         },

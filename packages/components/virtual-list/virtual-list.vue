@@ -8,7 +8,7 @@
     >
         <div
             v-for="(item, index) in internalData"
-            :key="item[props.id]"
+            :key="String(item[props.id])"
             class="x-virtual-list__item"
             :style="itemStyle"
         >
@@ -17,7 +17,7 @@
     </XScrollbar>
 </template>
 
-<script setup lang="ts" generic="T extends Record<string, unknown>">
+<script setup lang="ts">
     import { computed, ref } from 'vue';
     import type { ScrollbarInstance } from '../';
     import { XScrollbar } from '../';
@@ -26,7 +26,7 @@
     });
     const props = withDefaults(
         defineProps<{
-            data: T[];
+            data: Record<string, unknown>[];
             id?: string;
             height?: number;
             rowHeight?: number;

@@ -38,7 +38,7 @@
 <script setup lang="ts">
     import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
     import Bar from './bar.vue';
-    import type { HTMLElementTagName } from '../';
+    import type { HTMLElementTagName, DynamicStyle } from '../';
 
     defineOptions({
         name: 'XScrollbar',
@@ -53,8 +53,8 @@
             always?: boolean;
             noresize?: boolean;
             native?: boolean;
-            containerStyle?: Record<string, unknown>;
-            wrapperStyle?: Record<string, unknown>;
+            containerStyle?: DynamicStyle;
+            wrapperStyle?: DynamicStyle;
         }>(),
         {
             tag: 'div',

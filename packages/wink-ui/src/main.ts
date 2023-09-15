@@ -1,11 +1,10 @@
 import '@wink-ui/theme';
 export * from '@wink-ui/components';
-export * from '@wink-ui/icons';
 export * from '@wink-ui/utils';
 
 import * as components from '@wink-ui/components';
-import { App, DefineComponent, Plugin } from 'vue';
-import { SFCWithInstall } from '@wink-ui/utils';
+import type { App, DefineComponent, Plugin } from 'vue';
+import type { SFCWithInstall } from '@wink-ui/utils';
 import { version } from '../package.json';
 export const WinkUI = {
     version,
@@ -14,5 +13,5 @@ export const WinkUI = {
             (sfc as SFCWithInstall<DefineComponent>).install?.(app);
         });
     },
-} as Plugin;
+} as Plugin & { version: string };
 export default WinkUI;

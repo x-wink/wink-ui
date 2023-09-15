@@ -28,16 +28,18 @@ export const defaults = <T extends Record<string, unknown>>(
 /**
  * 值提供者
  */
-export type ValueProvider<T> = T | (() => T);
+export type ValueProvider<T> = T | (() => T) | undefined;
 
 /**
  * 获取值或返回默认值
  * @param valuePrivider 值提供者
  * @param defaultValue 默认值
  */
-export const getValue = <T>(valuePrivider?: ValueProvider<T>, defaultValue?: T) =>
-    (valuePrivider instanceof Function ? valuePrivider() : valuePrivider) ?? defaultValue;
-
+export function getValue<T>(valuePrivider: ValueProvider<T>): T | undefined;
+export function getValue<T>(valuePrivider: ValueProvider<T>, defaultValue: T): T;
+export function getValue<T>(valuePrivider: ValueProvider<T>, defaultValue?: T) {
+    return (valuePrivider instanceof Function ? valuePrivider() : valuePrivider) ?? defaultValue;
+}
 
 /**
  * 根据映射规则转换源数组为指定类型数组
@@ -51,7 +53,7 @@ export const mapConvert = <
 >(
     source: Source[],
     mapRule: MapRule,
-    defaultValue?: Partial<Target>,
+    defaultValue?: Partial<Target>
 ): Target[] =>
     source.map((obj) => {
         return Object.fromEntries(
