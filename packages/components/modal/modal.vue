@@ -3,7 +3,7 @@
         <XBox class="x-modal__container">
             <div v-if="props.title" class="x-modal__header">{{ props.title }}</div>
             <div v-if="props.showClose" class="x-modal__close">
-                <XButton circle icon="Close" text theme="error" @click="handleClose('close')" />
+                <XButton circle :icon="Close" text theme="error" @click="handleClose('close')" />
             </div>
             <div class="x-modal__body">
                 <div class="x-modal__content">
@@ -45,6 +45,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Close } from '@wink-ui/icons';
     import { ref } from 'vue';
     import type { ModalInputValue, InputType, ModalCloseReason } from '../';
     import { XPopup, XBox, XButton, XInput } from '../';

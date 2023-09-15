@@ -1,6 +1,6 @@
 <template>
     <div class="themes">
-        <XButton v-for="(item, index) in themeColors" :key="index" icon="Logo" :theme="item">{{ item }}</XButton>
+        <XButton v-for="(item, index) in themeColors" :key="index" :icon="Logo" :theme="item">{{ item }}</XButton>
     </div>
     <br />
     <div class="themes">
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
     import { XButton, themeColors } from 'wink-ui';
-    import { Logo } from 'wink-ui';
+    import { Logo } from '@wink-ui/icons';
 </script>
 
 <style scoped lang="less">

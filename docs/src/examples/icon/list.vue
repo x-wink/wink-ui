@@ -1,8 +1,10 @@
 <template>
     <div class="container">
         <ul>
-            <li v-for="(item, index) in icons" :key="index">
-                <XIcon :name="item" />
+            <li v-for="(item, index) in all.icons" :key="index">
+                <XIcon color="var(--x-primary)" size="32px">
+                    <component :is="all[item]" />
+                </XIcon>
                 <label>{{ item }}</label>
             </li>
         </ul>
@@ -10,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-    import { XIcon, icons } from 'wink-ui';
+    import { XIcon } from 'wink-ui';
+    import * as all from '@wink-ui/icons';
 </script>
 
 <style scoped lang="less">
@@ -50,7 +53,6 @@
                 }
 
                 .x-icon {
-                    font-size: 32px;
                     margin: var(--x-gap) 0;
                 }
             }

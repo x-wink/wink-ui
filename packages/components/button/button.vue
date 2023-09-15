@@ -1,9 +1,13 @@
 <template>
     <button :class="classList" :disabled="props.disabled || props.loading">
         <span v-if="props.loading || props.icon || slots.icon" class="x-button__icon">
-            <XIcon v-if="props.loading" animation="spin" name="Loading" />
+            <XIcon v-if="props.loading" animation="spin">
+                <Loading />
+            </XIcon>
             <slot v-else name="icon">
-                <XIcon v-if="props.icon" :name="props.icon" />
+                <XIcon v-if="props.icon">
+                    <component :is="props.icon" />
+                </XIcon>
             </slot>
         </span>
         <span>
@@ -13,9 +17,10 @@
 </template>
 
 <script setup lang="ts">
-    import type { IconName } from '@wink-ui/icons';
     import type { ThemeColor } from '../';
     import { XIcon } from '../';
+    import { Loading } from '@wink-ui/icons';
+    import type { Component } from 'vue';
     import { computed, useSlots } from 'vue';
 
     defineOptions({
@@ -24,7 +29,7 @@
     const props = withDefaults(
         defineProps<{
             theme?: ThemeColor;
-            icon?: IconName;
+            icon?: Component;
             text?: boolean;
             link?: boolean;
             simple?: boolean;

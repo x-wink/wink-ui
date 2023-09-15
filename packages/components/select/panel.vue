@@ -1,7 +1,9 @@
 <template>
     <div class="x-select__panel">
         <div v-for="(item, index) in props.options" :key="index" class="x-select__option" :class="optionClass(item)">
-            <XIcon class="x-select__picked" name="Select" />
+            <XIcon class="x-select__picked">
+                <Select />
+            </XIcon>
             <XButton
                 block
                 class="x-select__label"
@@ -17,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Select } from '@wink-ui/icons';
     import { XButton, XIcon } from '../';
     import type { SelectOption, SelectValue } from './types';
     import { computed } from 'vue';

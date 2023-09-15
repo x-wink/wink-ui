@@ -1,12 +1,10 @@
 <template>
-    <i class="x-icon" :class="iconClass" :style="{ '--size': props.size }">
-        <component :is="iconComponent" />
+    <i class="x-icon" :class="iconClass" :style="iconStyle">
+        <slot></slot>
     </i>
 </template>
 
 <script setup lang="ts">
-    import type { IconName } from '@wink-ui/icons';
-    import * as svgs from '@wink-ui/icons';
     import { computed } from 'vue';
     import type { XAnimation } from './types';
     defineOptions({
@@ -14,12 +12,13 @@
     });
     const props = withDefaults(
         defineProps<{
-            name: IconName;
             size?: string;
+            color?: string;
             animation?: XAnimation;
         }>(),
         {
             size: '1em',
+            color: 'inherit',
         }
     );
     const iconClass = computed(() => {
@@ -27,7 +26,9 @@
             [`x-animation-${props.animation}`]: props.animation,
         };
     });
-    const iconComponent = computed(() => svgs[props.name]);
+    const iconStyle = computed(() => {
+        return { '--size': props.size, '--color': props.color };
+    });
 </script>
 
 <style lang="less">
@@ -36,10 +37,11 @@
         width: fit-content;
         height: fit-content;
         display: inline-block;
-        color: inherit;
+        color: var(--color);
         line-height: 0;
         text-align: center;
         vertical-align: -0.125em;
+
         svg {
             display: inline-block;
             overflow: hidden;

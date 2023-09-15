@@ -4,20 +4,25 @@
             v-if="props.clearable && !props.empty && props.hover"
             circle
             class="x-select__clear"
-            icon="Close"
+            :icon="Close"
             text
             theme="error"
             @click.stop="handleClear"
         />
         <template v-else>
-            <XIcon v-if="props.loading" animation="spin" name="Loading" />
-            <XIcon v-else name="ArrowDown" :style="arrowStyle" />
+            <XIcon v-if="props.loading" animation="spin">
+                <Loading />
+            </XIcon>
+            <XIcon v-else :style="arrowStyle">
+                <ArrowDown />
+            </XIcon>
         </template>
     </div>
 </template>
 
 <script setup lang="ts">
     import { computed } from 'vue';
+    import { Close, Loading, ArrowDown } from '@wink-ui/icons';
     import { XButton, XIcon } from '../';
     const props = defineProps<{
         clearable?: boolean;

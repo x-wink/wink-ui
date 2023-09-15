@@ -2,7 +2,7 @@
     <Logo />
 </template>
 <script setup lang="ts">
-    import { Logo } from 'wink-ui';
+    import { Logo } from '@wink-ui/icons';
 </script>
 <style scoped lang="less">
     svg {

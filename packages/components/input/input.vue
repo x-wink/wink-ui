@@ -6,7 +6,7 @@
             </slot>
         </div>
         <div v-if="props.showControls" class="x-input__prefix">
-            <XButton icon="Minus" theme="primary" @click="handleStep(-1)" />
+            <XButton :icon="Minus" theme="primary" @click="handleStep(-1)" />
         </div>
         <div class="x-input__wrapper x-flex col-center">
             <input
@@ -22,7 +22,7 @@
                 circle
                 class="x-input__clear"
                 :class="{ '--active': !!internalValue }"
-                icon="Close"
+                :icon="Close"
                 text
                 theme="error"
                 @click="handleClear"
@@ -32,14 +32,14 @@
                 circle
                 class="x-input__show"
                 :class="{ '--active': !!internalValue }"
-                :icon="passwordVisible ? 'Hide' : 'View'"
+                :icon="passwordVisible ? Hide : View"
                 text
                 theme="info"
                 @click="handlePasswordVisible"
             />
         </div>
         <div v-if="props.showControls" class="x-input__suffix">
-            <XButton icon="Plus" theme="primary" @click="handleStep(1)" />
+            <XButton :icon="Plus" theme="primary" @click="handleStep(1)" />
         </div>
         <div v-if="hasSuffix" class="x-input__suffix">
             <slot name="suffix">
@@ -50,6 +50,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Minus, Plus, Close, Hide, View } from '@wink-ui/icons';
     import { computed, ref, useAttrs, useSlots, watch } from 'vue';
     import { XBox, XButton } from '../';
     defineOptions({

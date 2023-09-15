@@ -14,6 +14,6 @@ export default () => {
                 formats: ['es'],
             },
         },
-        plugins: [svgLoader()],
+        plugins: [svgLoader({ defaultImport: 'component' })],
     } as UserConfig;
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { DOMParser, XMLSerializer } from 'xmldom';
-import fs from 'fs';
+import * as fs from 'fs';
 async function main() {
     const res = await fetch('https://element-plus.gitee.io/zh-CN/component/icon.html#icon-collection');
     const html = await res.text();
@@ -47,7 +47,7 @@ async function main() {
             }
             fs.writeFileSync(filePath, svgStr);
 
-            const exportStr = `export { default as ${iconName} } from './${fileName}';\n`;
+            const exportStr = `export { default as ${iconName} } from './${fileName}?component';\n`;
             fs.appendFileSync(entry, exportStr);
         });
     });

@@ -5,7 +5,7 @@
             v-if="props.removeable"
             circle
             class="x-select__remove"
-            icon="Close"
+            :icon="Close"
             text
             theme="error"
             @click.stop="handleRemove"
@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Close } from '@wink-ui/icons';
     import { XButton } from '../';
     const props = defineProps<{
         removeable?: boolean;
