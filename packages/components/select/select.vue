@@ -66,7 +66,7 @@
     import XSuffix from './suffix.vue';
     import XPanel from './panel.vue';
     import { computed, ref, useAttrs } from 'vue';
-    import { getValue, resolveConfig, resolveOptions } from '@wink-ui/utils';
+    import { defaults, mapConvert } from '@wink-ui/utils';
     defineOptions({
         name: 'XSelect',
         inheritAttrs: false,
@@ -144,22 +144,19 @@
         internalValue.value = [];
     };
 
-    const calcItemLabel = (value: SelectValue) => {
-        const item = props.options.find((opt) => (getValue(opt[resolvedConfig.value.value]) as SelectValue) === value);
-        return getValue(item?.[resolvedConfig.value.label], String(value)) as string;
-    };
-    const selection = computed(() => {
-        return internalValue.value.map(calcItemLabel);
-    });
-    const resolvedConfig = computed(() => resolveConfig<SelectOption>(props.config, selectOptionDefaultConfig));
+    const resolvedConfig = computed(() => defaults<SelectOptionConfig>({}, selectOptionDefaultConfig, props.config));
     const resolvedOptions = computed<SelectOption[]>(() =>
-        resolveOptions<SelectOption>(props.options, resolvedConfig.value).map((item) => {
+        mapConvert<SelectOption>(props.options, resolvedConfig.value).map((item) => {
             return {
                 ...item,
-                label: calcItemLabel(item.value),
                 active: internalValue.value.includes(item.value),
             };
         })
+    );
+    const selection = computed(() =>
+        internalValue.value.map(
+            (value) => resolvedOptions.value.find((item) => item.value === value)?.label ?? String(value)
+        )
     );
 </script>
 

@@ -26,46 +26,38 @@ export const defaults = <T extends Record<string, unknown>>(
 };
 
 /**
- * 值或值提供者
+ * 值提供者
  */
 export type ValueProvider<T> = T | (() => T);
 
 /**
  * 获取值或返回默认值
- * @param valueOrPrivider 值或值提供者
+ * @param valuePrivider 值提供者
  * @param defaultValue 默认值
  */
-export const getValue = <T>(valueOrPrivider?: ValueProvider<T>, defaultValue?: T) =>
-    (valueOrPrivider instanceof Function ? valueOrPrivider() : valueOrPrivider) ?? defaultValue;
+export const getValue = <T>(valuePrivider?: ValueProvider<T>, defaultValue?: T) =>
+    (valuePrivider instanceof Function ? valuePrivider() : valuePrivider) ?? defaultValue;
+
 
 /**
- * 解析配置
- * @param config 配置对象
- * @param defaultValue 默认配置
+ * 根据映射规则转换源数组为指定类型数组
+ * @param source 源数据数组
+ * @param mapRule 映射规则
  */
-export const resolveConfig = <Opt, Conf extends Record<keyof Opt, string> = Record<keyof Opt, string>>(
-    config: Conf | undefined,
-    defaultValue: Conf
-) => defaults<Conf>({}, defaultValue, config);
-
-/**
- * 根据配置解析选项数组为指定类型
- * @param options 选项数组
- * @param config 选项解析配置
- */
-export const resolveOptions = <
-    Opt = unknown,
-    T extends Record<string, unknown> = Record<string, unknown>,
-    Conf extends Record<keyof Opt, string> = Record<keyof Opt, string>
+export const mapConvert = <
+    Target = unknown,
+    Source extends Record<string, unknown> = Record<string, unknown>,
+    MapRule extends Record<keyof Target, string> = Record<keyof Target, string>
 >(
-    options: T[],
-    config: Conf
-): Opt[] =>
-    options.map((item) => {
+    source: Source[],
+    mapRule: MapRule,
+    defaultValue?: Partial<Target>,
+): Target[] =>
+    source.map((obj) => {
         return Object.fromEntries(
-            Object.entries(config).map(([key]) => [
+            Object.entries(mapRule).map(([key]) => [
                 key,
-                getValue<unknown>(item[config[key as keyof Opt]] as ValueProvider<unknown>),
+                getValue<unknown>(obj[mapRule[key as keyof Target]], defaultValue?.[key as keyof Target]),
             ])
-        ) as Opt;
+        ) as Target;
     });
