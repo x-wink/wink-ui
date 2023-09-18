@@ -13,7 +13,7 @@
         "types/src/*"
     ],
     "main": "dist/index.js",
-    "types": "types/src/main.d.ts",
+    "types": "src/index.ts",
     "scripts": {
         "dev": "ts-node-esm scripts/fetch.ts",
         "build": "tsc && vite build"
