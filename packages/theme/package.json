@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "type": "module",
-    "main": "src/main.ts",
-    "types": "src/main.ts",
-    "devDependencies": {
+    "main": "src/index.ts",
+    "types": "src/index.ts",
+    "peerDependencies": {
         "less": "^4.1.3"
     }
 }

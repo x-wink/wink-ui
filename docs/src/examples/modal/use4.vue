@@ -2,8 +2,8 @@
     <XModal
         v-model="visible"
         content="输入用户名"
-        defaultValue="xwink"
-        :inputAttrs="{ clearable: true }"
+        default-value="xwink"
+        :input-attrs="{ clearable: true }"
         :modal="false"
         placeholder="请输入"
         show-cancel

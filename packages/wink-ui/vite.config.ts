@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import vue from '@vitejs/plugin-vue';
-import svgLoader from 'vite-svg-loader';
 import { resolve } from 'path';
 import type { UserConfig } from 'vite';
 import { loadEnv, type ConfigEnv } from 'vite';
@@ -21,7 +20,7 @@ export default (configEnv: ConfigEnv) => {
             outDir: 'dist',
             emptyOutDir: true,
             lib: {
-                entry: resolve(__dirname, 'src/main.ts'),
+                entry: resolve(__dirname, 'src/index.ts'),
                 name,
                 fileName: name,
             },
@@ -40,7 +39,6 @@ export default (configEnv: ConfigEnv) => {
                     defineModel: true,
                 },
             }),
-            svgLoader(),
         ],
     } as UserConfig;
 };

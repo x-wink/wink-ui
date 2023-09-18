@@ -2,6 +2,6 @@
     "root": true,
     "extends": ["@xwink/eslint-config/vue"],
     "parserOptions": {
-        "project": "tsconfig.json"
+        "project": "./docs/tsconfig.json"
     }
 }

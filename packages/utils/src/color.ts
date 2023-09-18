@@ -1,4 +1,4 @@
-import { isClientSide, limitPrecision } from './main';
+import { isClientSide, limitPrecision } from '.';
 
 export const parseColor = (color: string) => {
     if (!isClientSide) {

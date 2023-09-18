@@ -2,7 +2,7 @@
     "root": true,
     "extends": ["@xwink/eslint-config/vue"],
     "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./packages/components/tsconfig.json"
     },
     "globals": {
         "defineModel": "readonly",

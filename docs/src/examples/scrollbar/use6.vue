@@ -8,7 +8,8 @@
     </XScrollbar>
 </template>
 <script setup lang="ts">
-    import { XInputNumber, XScrollbar, ScrollbarInstance } from 'wink-ui';
+    import type { ScrollbarInstance } from 'wink-ui';
+    import { XInputNumber, XScrollbar } from 'wink-ui';
     import { ref, watch } from 'vue';
     const refsScroll = ref<ScrollbarInstance>();
     const top = ref(0);

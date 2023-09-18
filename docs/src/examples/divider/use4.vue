@@ -2,10 +2,10 @@
     <div>
         <template v-for="(item, index) in dividerBorderStyles" :key="index">
             <XDivider
-                :border-style="item"
-                :text="item"
-                :border-width="3"
                 border-color="var(--x-primary)"
+                :border-style="item"
+                :border-width="3"
+                :text="item"
                 theme="second"
             />
         </template>

@@ -2,14 +2,13 @@
     "name": "@wink-ui/docs",
     "version": "1.0.0",
     "type": "module",
-    "main": "src/main.ts",
     "scripts": {
         "dev": "vitepress dev",
         "build": "vitepress build",
         "preview": "vitepress preview",
         "sftp": "npx wink-sftp -c sftp.json",
         "release": "pnpm build && pnpm sftp",
-        "gen": "ts-node-esm scripts/gen/main.ts"
+        "gen": "ts-node-esm scripts/gen/index.ts"
     },
     "dependencies": {
         "@wink-ui/icons": "workspace:^",

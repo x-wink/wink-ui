@@ -2,9 +2,9 @@
     <XModal
         v-model="visible"
         content="输入付款金额"
-        :defaultValue="123456"
-        :inputAttrs="{ showControls: true }"
-        inputType="number"
+        :default-value="123456"
+        :input-attrs="{ showControls: true }"
+        input-type="number"
         :modal="false"
         show-cancel
         show-input

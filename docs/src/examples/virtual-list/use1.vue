@@ -1,5 +1,5 @@
 <template>
-    <XVirtualList :data="list" always>
+    <XVirtualList always :data="list">
         <template #default="{ item, index }">
             <div class="item">{{ index }}.{{ item.text }}</div>
         </template>

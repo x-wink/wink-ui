@@ -12,7 +12,7 @@
             </template>
             这里是弹窗内容
         </XPopover>
-        <XPopover v-model="visible" trigger="manual" @clickOutside="handleClose">
+        <XPopover v-model="visible" trigger="manual" @click-outside="handleClose">
             <template #trigger>
                 <XButton theme="primary" @click="handleOpen">手动控制</XButton>
             </template>

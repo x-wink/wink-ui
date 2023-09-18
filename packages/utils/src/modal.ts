@@ -8,7 +8,7 @@ export const showModal = (props: {
 }) => {
     return new Promise<void>((resolve, reject) => {
         let instance: DynamicComponentInstance;
-        createDynamicComponent(() => import('../../components/modal/modal.vue'), {
+        createDynamicComponent(() => import('../../components/src/modal/modal.vue'), {
             ...props,
             onClose(action: 'cancel' | 'confirm') {
                 instance?.destroy();

@@ -12,7 +12,8 @@
     />
 </template>
 <script setup lang="ts">
-    import { ModalCloseReason, XModal } from 'wink-ui';
+    import type { ModalCloseReason } from 'wink-ui';
+    import { XModal } from 'wink-ui';
     import { ref } from 'vue';
     const visible = ref(true);
     const handleClose = (reason: ModalCloseReason, value?: string | number) => {

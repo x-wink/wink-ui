@@ -8,7 +8,7 @@ export default () => {
         build: {
             outDir: 'dist',
             lib: {
-                entry: './src/main.ts',
+                entry: './src/index.ts',
                 name,
                 fileName: 'index',
                 formats: ['es'],

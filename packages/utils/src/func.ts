@@ -8,7 +8,8 @@ export const debounce = <T extends (...args: A) => void, A extends unknown[]>(fu
     }) as T;
 };
 
-import { getCurrentScope, onScopeDispose, effectScope, EffectScope } from 'vue';
+import type { EffectScope } from 'vue';
+import { getCurrentScope, onScopeDispose, effectScope } from 'vue';
 const tryOnScopeDispose = (fn: () => void) => {
     if (getCurrentScope()) {
         onScopeDispose(fn);
