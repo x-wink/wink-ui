@@ -4,8 +4,6 @@
 </template>
 
 <script setup lang="ts">
-    import { onMounted, onUnmounted } from 'vue';
-    import { ref } from 'vue';
     defineOptions({
         name: 'XRain',
     });

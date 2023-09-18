@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, ref, useAttrs } from 'vue';
     import { XPopup } from '../popup';
     import type { PopoverTrigger } from './types';
     import { debounce } from '@wink-ui/utils';

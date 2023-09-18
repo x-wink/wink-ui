@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, nextTick, onMounted, ref, watch } from 'vue';
     import type { RGB, RGBA } from '@wink-ui/utils';
     import { createDragContainer, rgba2Hex, colorDiff } from '@wink-ui/utils';
 

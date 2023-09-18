@@ -3,7 +3,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from 'vue';
     import type { RGB } from '@wink-ui/utils';
     import { color2Hue, hue2Color, rgba2Hex } from '@wink-ui/utils';
     import XColorSlider from './slider.vue';

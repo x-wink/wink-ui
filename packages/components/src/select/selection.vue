@@ -29,7 +29,6 @@
 <script setup lang="ts">
     import { XPopover, XText } from '../';
     import XSelectTag from './tag.vue';
-    import { computed } from 'vue';
     const props = defineProps<{
         selection: string[];
         tags?: boolean;

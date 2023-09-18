@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, getCurrentInstance, onMounted, ref } from 'vue';
-
     defineOptions({
         name: 'XPhotoWall',
     });

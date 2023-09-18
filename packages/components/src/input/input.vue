@@ -51,7 +51,6 @@
 
 <script setup lang="ts">
     import { Minus, Plus, Close, Hide, View } from '@wink-ui/icons';
-    import { computed, ref, useAttrs, useSlots, watch } from 'vue';
     import { XBox, XButton } from '../';
     defineOptions({
         name: 'XInput',

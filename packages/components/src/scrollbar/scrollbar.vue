@@ -36,7 +36,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
     import Bar from './bar.vue';
     import type { HTMLElementTagName, DynamicStyle } from '../';
 

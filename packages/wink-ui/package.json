@@ -27,6 +27,7 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.3.4",
+        "unplugin-auto-import": "^0.16.6",
         "vite": "^4.4.9"
     }
 }

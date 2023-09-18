@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from 'vue';
     import { Close, Loading, ArrowDown } from '@wink-ui/icons';
     import { XButton, XIcon } from '../';
     const props = defineProps<{

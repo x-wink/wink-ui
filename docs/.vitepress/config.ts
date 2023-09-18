@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import AutoImport from 'unplugin-auto-import/vite';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: 'zh-CN',
@@ -136,6 +137,19 @@ export default defineConfig({
             port: 9527,
             host: '0.0.0.0',
         },
+        plugins: [
+            AutoImport({
+                dirs: ['../packages/components/src/**'],
+                include: [/\.tsx?$/, /\.vue\??/],
+                imports: ['vue'],
+                eslintrc: {
+                    enabled: true,
+                    filepath: '../packages/components/src/.eslintrc',
+                    globalsPropValue: true,
+                },
+                dts: '../../packages/components/src/auto-imports.d.ts',
+            }),
+        ]
     },
     vue: {
         script: {

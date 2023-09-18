@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-    import { watch, ref, computed } from 'vue';
     import type { ColorPickerFormat } from '../';
     import { XPopover } from '../';
     import XColorBlock from './block.vue';

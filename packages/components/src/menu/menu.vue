@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-    import { getCurrentInstance } from 'vue';
     import type { MenuOption } from '../';
     import { XIcon, XButton } from '../';
     import type { Router } from 'vue-router';

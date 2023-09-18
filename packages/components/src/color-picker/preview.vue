@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-    import { onMounted, ref, watch } from 'vue';
     import type { RGBA } from '@wink-ui/utils';
     import { rgba2Hex } from '@wink-ui/utils';
 

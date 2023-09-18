@@ -22,7 +22,6 @@
     import { Select } from '@wink-ui/icons';
     import { XButton, XIcon } from '../';
     import type { SelectOption, SelectValue } from './types';
-    import { computed } from 'vue';
     const props = defineProps<{
         options: SelectOption[];
     }>();

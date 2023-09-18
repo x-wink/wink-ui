@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, ref, useAttrs, watch } from 'vue';
     import { isClientSide, useClickOutside } from '@wink-ui/utils';
     import type { PopupPlacement } from './types';
     defineOptions({

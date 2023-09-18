@@ -20,8 +20,6 @@
     import type { ThemeColor } from '../';
     import { XIcon } from '../';
     import { Loading } from '@wink-ui/icons';
-    import type { Component } from 'vue';
-    import { computed, useSlots } from 'vue';
 
     defineOptions({
         name: 'XButton',

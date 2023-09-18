@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, onMounted, ref } from 'vue';
     import { createDragContainer, limitPrecision } from '@wink-ui/utils';
 
     const props = withDefaults(

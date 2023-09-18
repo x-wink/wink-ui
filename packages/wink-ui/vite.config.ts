@@ -1,44 +1,50 @@
 /* eslint-disable no-console */
 import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
 import { resolve } from 'path';
-import type { UserConfig } from 'vite';
-import { loadEnv, type ConfigEnv } from 'vite';
+import { defineConfig } from 'vite';
 import { name } from './package.json';
 
 // https://vitejs.dev/config/
-export default (configEnv: ConfigEnv) => {
-    const env = loadEnv(configEnv.mode, process.cwd());
-    console.info(configEnv);
-    console.table(env);
-    return {
-        resolve: {
-            alias: {
-                '@wink-ui/*': 'packages/*',
-            },
+export default defineConfig({
+    resolve: {
+        alias: {
+            '@wink-ui/*': 'packages/*',
         },
-        build: {
-            outDir: 'dist',
-            emptyOutDir: true,
-            lib: {
-                entry: resolve(__dirname, 'src/index.ts'),
-                name,
-                fileName: name,
-            },
-            rollupOptions: {
-                external: ['vue'],
-                output: {
-                    globals: {
-                        vue: 'Vue',
-                    },
+    },
+    build: {
+        outDir: 'dist',
+        emptyOutDir: true,
+        lib: {
+            entry: resolve(__dirname, 'src/index.ts'),
+            name,
+            fileName: name,
+        },
+        rollupOptions: {
+            external: ['vue'],
+            output: {
+                globals: {
+                    vue: 'Vue',
                 },
             },
         },
-        plugins: [
-            vue({
-                script: {
-                    defineModel: true,
-                },
-            }),
-        ],
-    } as UserConfig;
-};
+    },
+    plugins: [
+        vue({
+            script: {
+                defineModel: true,
+            },
+        }),
+        AutoImport({
+            dirs: ['../components/src/**'],
+            include: [/\.tsx?$/, /\.vue\??/],
+            imports: ['vue'],
+            eslintrc: {
+                enabled: true,
+                filepath: '../components/src/.eslintrc',
+                globalsPropValue: true,
+            },
+            dts: '../components/src/auto-imports.d.ts',
+        }),
+    ],
+});

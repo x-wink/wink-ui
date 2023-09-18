@@ -46,7 +46,6 @@
 
 <script setup lang="ts">
     import { Close } from '@wink-ui/icons';
-    import { ref } from 'vue';
     import type { ModalInputValue, InputType, ModalCloseReason } from '../';
     import { XPopup, XBox, XButton, XInput } from '../';
     defineOptions({

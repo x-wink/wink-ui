@@ -65,7 +65,6 @@
     import XSelection from './selection.vue';
     import XSuffix from './suffix.vue';
     import XPanel from './panel.vue';
-    import { computed, ref, useAttrs } from 'vue';
     import { defaults, mapConvert } from '@wink-ui/utils';
     defineOptions({
         name: 'XSelect',

@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, ref, watch } from 'vue';
     import { createDragableElement } from '@wink-ui/utils';
     const props = defineProps<{
         size: number;
