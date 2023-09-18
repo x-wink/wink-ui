@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
+import globalStyle from '@originjs/vite-plugin-global-style';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { name } from './package.json';
@@ -45,6 +46,9 @@ export default defineConfig({
                 globalsPropValue: true,
             },
             dts: '../components/src/auto-imports.d.ts',
+        }),
+        globalStyle({
+            sourcePath: '../theme/src/global',
         }),
     ],
 });

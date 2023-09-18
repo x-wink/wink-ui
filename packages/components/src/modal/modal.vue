@@ -18,7 +18,7 @@
                     />
                 </div>
             </div>
-            <div v-if="props.showCancel || props.showConfirm" class="x-modal__footer x-flex">
+            <div v-if="props.showCancel || props.showConfirm" class="x-modal__footer">
                 <XButton
                     v-if="props.showCancel"
                     class="x-modal__cancel"
@@ -118,6 +118,7 @@
             }
         }
         &__footer {
+            .x-flex();
             border-top: 1px solid var(--x-primary);
             > .x-button {
                 flex: 1;

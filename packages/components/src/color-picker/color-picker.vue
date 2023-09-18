@@ -1,8 +1,8 @@
 <template>
     <div class="x-color-picker">
         <XPopover trigger="hover">
-            <div class="x-color-picker__popup x-flex col">
-                <div class="x-color-picker__settings x-flex">
+            <div class="x-color-picker__popup">
+                <div class="x-color-picker__settings">
                     <XColorSaturation v-model="color" :hue="hue" />
                     <XColorHue v-model="hue" />
                     <XColorOpacity v-model="alpha" :hue="hue" />
@@ -81,11 +81,14 @@
             cursor: pointer;
         }
         &__popup {
+            .x-flex();
+            .col();
             width: var(--x-width);
             background: var(--x-primary);
             border-radius: var(--x-border-radius);
         }
         &__settings {
+            .x-flex();
             width: 100%;
             .x-color-saturation {
                 flex-grow: 1;

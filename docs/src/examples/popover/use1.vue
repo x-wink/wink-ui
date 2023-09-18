@@ -1,5 +1,5 @@
 <template>
-    <div class="container x-flex">
+    <div class="container">
         <XPopover trigger="hover">
             <template #trigger>
                 <XButton theme="primary">鼠标移入</XButton>
@@ -34,6 +34,7 @@
 </script>
 <style scoped lang="less">
     .container {
+        .x-flex();
         :deep(.x-popover-target) {
             + .x-popover-target {
                 margin-left: var(--x-gap);

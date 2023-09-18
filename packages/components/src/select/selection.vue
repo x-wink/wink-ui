@@ -53,7 +53,6 @@
 </script>
 
 <style scoped lang="less">
-    @import url('../../../theme/src/styles/flex.less');
     .x-select {
         &__selection {
             .x-flex.fill();

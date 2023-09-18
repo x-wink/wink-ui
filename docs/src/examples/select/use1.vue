@@ -1,5 +1,5 @@
 <template>
-    <div class="container x-flex">
+    <div class="container">
         <XSelect v-model="value" :options="opts" />
         <XSelect v-model="value" disabled :options="opts" />
         <XSelect v-model="value" loading :options="opts" />
@@ -27,6 +27,7 @@
 </script>
 <style scoped lang="less">
     .container {
+        .x-flex();
         .x-select {
             + .x-select {
                 margin-left: var(--x-gap);

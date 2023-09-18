@@ -20,6 +20,7 @@
         "vue": "^3.3.4"
     },
     "dependencies": {
+        "@originjs/vite-plugin-global-style": "^1.0.3",
         "@wink-ui/components": "workspace:^",
         "@wink-ui/icons": "workspace:^",
         "@wink-ui/theme": "workspace:^",

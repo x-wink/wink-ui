@@ -1,9 +1,7 @@
-import type { IconName } from '@wink-ui/icons';
-
 export interface MenuOption {
     name?: string;
     title?: string;
-    icon?: IconName;
+    icon?: Component;
     route?: string;
     link?: boolean;
 }

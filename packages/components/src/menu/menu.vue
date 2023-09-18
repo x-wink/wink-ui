@@ -1,5 +1,5 @@
 <template>
-    <div class="x-menu x-flex col-center" :class="{ row: !props.vertical, col: props.vertical }">
+    <div class="x-menu" :class="{ row: !props.vertical, col: props.vertical }">
         <div
             v-for="(item, index) in props.menus"
             :key="index"
@@ -7,8 +7,7 @@
             :class="{ active: props.active === index }"
             :title="item.title"
         >
-            <XButton class="x-flex row-center" text :title="item.title" @click="handleClick(item, index)">
-                <XIcon v-if="item.icon" :name="item.icon" />
+            <XButton :icon="item.icon" text :title="item.title" @click="handleClick(item, index)">
                 <span v-if="!item.link && item.title">
                     {{ item.title }}
                 </span>
@@ -19,7 +18,6 @@
 
 <script setup lang="ts">
     import type { MenuOption } from '../';
-    import { XIcon, XButton } from '../';
     import type { Router } from 'vue-router';
     defineOptions({
         name: 'XMenu',
@@ -48,6 +46,8 @@
 
 <style lang="less">
     .x-menu {
+        .x-flex();
+        .col-center();
         &.row {
             .x-menu-item {
                 margin: 0 var(--x-gap-mini);

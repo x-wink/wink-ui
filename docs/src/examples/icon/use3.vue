@@ -1,6 +1,6 @@
 <template>
-    <div class="container x-flex">
-        <div v-for="(item, index) in animations" :key="index" class="item x-flex col col-center">
+    <div class="container">
+        <div v-for="(item, index) in animations" :key="index" class="item">
             <XIcon :animation="item" size="24px">
                 <Logo />
             </XIcon>
@@ -14,7 +14,11 @@
 </script>
 <style scoped lang="less">
     .container {
+        .x-flex();
         .item {
+            .x-flex();
+            .col();
+            .col-center();
             .x-icon {
                 color: var(--x-primary);
             }

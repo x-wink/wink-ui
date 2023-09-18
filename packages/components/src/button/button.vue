@@ -58,8 +58,6 @@
 </script>
 
 <style lang="less">
-    @import url('../../../theme/src/styles/flex.less');
-    @import url('../../../theme/src/styles/status.less');
     .x-button {
         .x-flex();
         .inline();
@@ -214,7 +212,7 @@
                 margin-left: var(--x-gap-mini);
             }
         }
-        &:not(.x-flex.col > &) + & {
+        & + & {
             margin-left: var(--x-gap-small);
         }
     }

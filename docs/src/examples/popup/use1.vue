@@ -1,5 +1,5 @@
 <template>
-    <div class="x-flex">
+    <div class="container">
         <XPopup v-model="visible" static>普通浮层</XPopup>
         <XPopup v-model="visible" arrow static style="margin-left: var(--x-gap)">带有箭头</XPopup>
     </div>
@@ -9,3 +9,8 @@
     import { ref } from 'vue';
     const visible = ref(true);
 </script>
+<style scoped lang="less">
+    .container {
+        .x-flex();
+    }
+</style>

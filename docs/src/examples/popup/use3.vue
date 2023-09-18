@@ -1,6 +1,6 @@
 <template>
-    <div class="container x-flex row-center">
-        <div ref="refsTarget" class="target x-flex row-center col-center" @click="visible = true">点击目标元素显示</div>
+    <div class="container">
+        <div ref="refsTarget" class="target" @click="visible = true">点击目标元素显示</div>
         <XPopup v-model="visible" arrow close-on-click-outside :target="refsTarget">点击气泡外面隐藏</XPopup>
     </div>
 </template>
@@ -13,8 +13,13 @@
 </script>
 <style scoped lang="less">
     .container {
+        .x-flex();
+        .row-center();
         margin: 60px 0;
         .target {
+            .x-flex();
+            .row-center();
+            .col-center();
             border-radius: var(--x-border-radius);
             padding: var(--x-gap);
             background: var(--x-white);

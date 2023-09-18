@@ -1,5 +1,5 @@
 <template>
-    <XBox class="x-input x-flex" :class="{ 'x-input-number': isNumber }" v-bind="rootAttrs">
+    <XBox class="x-input" :class="{ 'x-input-number': isNumber }" v-bind="rootAttrs">
         <div v-if="hasPrefix" class="x-input__prefix">
             <slot name="prefix">
                 {{ props.prefix }}
@@ -8,7 +8,7 @@
         <div v-if="props.showControls" class="x-input__prefix">
             <XButton :icon="Minus" theme="primary" @click="handleStep(-1)" />
         </div>
-        <div class="x-input__wrapper x-flex col-center">
+        <div class="x-input__wrapper">
             <input
                 v-if="modelModifiers.lazy || isNumber"
                 ref="refsInput"
@@ -185,6 +185,7 @@
 
 <style lang="less">
     .x-input {
+        .x-flex();
         width: fit-content;
         height: var(--x-height);
         color: fieldtext;
@@ -219,6 +220,8 @@
         }
 
         &__wrapper {
+            .x-flex();
+            .col-center();
             overflow: hidden;
             height: 100%;
             width: var(--x-width);

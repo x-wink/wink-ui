@@ -14,7 +14,7 @@
         <div
             v-for="(item, index) in props.data"
             :key="index"
-            class="photo x-flex row-center col-end"
+            class="photo"
             :style="{
                 transform: `rotateY(${(index * 360) / props.data.length}deg) translateZ(${width * 0.5}px)`,
             }"
@@ -74,6 +74,9 @@
         }
 
         .photo {
+            .x-flex();
+            .row-center();
+            .col-end();
             height: 100%;
             width: 30%;
             position: absolute;

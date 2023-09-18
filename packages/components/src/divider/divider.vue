@@ -51,7 +51,6 @@
 </script>
 
 <style lang="less">
-    @import url('../../../theme/src/styles/flex.less');
     .x-divider {
         .x-flex();
         .col-center();

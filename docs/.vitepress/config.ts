@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import AutoImport from 'unplugin-auto-import/vite';
+import globalStyle from '@originjs/vite-plugin-global-style'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: 'zh-CN',
@@ -149,6 +150,11 @@ export default defineConfig({
                 },
                 dts: '../../packages/components/src/auto-imports.d.ts',
             }),
+            globalStyle(
+                {
+                    sourcePath: '../../../packages/theme/src/global',
+                }
+            )
         ]
     },
     vue: {

@@ -28,7 +28,6 @@
 </script>
 
 <style lang="less">
-    @import url('../../../theme/src/styles/flex.less');
     .x-select {
         &__tag {
             .x-flex();

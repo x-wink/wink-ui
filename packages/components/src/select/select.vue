@@ -160,9 +160,6 @@
 </script>
 
 <style lang="less">
-    @import url('../../../theme/src/styles/flex.less');
-    @import url('../../../theme/src/styles/status.less');
-
     .x-select {
         &__container {
             .x-flex();
