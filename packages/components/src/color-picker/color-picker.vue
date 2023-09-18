@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { ColorPickerFormat } from '../';
-    import { XPopover } from '../';
+    import type { ColorPickerFormat } from '@wink-ui/components';
+    import { XPopover } from '@wink-ui/components';
     import XColorBlock from './block.vue';
     import XColorSaturation from './saturation.vue';
     import XColorHue from './hue.vue';

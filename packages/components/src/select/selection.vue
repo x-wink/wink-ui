@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-    import { XPopover, XText } from '../';
+    import { XPopover, XText } from '@wink-ui/components';
     import XSelectTag from './tag.vue';
     const props = defineProps<{
         selection: string[];

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
     import Bar from './bar.vue';
-    import type { HTMLElementTagName, DynamicStyle } from '../';
+    import type { HTMLElementTagName, DynamicStyle } from '@wink-ui/components';
 
     defineOptions({
         name: 'XScrollbar',

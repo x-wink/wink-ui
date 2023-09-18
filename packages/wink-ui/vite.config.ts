@@ -10,7 +10,7 @@ import { name } from './package.json';
 export default defineConfig({
     resolve: {
         alias: {
-            '@wink-ui/*': 'packages/*',
+            '@wink-ui/*': './packages/*',
         },
     },
     build: {

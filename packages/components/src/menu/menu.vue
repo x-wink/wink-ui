@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-    import type { MenuOption } from '../';
+    import type { MenuOption } from '@wink-ui/components';
     import type { Router } from 'vue-router';
     defineOptions({
         name: 'XMenu',

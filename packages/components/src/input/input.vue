@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
     import { Minus, Plus, Close, Hide, View } from '@wink-ui/icons';
-    import { XBox, XButton } from '../';
+    import { XBox, XButton } from '@wink-ui/components';
     defineOptions({
         name: 'XInput',
         inheritAttrs: false,

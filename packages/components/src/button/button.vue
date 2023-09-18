@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { ThemeColor } from '../';
-    import { XIcon } from '../';
+    import type { ThemeColor } from '@wink-ui/components';
+    import { XIcon } from '@wink-ui/components';
     import { Loading } from '@wink-ui/icons';
 
     defineOptions({

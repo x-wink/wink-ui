@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
     import { Close } from '@wink-ui/icons';
-    import { XButton } from '../';
+    import { XButton } from '@wink-ui/components';
     const props = defineProps<{
         removeable?: boolean;
     }>();

@@ -46,8 +46,8 @@
 
 <script setup lang="ts">
     import { Close } from '@wink-ui/icons';
-    import type { ModalInputValue, InputType, ModalCloseReason } from '../';
-    import { XPopup, XBox, XButton, XInput } from '../';
+    import type { ModalInputValue, InputType, ModalCloseReason } from '@wink-ui/components';
+    import { XPopup, XBox, XButton, XInput } from '@wink-ui/components';
     defineOptions({
         name: 'XModal',
     });

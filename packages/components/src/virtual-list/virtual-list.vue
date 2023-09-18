@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { ScrollbarInstance } from '../';
-    import { XScrollbar } from '../';
+    import type { ScrollbarInstance } from '@wink-ui/components';
+    import { XScrollbar } from '@wink-ui/components';
     defineOptions({
         name: 'XVirtualList',
     });

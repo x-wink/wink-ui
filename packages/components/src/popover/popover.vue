@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-    import { XPopup } from '../popup';
+    import { XPopup } from '@wink-ui/components';
     import type { PopoverTrigger } from './types';
     import { debounce } from '@wink-ui/utils';
     defineOptions({

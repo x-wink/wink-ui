@@ -60,8 +60,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { SelectOption, SelectOptionConfig, SelectValue } from '../';
-    import { XBox, XPopover, selectOptionDefaultConfig } from '../';
+    import type { SelectOption, SelectOptionConfig, SelectValue } from '@wink-ui/components';
+    import { XBox, XPopover, selectOptionDefaultConfig } from '@wink-ui/components';
     import XSelection from './selection.vue';
     import XSuffix from './suffix.vue';
     import XPanel from './panel.vue';

@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
     import { Close, Loading, ArrowDown } from '@wink-ui/icons';
-    import { XButton, XIcon } from '../';
+    import { XButton, XIcon } from '@wink-ui/components';
     const props = defineProps<{
         clearable?: boolean;
         empty: boolean;

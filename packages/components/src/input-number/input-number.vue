@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-    import { XInput } from '../';
+    import { XInput } from '@wink-ui/components';
     defineOptions({
         name: 'XInputNumber',
     });

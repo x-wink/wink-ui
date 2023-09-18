@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-    import type { DividerBorderStyle, DividerTextPlacement, ThemeColor } from '../';
-    import { XText } from '../';
+    import type { DividerBorderStyle, DividerTextPlacement, ThemeColor } from '@wink-ui/components';
+    import { XText } from '@wink-ui/components';
     defineOptions({
         name: 'XDivider',
     });

@@ -16,6 +16,7 @@
         "vue": "^3.3.4"
     },
     "dependencies": {
+        "@wink-ui/components": "workspace:^",
         "@wink-ui/icons": "workspace:^",
         "@wink-ui/utils": "workspace:^",
         "marked": "^5.0.5"

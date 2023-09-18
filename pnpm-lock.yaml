@@ -72,6 +72,9 @@ importers:
 
   packages/components:
     dependencies:
+      '@wink-ui/components':
+        specifier: workspace:^
+        version: 'link:'
       '@wink-ui/icons':
         specifier: workspace:^
         version: link:../icons
