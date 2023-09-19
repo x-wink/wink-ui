@@ -1,19 +1,19 @@
 <template>
-    <XPopup
-        v-bind="attrs"
-        v-model="visible"
-        arrow
-        class="x-popover"
-        :close-on-click-outside="props.trigger === 'click'"
-        :disabled="props.disabled"
-        :target="refsTrigger"
-        @mouseenter="handleEnterPopover"
-        @mouseleave="handleLeavePopover"
-    >
-        <slot></slot>
-    </XPopup>
-    <div ref="refsTrigger" class="x-popover__trigger" :class="props.triggerClass" v-on="triggerEvent">
+    <div ref="refsTrigger" class="x-popover" :class="props.triggerClass" v-on="triggerEvent">
         <slot name="trigger"></slot>
+        <XPopup
+            v-bind="attrs"
+            v-model="visible"
+            arrow
+            auto-destroy
+            :close-on-click-outside="props.trigger === 'click'"
+            :disabled="props.disabled"
+            :target="refsTrigger"
+            @mouseenter="handleEnterPopover"
+            @mouseleave="handleLeavePopover"
+        >
+            <slot></slot>
+        </XPopup>
     </div>
 </template>
 
@@ -85,10 +85,7 @@
 
 <style lang="less">
     .x-popover {
-        &__trigger {
-            cursor: pointer;
-            width: fit-content;
-        }
+        cursor: pointer;
+        width: fit-content;
     }
 </style>
-@wink-ui/utils

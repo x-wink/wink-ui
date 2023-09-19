@@ -10,6 +10,7 @@ export const showModal = (props: {
         let instance: DynamicComponentInstance;
         createDynamicComponent(() => import('../../components/src/modal/modal.vue'), {
             ...props,
+            modelValue: true,
             onClose(action: 'cancel' | 'confirm') {
                 instance?.destroy();
                 if (action === 'confirm') {

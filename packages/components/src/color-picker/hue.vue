@@ -30,4 +30,3 @@
         ctx.fillRect(0, 0, cvs.width, cvs.height);
     };
 </script>
-@wink-ui/utils@wink-ui/utils

@@ -47,17 +47,18 @@ title: 浮层
 
 ### 属性
 
-|    名称    |            说明             |                  类型                  | 默认值  |
-| :--------: | :-------------------------: | :------------------------------------: | :-----: |
-| modalValue |            显示             |                boolean                 | `true`  |
-|   static   |          静态展示           |                boolean                 | `false` |
-|   modal    |         是否有蒙版          |                boolean                 | `false` |
-|   arrow    |         是否有箭头          |                boolean                 | `false` |
-| placement  |          箭头位置           | [PopupPlacement](#popupplacement-type) | bottom  |
-|  position  |          浮层位置           |            [number, number]            | [0, 0]  |
-|   offset   |         浮层偏移量          |            [number, number]            | [0, 0]  |
-|   target   | 定位目标，会覆盖 `position` |              HTMLElement               |    -    |
-|  disabled  |          禁用状态           |                boolean                 |  false  |
+|    名称     |            说明             |                  类型                  | 默认值  |
+| :---------: | :-------------------------: | :------------------------------------: | :-----: |
+| modalValue  |            显示             |                boolean                 | `true`  |
+|   static    |          静态展示           |                boolean                 | `false` |
+|    arrow    |         是否有箭头          |                boolean                 | `false` |
+|  placement  |          箭头位置           | [PopupPlacement](#popupplacement-type) | bottom  |
+|  position   |          浮层位置           |            [number, number]            | [0, 0]  |
+|   offset    |         浮层偏移量          |            [number, number]            | [0, 0]  |
+|   target    | 定位目标，会覆盖 `position` |              HTMLElement               |    -    |
+|  disabled   |          禁用状态           |                boolean                 |  false  |
+|  appendTo   |          传送容器           |         string \| HTMLElement          |  body   |
+| autoDestroy |      关闭浮层自动销毁       |                boolean                 |  false  |
 
 ### 事件
 

@@ -76,6 +76,17 @@ title: 弹窗
 
 :::
 
+### 动态弹窗
+
+<br />
+<ModalUse7 />
+
+::: details 查看代码
+
+<<< @/examples/modal/use7.vue
+
+:::
+
 ## API 参考
 
 ::: tip
@@ -130,4 +141,5 @@ import ModalUse3 from './use3.vue';
 import ModalUse4 from './use4.vue';
 import ModalUse5 from './use5.vue';
 import ModalUse6 from './use6.vue';
+import ModalUse7 from './use7.vue';
 </script>

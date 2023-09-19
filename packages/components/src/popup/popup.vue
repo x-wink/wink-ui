@@ -1,21 +1,24 @@
 <template>
-    <Teleport :disabled="props.static" to="body">
-        <!-- <Transition name="popup-fade"> -->
-        <dialog
-            v-bind="attrs"
-            ref="refsPopup"
-            class="x-popup"
-            :class="classList"
-            :style="popupStyle"
-            @close="handleClose"
-        >
-            <slot></slot>
-        </dialog>
-        <!-- </Transition> -->
+    <Teleport :disabled="props.static" :to="container">
+        <Transition name="popup-fade">
+            <div
+                v-if="visible || !props.autoDestroy"
+                v-show="visible"
+                v-bind="attrs"
+                ref="refsPopup"
+                class="x-popup"
+                :class="classList"
+                :style="popupStyle"
+            >
+                <slot></slot>
+            </div>
+        </Transition>
     </Teleport>
 </template>
 
 <script setup lang="ts">
+    import type { ValueProvider } from '@wink-ui/utils';
+    import { getValue } from '@wink-ui/utils';
     import { isClientSide, useClickOutside } from '@wink-ui/utils';
     import type { PopupPlacement } from './types';
     defineOptions({
@@ -26,7 +29,6 @@
     const props = withDefaults(
         defineProps<{
             static?: boolean;
-            modal?: boolean;
             arrow?: boolean;
             placement?: PopupPlacement;
             offset?: [number, number];
@@ -34,11 +36,14 @@
             target?: HTMLElement;
             closeOnClickOutside?: boolean;
             disabled?: boolean;
+            appendTo?: ValueProvider<string | HTMLElement>;
+            autoDestroy?: boolean;
         }>(),
         {
             placement: 'bottom',
             offset: () => [0, 0],
             position: () => [0, 0],
+            appendTo: 'body',
         }
     );
     const classList = computed(() => {
@@ -59,8 +64,9 @@
                   transform: `translate(${props.offset[0]}px, ${props.offset[1]}px)`,
               };
     });
+    const container = computed(() => getValue(props.appendTo));
 
-    const refsPopup = ref<HTMLDialogElement>();
+    const refsPopup = ref<HTMLElement>();
     const emits = defineEmits<{
         clickOutside: [];
         open: [];
@@ -171,14 +177,11 @@
                     if (disabled) {
                         handleClose();
                     } else {
-                        const show = props.modal && !props.static ? el.showModal : el.show;
-                        show.call(el);
                         setTimeout(() => {
                             observe(() => el);
                         }, 100);
                     }
                 } else {
-                    el.close();
                     unobserve(() => el);
                 }
             }
@@ -308,4 +311,3 @@
         }
     }
 </style>
-@wink-ui/utils

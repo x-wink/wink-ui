@@ -35,8 +35,8 @@
 <style scoped lang="less">
     .container {
         .x-flex();
-        :deep(.x-popover-target) {
-            + .x-popover-target {
+        .x-popover {
+            + .x-popover {
                 margin-left: var(--x-gap);
             }
         }
