@@ -16,7 +16,7 @@
         "wink-ui": "workspace:^"
     },
     "devDependencies": {
-        "@originjs/vite-plugin-global-style": "^1.0.3",
+        "@plugins/global-style": "workspace:^",
         "unplugin-auto-import": "^0.16.6",
         "vitepress": "1.0.0-rc.13"
     }

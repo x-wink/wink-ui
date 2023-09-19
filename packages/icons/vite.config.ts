@@ -1,19 +1,16 @@
-import svgLoader from 'vite-svg-loader';
-import type { UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 import { name } from './package.json';
 
 // https://vitejs.dev/config/
-export default () => {
-    return {
-        build: {
-            outDir: 'dist',
-            lib: {
-                entry: './src/index.ts',
-                name,
-                fileName: 'index',
-                formats: ['es'],
-            },
+export default defineConfig({
+    build: {
+        outDir: 'dist',
+        lib: {
+            entry: './src/index.ts',
+            name,
+            fileName: 'index',
+            formats: ['es'],
         },
-        plugins: [svgLoader({ defaultImport: 'component' })],
-    } as UserConfig;
-};
+    },
+    plugins: [],
+});
