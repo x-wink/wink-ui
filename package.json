@@ -16,7 +16,7 @@
         "release:docs": "pnpm -F @wink-ui/docs run release",
         "lint": "eslint . --ext .vue,.ts,.tsx --fix --ignore-path .gitignore",
         "prettier": "prettier --write ./**/*.{vue,ts,tsx,less,json,md,html}",
-        "prepare": "husky install"
+        "prepare": "husky install && run-p plugins:* && pnpm build:icons"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.4.1",

@@ -1,3 +1,4 @@
+import svgLoader from 'vite-svg-loader';
 import { defineConfig } from 'vite';
 import { name } from './package.json';
 
@@ -12,5 +13,5 @@ export default defineConfig({
             formats: ['es'],
         },
     },
-    plugins: [],
+    plugins: [svgLoader({ defaultImport: 'component' })],
 });
