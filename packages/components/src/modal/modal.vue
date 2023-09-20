@@ -120,6 +120,9 @@
                 text-align: center;
             }
             .x-modal__input {
+                .x-input {
+                    width: 100%;
+                }
                 margin-top: var(--x-gap-mini);
             }
         }
@@ -138,7 +141,7 @@
             }
         }
         &.--input {
-            min-width: var(--x-width-large);
+            min-width: var(--x-width-super);
             .x-modal__body {
                 .x-modal__content {
                     text-align: left;

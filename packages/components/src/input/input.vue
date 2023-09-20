@@ -176,17 +176,13 @@
 <style lang="less">
     .x-input {
         .x-flex();
-        width: fit-content;
+        width: var(--x-width-large);
         height: var(--x-height);
         color: fieldtext;
         background-color: field;
 
         &-number {
             text-align: center;
-
-            .x-input__wrapper {
-                width: var(--x-width-mini);
-            }
         }
 
         &__prefix,
@@ -214,7 +210,7 @@
             .col-center();
             overflow: hidden;
             height: 100%;
-            width: var(--x-width);
+            width: 100%;
             padding: 0 var(--x-gap-mini);
 
             input {

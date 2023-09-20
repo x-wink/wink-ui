@@ -13,9 +13,9 @@
         .x-flex();
         .wrap();
         .x-box {
-            width: var(--x-width-mini);
-            height: var(--x-width-mini);
-            line-height: var(--x-width-mini);
+            width: var(--x-width);
+            height: var(--x-width);
+            line-height: var(--x-width);
             text-align: center;
             + .x-box {
                 margin-left: var(--x-gap);

@@ -9,7 +9,7 @@
     import { rgba2Hex } from '@wink-ui/utils';
 
     defineOptions({
-        name: 'XColorPreview',
+        name: 'XColorPickerPreview',
     });
     const props = withDefaults(defineProps<ColorPickerPreviewProps>(), {
         height: 20,

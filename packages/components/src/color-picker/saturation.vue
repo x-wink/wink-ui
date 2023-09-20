@@ -11,7 +11,7 @@
     import { createDragContainer, rgba2Hex, colorDiff } from '@wink-ui/utils';
 
     defineOptions({
-        name: 'XColorSaturation',
+        name: 'XColorPickerSaturation',
     });
     const props = withDefaults(defineProps<ColorPickerSaturationProps>(), {
         width: 100,

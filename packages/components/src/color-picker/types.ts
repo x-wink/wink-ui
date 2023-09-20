@@ -1,4 +1,4 @@
-import type { RGB, RGBA } from '@wink-ui/utils';
+import type { CSSNumeric, RGB, RGBA } from '@wink-ui/utils';
 
 export type ColorPickerFormat = 'hex' | 'rgba' | ((val: RGBA) => string);
 
@@ -7,8 +7,8 @@ export interface ColorPickerProps {
 }
 export interface ColorPickerBlockProps {
     color: string;
-    width?: string;
-    height?: string;
+    width?: CSSNumeric;
+    height?: CSSNumeric;
 }
 export interface ColorPickerOpacityProps {
     hue: RGB;

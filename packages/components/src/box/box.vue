@@ -17,7 +17,7 @@
 </script>
 
 <style lang="less">
-    @keyframes breathe {
+    @keyframes xBoxBreathe {
         from {
             box-shadow: inset 0 0 15px var(--x-primary);
         }
@@ -35,7 +35,7 @@
             box-shadow: inset 0 0 15px var(--x-primary);
         }
         &&.--animation {
-            animation: breathe 1s ease-in-out 0s infinite alternate-reverse;
+            animation: xBoxBreathe 1s ease-in-out 0s infinite alternate-reverse;
         }
     }
 </style>

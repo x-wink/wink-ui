@@ -1,5 +1,5 @@
 <template>
-    <button class="x-button" :class="classList" :disabled="props.disabled || props.loading">
+    <button class="x-button" :class="classList" :disabled="isDisabled" type="button">
         <span v-if="props.loading || props.icon || slots.icon" class="x-button__icon">
             <XIcon v-if="props.loading" animation="spin">
                 <Loading />
@@ -27,6 +27,7 @@
     const props = withDefaults(defineProps<ButtonProps>(), {
         theme: 'default',
     });
+
     const slots = useSlots();
     const classList = computed(() => {
         return {
@@ -38,8 +39,11 @@
             '--circle': props.circle,
             '--block': props.block,
             '--loading': props.loading,
+            '--disabled': isDisabled.value,
         };
     });
+
+    const isDisabled = computed(() => props.disabled || props.loading);
 </script>
 
 <style lang="less">
@@ -48,6 +52,7 @@
         .inline();
         .row-center();
         .col-center();
+        appearance: none;
         white-space: nowrap;
         text-align: center;
         font-size: inherit;
@@ -56,59 +61,48 @@
         user-select: none;
         cursor: pointer;
 
+        min-width: var(--x-width-mini);
         height: var(--x-height);
-        padding: 5px 10px;
+        padding: var(--x-gap-mini) var(--x-gap-small);
         border-radius: var(--x-border-radius);
         border: 1px solid var(--x-gray);
 
-        @themes: default, primary, second, info, success, warn, error;
-        @bgcs: var(--x-white), var(--x-purple), var(--x-mauve), var(--x-blue), var(--x-green), var(--x-yellow),
-            var(--x-red);
-        @bcs: var(--x-white), var(--x-purple), var(--x-mauve), var(--x-blue), var(--x-green), var(--x-yellow),
-            var(--x-red);
-        @fcs: var(--x-black), var(--x-purple), var(--x-mauve), var(--x-blue), var(--x-green), var(--x-yellow),
-            var(--x-red);
-        @simpleBgcs: var(--x-dark-white), var(--x-dark-purple), var(--x-dark-mauve), var(--x-dark-blue),
-            var(--x-dark-green), var(--x-dark-yellow), var(--x-dark-red);
-        @simpleFcs: var(--x-light-white), var(--x-light-purple), var(--x-light-mauve), var(--x-light-blue),
-            var(--x-light-green), var(--x-light-yellow), var(--x-light-red);
-
         each(@themes, {
             &.--@{value} {
-                color: if(@value =default, var(--x-black), var(--x-white));
-                background-color: extract(@bgcs, @index);
-                border-color: extract(@bcs, @index);
+                color: if(@value=default, var(--x-black), var(--x-white));
+                background-color: .x-themes(@index)[@color];
+                border-color: .x-themes(@index)[@color];
 
                 &.--simple {
-                    color: if(@value =default, extract(@bcs, @index), var(--x-white));
+                    color: .x-themes(@index)[@color];
                     background-color: transparent;
 
                     &:hover:not(:disabled) {
-                        background-color: extract(@bgcs, @index);
-                        color: if(@value =default, var(--x-black), var(--x-white));
+                        background-color: .x-themes(@index)[@color];
+                        color: if(@value=default, var(--x-black), var(--x-white));
                     }
                 }
 
                 &.--text, &.--link {
-                    color: extract(@bgcs, @index);
+                    color: .x-themes(@index)[@color];
                     &:active:not(:disabled) {
                         box-shadow: none;
                     }
                 }
                 &.--text{
                     &:hover:not(:disabled) {
-                        color: if(@value =default, var(--x-gray), var(--x-white));
-                        background-color: extract(@simpleBgcs, @index);
+                        color: if(@value=default, var(--x-gray), var(--x-white));
+                        background-color: .x-themes(@index)[@dark];
                     }
                 }
                 &.--link{
                     &::after {
-                        border-bottom-color: extract(@bgcs, @index);
+                        border-bottom-color: .x-themes(@index)[@color];
                     }
                 }
 
                 &:active {
-                    box-shadow: 0 0 5px extract(@bgcs, @index);
+                    box-shadow: 0 0 5px .x-themes(@index)[@color];
                 }
             }
         });

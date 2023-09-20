@@ -6,10 +6,11 @@
     </XInput>
     <br />
     <XInput v-model="value3" clearable placeholder="请输入搜索条件">
-        <template #suffix><XButton icon="Search" theme="primary" /></template>
+        <template #suffix><XButton :icon="Search" theme="primary" /></template>
     </XInput>
 </template>
 <script setup lang="ts">
+    import { Search } from '@wink-ui/icons';
     import { XInput, XButton } from 'wink-ui';
     import { ref } from 'vue';
     const value1 = ref('');

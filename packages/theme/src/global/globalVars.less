@@ -1,0 +1,12 @@
+@themes: default, primary, second, info, success, warn, error;
+@themeColors: var(--x-white), var(--x-purple), var(--x-mauve), var(--x-blue), var(--x-green), var(--x-yellow),
+    var(--x-red);
+@themeColorsLight: var(--x-light-white), var(--x-light-purple), var(--x-light-mauve), var(--x-light-blue),
+    var(--x-light-green), var(--x-light-yellow), var(--x-light-red);
+@themeColorsDark: var(--x-dark-white), var(--x-dark-purple), var(--x-dark-mauve), var(--x-dark-blue),
+    var(--x-dark-green), var(--x-dark-yellow), var(--x-dark-red);
+.x-themes(@index){
+    @color: extract(@themeColors, @index);
+    @light: extract(@themeColorsLight, @index);
+    @dark: extract(@themeColorsDark, @index);
+}

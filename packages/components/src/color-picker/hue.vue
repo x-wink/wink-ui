@@ -6,7 +6,9 @@
     import type { RGB } from '@wink-ui/utils';
     import { color2Hue, hue2Color, rgba2Hex } from '@wink-ui/utils';
     import XColorSlider from './slider.vue';
-
+    defineOptions({
+        name: 'XColorPickerHue',
+    });
     const color = defineModel<RGB>({ required: true });
 
     const hue = computed({

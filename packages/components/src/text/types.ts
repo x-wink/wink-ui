@@ -1,7 +1,4 @@
-import type { HTMLElementTagName } from '@wink-ui/components';
-
-export const themeColors = ['default', 'primary', 'second', 'info', 'success', 'warn', 'error'] as const;
-export type ThemeColor = typeof themeColors[number];
+import type { HTMLElementTagName, ThemeColor } from '@wink-ui/components';
 
 export interface TextProps {
     theme?: ThemeColor;

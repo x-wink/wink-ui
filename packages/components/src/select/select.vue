@@ -4,7 +4,7 @@
             v-model="visible"
             close-on-click-outside
             :disabled="props.disabled || loading"
-            style="width: var(--x-width); padding: var(--x-gap-mini) 0"
+            style="width: var(--x-width-large); padding: var(--x-gap-mini) 0"
             :trigger="props.searchable ? 'manual' : 'click'"
         >
             <template #trigger>
@@ -148,7 +148,7 @@
         &__container {
             .x-flex();
             .col-center();
-            width: var(--x-width);
+            width: var(--x-width-large);
             min-height: var(--x-height);
             padding: 0 var(--x-gap-mini);
             color: fieldtext;

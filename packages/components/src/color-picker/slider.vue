@@ -8,7 +8,9 @@
 <script setup lang="ts">
     import type { ColorPickerSliderProps } from './types';
     import { createDragContainer, limitPrecision } from '@wink-ui/utils';
-
+    defineOptions({
+        name: 'XColorPickerSlider',
+    });
     const props = withDefaults(defineProps<ColorPickerSliderProps>(), {
         width: 15,
         height: 100,

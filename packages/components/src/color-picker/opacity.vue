@@ -5,6 +5,9 @@
 <script setup lang="ts">
     import type { ColorPickerOpacityProps } from './types';
     import XColorSlider from './slider.vue';
+    defineOptions({
+        name: 'XColorPickerOpacity',
+    });
     const props = defineProps<ColorPickerOpacityProps>();
 
     const alpha = defineModel<number>({ required: true });

@@ -63,3 +63,8 @@ export const mapConvert = <
             ])
         ) as Target;
     });
+
+export type CSSNumeric = number | string;
+export type CSSNumericUnit = 'px' | 'deg' | 'rem' | 'em' | 'vw' | 'vh' | '%';
+export const completeCssNumeric = (value: CSSNumeric, unit: CSSNumericUnit = 'px') =>
+    Number.isNaN(Number(value)) ? value : `${value}${unit}`;

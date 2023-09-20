@@ -3,10 +3,10 @@
 </template>
 
 <script setup lang="ts">
+    import { completeCssNumeric } from '@wink-ui/utils';
     import type { ColorPickerBlockProps } from './types';
-
     defineOptions({
-        name: 'XColorBlock',
+        name: 'XColorPickerBlock',
     });
     const props = withDefaults(defineProps<ColorPickerBlockProps>(), {
         width: '24px',
@@ -15,8 +15,8 @@
     const blockStyle = computed(() => {
         return {
             background: props.color,
-            width: props.width,
-            height: props.height,
+            width: completeCssNumeric(props.width),
+            height: completeCssNumeric(props.height),
         };
     });
 </script>
