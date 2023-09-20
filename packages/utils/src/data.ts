@@ -32,10 +32,10 @@ export type ValueProvider<T> = T | (() => T) | undefined;
 
 /**
  * 获取值或返回默认值
- * @param valuePrivider 值提供者
+ * @param valueProvider 值提供者
  * @param defaultValue 默认值
  */
-export function getValue<T>(valuePrivider: ValueProvider<T>): T | undefined;
+export function getValue<T>(valueProvider: ValueProvider<T>): T | undefined;
 export function getValue<T>(valuePrivider: ValueProvider<T>, defaultValue: T): T;
 export function getValue<T>(valuePrivider: ValueProvider<T>, defaultValue?: T) {
     return (valuePrivider instanceof Function ? valuePrivider() : valuePrivider) ?? defaultValue;
@@ -45,6 +45,7 @@ export function getValue<T>(valuePrivider: ValueProvider<T>, defaultValue?: T) {
  * 根据映射规则转换源数组为指定类型数组
  * @param source 源数据数组
  * @param mapRule 映射规则
+ * @param defaultValue 默认值
  */
 export const mapConvert = <
     Target = unknown,
@@ -67,4 +68,4 @@ export const mapConvert = <
 export type CSSNumeric = number | string;
 export type CSSNumericUnit = 'px' | 'deg' | 'rem' | 'em' | 'vw' | 'vh' | '%';
 export const completeCssNumeric = (value: CSSNumeric, unit: CSSNumericUnit = 'px') =>
-    Number.isNaN(Number(value)) ? value : `${value}${unit}`;
+    Number.isNaN(Number(value)) ? (value as string) : `${value}${unit}`;

@@ -139,7 +139,7 @@ title: 按钮
 
 |   名称   |   说明   |                         类型                          |   默认值    |
 | :------: | :------: | :---------------------------------------------------: | :---------: |
-|  theme   | 主题风格 | [ThemeColor](/examples/text/index.md#themecolor-type) |   default   |
+|  theme   | 主题风格 | [ThemeColor](/common/base.md#themecolor-type) |   default   |
 |   icon   | 图标组件 |   [IconComponent](/examples/icon/index.md#图标列表)   | `undefined` |
 |  simple  | 简约风格 |                        boolean                        |   `false`   |
 | disabled | 禁用状态 |                        boolean                        |   `false`   |

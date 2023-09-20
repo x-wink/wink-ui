@@ -82,7 +82,7 @@ title: 滚动条
 
 |      名称      |         说明         |                                 类型                                  | 默认值  |
 | :------------: | :------------------: | :-------------------------------------------------------------------: | :-----: |
-|      tag       | 滚动区域包裹元素标签 | [HTMLElementTagName](/examples/text/index.md#htmlelementtagname-type) |   div   |
+|      tag       | 滚动区域包裹元素标签 | [HTMLElementTagName](/common/base.md#htmlelementtagname-type) |   div   |
 |     width      |       固定宽度       |                                string                                 |  auto   |
 |     height     |       固定高度       |                                string                                 |  auto   |
 |    maxWidth    |       最大宽度       |                                string                                 |    -    |

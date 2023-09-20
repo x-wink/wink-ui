@@ -19,10 +19,21 @@ export default defineConfig({
         },
         nav: [
             { text: '首页', link: '/' },
-            { text: '示例', link: '/examples/icon' },
+            { text: '组件', link: '/examples/icon' },
+            { text: '通用', link: '/common/base' },
             { text: '入门', link: '/guide/install' },
         ],
         sidebar: {
+            '/common/': [
+                {
+                    text: '通用内容',
+                    link: '/common/base',
+                },
+                {
+                    text: '通用工具',
+                    items: [{ text: '数据处理', link: '/common/data' }],
+                },
+            ],
             '/examples/': [
                 {
                     text: '基础组件',
@@ -92,7 +103,7 @@ export default defineConfig({
                 '<a data-v-3a6926c8="" href="https://beian.miit.gov.cn/" target="_blank">湘ICP备2021019875号</a>',
         },
         editLink: {
-            pattern: 'https://github.com/x-wink/fullstack-template/tree/demo/apps/docs/src/:path',
+            pattern: 'https://github.com/x-wink/wink-ui/tree/main/docs/src/:path',
             text: '编辑此页',
         },
         lastUpdated: {
@@ -150,12 +161,10 @@ export default defineConfig({
                 },
                 dts: '../../packages/components/src/auto-imports.d.ts',
             }),
-            globalStyle(
-                {
-                    sourcePath: '../packages/theme/src/global',
-                }
-            )
-        ]
+            globalStyle({
+                sourcePath: '../packages/theme/src/global',
+            }),
+        ],
     },
     vue: {
         script: {

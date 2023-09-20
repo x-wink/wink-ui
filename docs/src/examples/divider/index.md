@@ -66,7 +66,7 @@ title: 分割线
 | borderStyle | 描边样式 |    [DividerBorderStyle](#dividerborderstyle-type)     |       solid        |
 | borderWidth | 描边宽度 |                        number                         |         1          |
 | borderColor | 描边颜色 |                        string                         | var(--x-fade-gray) |
-|    theme    | 文本颜色 | [ThemeColor](/examples/text/index.md#themecolor-type) |         -          |
+|    theme    | 文本颜色 | [ThemeColor](/common/base.md#themecolor-type) |         -          |
 
 ### 事件
 

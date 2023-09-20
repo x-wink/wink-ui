@@ -62,6 +62,7 @@ title: 图标
 |   名称    |   说明   |              类型              | 默认值  |
 | :-------: | :------: | :----------------------------: | :-----: |
 |   size    | 图标尺寸 |             String             |   1em   |
+|   size    | 图标尺寸 |             String             |   1em   |
 |   color   | 图标颜色 |             String             | inherit |
 | animation | 图标动画 | [XAnimation](#xanimation-type) |    -    |
 

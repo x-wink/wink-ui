@@ -36,11 +36,11 @@ title: 文本
 
 ### 属性
 
-|   名称   |   说明   |                      类型                      | 默认值  |
-| :------: | :------: | :--------------------------------------------: | :-----: |
-|  theme   | 主题颜色 |         [ThemeColor](#themecolor-type)         | default |
-|   tag    | 元素标签 | [HTMLElementTagName](#htmlelementtagname-type) |  span   |
-| ellipsis | 溢出隐藏 |                    boolean                     | `false` |
+|   名称   |   说明   |                                 类型                                  | 默认值  |
+| :------: | :------: | :-------------------------------------------------------------------: | :-----: |
+|  theme   | 主题颜色 |         [ThemeColor](/common/base.md#themecolor-type)         | default |
+|   tag    | 元素标签 | [HTMLElementTagName](/common/base.md#htmlelementtagname-type) |  span   |
+| ellipsis | 溢出隐藏 |                                boolean                                | `false` |
 
 ### 事件
 
@@ -60,26 +60,7 @@ title: 文本
 | :--: | :--: | :------: |
 |  -   |  -   |    -     |
 
-## 附加内容
-
-### HTMLElementTagName `type`
-
-原生 `HTML` 元素标签名
-
-### ThemeColor `type`
-
-主题颜色联合类型，可选值：
-
-<ul>
-    <li v-for="(item, index) in themeColors" :key="index">{{ item }}</li>
-</ul>
-
-### themeColors `const`
-
-主题颜色枚举列表，类型为 [`ThemeColor[]`](#themecolor-type)
-
 <script setup>
-import { themeColors } from 'wink-ui';
 import TextUse1 from './use1.vue';
 import TextUse2 from './use2.vue';
 </script>
