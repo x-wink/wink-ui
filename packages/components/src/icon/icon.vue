@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+    import { completeCssNumeric } from '@wink-ui/utils';
     import type { IconProps } from './types';
     defineOptions({
         name: 'XIcon',
@@ -20,7 +21,7 @@
         };
     });
     const iconStyle = computed(() => {
-        return { '--size': props.size, '--color': props.color };
+        return { '--size': completeCssNumeric(props.size), '--color': props.color };
     });
 </script>
 

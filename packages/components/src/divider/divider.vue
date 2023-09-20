@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+    import { completeCssNumeric } from '@wink-ui/utils';
     import type { DividerProps } from './types';
     import { XText } from '@wink-ui/components';
     defineOptions({
@@ -17,7 +18,7 @@
     const props = withDefaults(defineProps<DividerProps>(), {
         placement: 'center',
         borderStyle: 'solid',
-        borderWidth: 1,
+        borderWidth: '1px',
         borderColor: 'var(--x-fade-gray)',
     });
     const dividerClass = computed(() => {
@@ -28,7 +29,7 @@
     const dividerStyle = computed(() => {
         return {
             [`--border-style`]: props.borderStyle,
-            [`--border-width`]: `${props.borderWidth}px`,
+            [`--border-width`]: completeCssNumeric(props.borderWidth),
             [`--border-color`]: props.borderColor,
         };
     });

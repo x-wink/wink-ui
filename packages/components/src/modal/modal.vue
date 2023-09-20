@@ -1,7 +1,7 @@
 <template>
     <XPopup v-model="visible" class="x-modal" :class="{ '--input': props.showInput }" :static="props.static">
         <div class="x-modal__mask" :class="{ '--active': !props.static && props.modal }">
-            <XBox class="x-modal__container">
+            <XBox class="x-modal__container" :style="containerStyle">
                 <div v-if="props.title" class="x-modal__header">{{ props.title }}</div>
                 <div v-if="props.showClose" class="x-modal__close">
                     <XButton circle :icon="Close" text theme="error" @click="handleClose('close')" />
@@ -50,6 +50,7 @@
     import { Close } from '@wink-ui/icons';
     import type { ModalInputValue, ModalCloseReason, ModalProps } from './types';
     import { XPopup, XBox, XButton, XInput } from '@wink-ui/components';
+    import { completeCssNumeric } from '@wink-ui/utils';
     defineOptions({
         name: 'XModal',
     });
@@ -59,10 +60,18 @@
         confirmText: '确定',
         defaultValue: '',
         modal: true,
+        width: 'fit-content',
+        height: 'fit-content',
     });
     const emits = defineEmits<{
         close: [reason: ModalCloseReason, value: ModalInputValue];
     }>();
+    const containerStyle = computed(() => {
+        return {
+            '--width': completeCssNumeric(props.width),
+            '--height': completeCssNumeric(props.height),
+        };
+    });
     const visible = defineModel<boolean>({ required: true });
     const handleClose = (reason: ModalCloseReason) => {
         visible.value = false;
@@ -79,7 +88,7 @@
     .x-modal {
         padding: 0;
         width: fit-content;
-        min-width: var(--x-width);
+        min-width: var(--x-width-large);
         background-color: transparent;
         &__mask {
             &.--active {
@@ -90,18 +99,14 @@
                 .x-flex();
                 .row-center();
                 .col-center();
-                .x-modal__container {
-                    width: fit-content;
-                }
             }
         }
         &__container.x-box {
-            width: 100%;
             background-color: var(--x-primary);
         }
         &__header {
             padding: var(--x-gap-mini) var(--x-gap-small);
-            border-bottom: 1px solid var(--x-light-purple);
+            border-bottom: 1px solid var(--x-border);
             font-size: 1rem;
         }
         &__close {
@@ -128,7 +133,7 @@
         }
         &__footer {
             .x-flex();
-            border-top: 1px solid var(--x-light-purple);
+            border-top: 1px solid var(--x-border);
             > .x-button {
                 flex: 1;
                 margin: 0;

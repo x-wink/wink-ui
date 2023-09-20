@@ -1,4 +1,5 @@
 import type { InputType } from '@wink-ui/components';
+import type { CSSNumeric } from '@wink-ui/utils';
 
 export type ModalInputValue = undefined | string | number;
 export const modalCloseReasons = ['close', 'cancel', 'confirm'] as const;
@@ -21,4 +22,6 @@ export interface ModalProps {
     defaultValue?: ModalInputValue;
     static?: boolean;
     modal?: boolean;
+    width?: CSSNumeric;
+    height?: CSSNumeric;
 }

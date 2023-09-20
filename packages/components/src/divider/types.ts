@@ -1,4 +1,4 @@
-import type { ThemeColor } from '@wink-ui/wink-ui';
+import type { CSSNumeric, ThemeColor } from '@wink-ui/wink-ui';
 
 export const dividerTextPlacements = ['left', 'center', 'right'] as const;
 export type DividerTextPlacement = typeof dividerTextPlacements[number];
@@ -11,7 +11,7 @@ export interface DividerProps {
     placement?: DividerTextPlacement;
     vertical?: boolean;
     borderStyle?: DividerBorderStyle;
-    borderWidth?: number;
+    borderWidth?: CSSNumeric;
     borderColor?: string;
     theme?: ThemeColor;
 }
