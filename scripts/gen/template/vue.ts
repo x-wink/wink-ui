@@ -5,9 +5,11 @@ export default /* ts */ `<template>
 </template>
 
 <script setup lang="ts">
+    import type { @@codeProps } from './types';
     defineOptions({
         name: 'X@@code',
     });
+    const props = defineProps<@@codeProps>();
 </script>
 
 <style lang="less">

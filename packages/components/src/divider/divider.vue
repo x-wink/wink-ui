@@ -9,28 +9,17 @@
 </template>
 
 <script setup lang="ts">
-    import type { DividerBorderStyle, DividerTextPlacement, ThemeColor } from '@wink-ui/components';
+    import type { DividerProps } from './types';
     import { XText } from '@wink-ui/components';
     defineOptions({
         name: 'XDivider',
     });
-    const props = withDefaults(
-        defineProps<{
-            text?: string;
-            placement?: DividerTextPlacement;
-            vertical?: boolean;
-            borderStyle?: DividerBorderStyle;
-            borderWidth?: number;
-            borderColor?: string;
-            theme?: ThemeColor;
-        }>(),
-        {
-            placement: 'center',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderColor: 'var(--x-fade-gray)',
-        }
-    );
+    const props = withDefaults(defineProps<DividerProps>(), {
+        placement: 'center',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: 'var(--x-fade-gray)',
+    });
     const dividerClass = computed(() => {
         return {
             [`--vertical`]: props.vertical,

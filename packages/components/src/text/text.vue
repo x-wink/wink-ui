@@ -5,23 +5,15 @@
 </template>
 
 <script setup lang="ts">
-    import type { ThemeColor } from '.';
+    import type { TextProps } from './types';
 
     defineOptions({
         name: 'XText',
     });
-    const props = withDefaults(
-        defineProps<{
-            theme?: ThemeColor;
-            tag?: keyof HTMLElementTagNameMap;
-            ellipsis?: boolean;
-            vertical?: boolean;
-        }>(),
-        {
-            theme: 'default',
-            tag: 'span',
-        }
-    );
+    const props = withDefaults(defineProps<TextProps>(), {
+        theme: 'default',
+        tag: 'span',
+    });
     const textClass = computed(() => {
         return {
             '--ellipsis': props.ellipsis,

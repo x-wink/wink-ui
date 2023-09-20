@@ -11,4 +11,3 @@
     });
     const modelValue = defineModel<number>({ required: true });
 </script>
-../main

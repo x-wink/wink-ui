@@ -5,13 +5,12 @@
 </template>
 
 <script setup lang="ts">
+    import type { BoxProps } from './types';
+
     defineOptions({
         name: 'XBox',
     });
-    const props = defineProps<{
-        shadow?: boolean;
-        animation?: boolean;
-    }>();
+    const props = defineProps<BoxProps>();
     const classList = computed(() => {
         return { '--animation': props.animation, '--shadow': props.shadow };
     });

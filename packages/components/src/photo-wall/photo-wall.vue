@@ -25,24 +25,17 @@
 </template>
 
 <script setup lang="ts">
+    import type { PhotoWallProps } from './types';
+
     defineOptions({
         name: 'XPhotoWall',
     });
-    const props = withDefaults(
-        defineProps<{
-            data: string[];
-            active?: boolean;
-            height?: number;
-            skew?: number;
-            speed?: number;
-        }>(),
-        {
-            active: true,
-            height: 200,
-            skew: 0,
-            speed: 15,
-        }
-    );
+    const props = withDefaults(defineProps<PhotoWallProps>(), {
+        active: true,
+        height: 200,
+        skew: 0,
+        speed: 15,
+    });
     const duration = computed(() => 30 - Math.min(30, Math.max(0, props.speed)) || 0.1);
     const width = ref(props.height);
     onMounted(() => {

@@ -5,21 +5,15 @@
 </template>
 
 <script setup lang="ts">
-    import type { RGBA } from '@wink-ui/utils';
+    import type { ColorPickerPreviewProps } from './types';
     import { rgba2Hex } from '@wink-ui/utils';
 
     defineOptions({
         name: 'XColorPreview',
     });
-    const props = withDefaults(
-        defineProps<{
-            color: RGBA;
-            height?: number;
-        }>(),
-        {
-            height: 20,
-        }
-    );
+    const props = withDefaults(defineProps<ColorPickerPreviewProps>(), {
+        height: 20,
+    });
 
     const refsCanvas = ref<HTMLCanvasElement>();
     const render = () => {

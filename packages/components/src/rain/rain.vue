@@ -4,39 +4,17 @@
 </template>
 
 <script setup lang="ts">
+    import type { RainProps } from './types';
+
     defineOptions({
         name: 'XRain',
     });
-    const props = withDefaults(
-        defineProps<{
-            /**
-             * 随机字符集
-             */
-            charset?: string;
-            /**
-             * 下落间隔时间（毫秒）
-             */
-            step?: number;
-            /**
-             * 密集程度，数字越小下落越密集
-             */
-            density?: number;
-            /**
-             * 是否作为背景
-             */
-            background?: boolean;
-            /**
-             * 雨滴长度
-             */
-            length?: number;
-        }>(),
-        {
-            charset: 'qwertyuiopasdfghjklzxcvbnm0123456789',
-            step: 67,
-            density: 3000,
-            length: 0,
-        }
-    );
+    const props = withDefaults(defineProps<RainProps>(), {
+        charset: 'qwertyuiopasdfghjklzxcvbnm0123456789',
+        step: 67,
+        density: 3000,
+        length: 0,
+    });
     const refsCanvas = ref<HTMLCanvasElement>();
     const randomInt = (min: number, max: number) => Math.round(Math.random() * (max - min) + min);
     const randomChar = () => props.charset[randomInt(0, props.charset.length - 1)];

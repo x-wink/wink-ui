@@ -9,11 +9,9 @@
     defineOptions({
         name: 'XMarkdown',
     });
-    const props = defineProps<{
-        md: string;
-    }>();
+    const modelValue = defineModel<string>({ required: true });
     const content = computed(() =>
-        marked(props.md, { mangle: false, headerIds: false }).replace(/<a href="/g, '<a target="_blank" href="')
+        marked(modelValue.value, { mangle: false, headerIds: false }).replace(/<a href="/g, '<a target="_blank" href="')
     );
 </script>
 

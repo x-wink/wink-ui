@@ -18,24 +18,17 @@
 </template>
 
 <script setup lang="ts">
+    import type { VirtualListProps } from './types';
     import type { ScrollbarInstance } from '@wink-ui/components';
     import { XScrollbar } from '@wink-ui/components';
     defineOptions({
         name: 'XVirtualList',
     });
-    const props = withDefaults(
-        defineProps<{
-            data: Record<string, unknown>[];
-            id?: string;
-            height?: number;
-            rowHeight?: number;
-        }>(),
-        {
-            id: 'id',
-            height: 300,
-            rowHeight: 30,
-        }
-    );
+    const props = withDefaults(defineProps<VirtualListProps>(), {
+        id: 'id',
+        height: 300,
+        rowHeight: 30,
+    });
     const wrapperStyle = computed(() => {
         return {
             height: `${props.data.length * props.rowHeight}px`,

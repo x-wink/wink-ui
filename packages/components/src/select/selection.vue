@@ -27,13 +27,13 @@
 </template>
 
 <script setup lang="ts">
+    import type { SelectSelectionProps } from './types';
     import { XPopover, XText } from '@wink-ui/components';
     import XSelectTag from './tag.vue';
-    const props = defineProps<{
-        selection: string[];
-        tags?: boolean;
-        maxTagCount?: number;
-    }>();
+    defineOptions({
+        name: 'XSelectSelection',
+    });
+    const props = defineProps<SelectSelectionProps>();
     const tagOverflow = computed(() =>
         props.maxTagCount && props.selection.length > props.maxTagCount ? props.selection.length - props.maxTagCount : 0
     );
@@ -52,7 +52,7 @@
     };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .x-select {
         &__selection {
             .x-flex.fill();

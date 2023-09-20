@@ -1,5 +1,6 @@
 import vue from './template/vue';
 import entry from './template/entry';
+import types from './template/types';
 import fs from 'fs';
 const name2Code = (name: string): string => {
     return name
@@ -25,7 +26,7 @@ const main = () => {
     }
     fs.writeFileSync(`${root}/${name}/${name}.vue`, replace(vue, title, name));
     fs.writeFileSync(`${root}/${name}/index.ts`, replace(entry, title, name));
-    fs.writeFileSync(`${root}/${name}/types.ts`, `export {};\n`);
+    fs.writeFileSync(`${root}/${name}/types.ts`, replace(types, title, name));
     fs.appendFileSync(`${root}/main.ts`, `export * from './${name}';\n`);
 };
 main();

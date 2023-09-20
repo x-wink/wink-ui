@@ -1,6 +1,6 @@
 <template>
     {{ md }}
-    <XMarkdown :md="md" />
+    <XMarkdown v-model="md" />
 </template>
 <script setup lang="ts">
     import { XMarkdown } from 'wink-ui';

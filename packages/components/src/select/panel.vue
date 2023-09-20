@@ -21,10 +21,11 @@
 <script setup lang="ts">
     import { Select } from '@wink-ui/icons';
     import { XButton, XIcon } from '@wink-ui/components';
-    import type { SelectOption, SelectValue } from './types';
-    const props = defineProps<{
-        options: SelectOption[];
-    }>();
+    import type { SelectOption, SelectPanelProps, SelectValue } from './types';
+    defineOptions({
+        name: 'XSelectPanel',
+    });
+    const props = defineProps<SelectPanelProps>();
     const optionClass = computed(() => (item: SelectOption) => {
         return {
             '--active': item.active,
@@ -39,7 +40,7 @@
     };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .x-select {
         &__panel {
             .x-flex();

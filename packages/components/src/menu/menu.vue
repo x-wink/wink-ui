@@ -17,16 +17,12 @@
 </template>
 
 <script setup lang="ts">
-    import type { MenuOption } from '@wink-ui/components';
+    import type { MenuOption, MenuProps } from './types';
     import type { Router } from 'vue-router';
     defineOptions({
         name: 'XMenu',
     });
-    const props = defineProps<{
-        menus: MenuOption[];
-        active?: number;
-        vertical?: boolean;
-    }>();
+    const props = defineProps<MenuProps>();
     const instance = getCurrentInstance()!;
     const router = instance.appContext.config.globalProperties.$router as Router;
     const emits = defineEmits<{

@@ -60,6 +60,7 @@
 </template>
 
 <script setup lang="ts">
+    import type { SelectProps } from './types';
     import type { SelectOption, SelectOptionConfig, SelectValue } from '@wink-ui/components';
     import { XBox, XPopover, selectOptionDefaultConfig } from '@wink-ui/components';
     import XSelection from './selection.vue';
@@ -71,27 +72,10 @@
         inheritAttrs: false,
     });
     const attrs = useAttrs();
-    const props = withDefaults(
-        defineProps<{
-            options: Record<string, unknown>[];
-            config?: Partial<SelectOptionConfig>;
-            multipart?: boolean;
-            tags?: boolean;
-            maxTagCount?: number;
-            clearable?: boolean;
-            disabled?: boolean;
-            placeholder?: string;
-            searchable?: boolean;
-        }>(),
-        {
-            label: 'label',
-            value: 'value',
-            title: 'label',
-            content: 'label',
-            maxTagCount: 0,
-            placeholder: '请选择',
-        }
-    );
+    const props = withDefaults(defineProps<SelectProps>(), {
+        maxTagCount: 0,
+        placeholder: '请选择',
+    });
     const selectClass = computed(() => {
         return {
             '--disabled': props.disabled,

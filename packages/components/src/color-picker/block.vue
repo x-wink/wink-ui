@@ -3,20 +3,15 @@
 </template>
 
 <script setup lang="ts">
+    import type { ColorPickerBlockProps } from './types';
+
     defineOptions({
         name: 'XColorBlock',
     });
-    const props = withDefaults(
-        defineProps<{
-            color: string;
-            width?: string;
-            height?: string;
-        }>(),
-        {
-            width: '24px',
-            height: '24px',
-        }
-    );
+    const props = withDefaults(defineProps<ColorPickerBlockProps>(), {
+        width: '24px',
+        height: '24px',
+    });
     const blockStyle = computed(() => {
         return {
             background: props.color,

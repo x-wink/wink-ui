@@ -3,11 +3,9 @@
 </template>
 
 <script setup lang="ts">
-    import type { RGB } from '@wink-ui/utils';
+    import type { ColorPickerOpacityProps } from './types';
     import XColorSlider from './slider.vue';
-    const props = defineProps<{
-        hue: RGB;
-    }>();
+    const props = defineProps<ColorPickerOpacityProps>();
 
     const alpha = defineModel<number>({ required: true });
 

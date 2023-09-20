@@ -6,26 +6,18 @@
 </template>
 
 <script setup lang="ts">
-    import type { RGB, RGBA } from '@wink-ui/utils';
+    import type { RGB } from '@wink-ui/utils';
+    import type { ColorPickerSaturationProps } from './types';
     import { createDragContainer, rgba2Hex, colorDiff } from '@wink-ui/utils';
 
     defineOptions({
         name: 'XColorSaturation',
     });
-    const props = withDefaults(
-        defineProps<{
-            modelValue: RGBA;
-            hue: RGB;
-            width?: number;
-            height?: number;
-            dot?: number;
-        }>(),
-        {
-            width: 100,
-            height: 100,
-            dot: 10,
-        }
-    );
+    const props = withDefaults(defineProps<ColorPickerSaturationProps>(), {
+        width: 100,
+        height: 100,
+        dot: 10,
+    });
     const emits = defineEmits<{
         'update:modelValue': [value: RGB];
     }>();

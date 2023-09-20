@@ -14,11 +14,13 @@
 </template>
 
 <script setup lang="ts">
+    import type { SelectTagProps } from './types';
     import { Close } from '@wink-ui/icons';
     import { XButton } from '@wink-ui/components';
-    const props = defineProps<{
-        removeable?: boolean;
-    }>();
+    defineOptions({
+        name: 'XSelectTag',
+    });
+    const props = defineProps<SelectTagProps>();
     const emits = defineEmits<{
         remove: [];
     }>();

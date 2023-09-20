@@ -37,30 +37,16 @@
 
 <script setup lang="ts">
     import Bar from './bar.vue';
-    import type { HTMLElementTagName, DynamicStyle } from '@wink-ui/components';
+    import type { ScrollbarProps } from './types';
 
     defineOptions({
         name: 'XScrollbar',
     });
-    const props = withDefaults(
-        defineProps<{
-            tag?: HTMLElementTagName;
-            width?: string;
-            height?: string;
-            maxWidth?: string;
-            maxHeight?: string;
-            always?: boolean;
-            noresize?: boolean;
-            native?: boolean;
-            containerStyle?: DynamicStyle;
-            wrapperStyle?: DynamicStyle;
-        }>(),
-        {
-            tag: 'div',
-            width: 'auto',
-            height: 'auto',
-        }
-    );
+    const props = withDefaults(defineProps<ScrollbarProps>(), {
+        tag: 'div',
+        width: 'auto',
+        height: 'auto',
+    });
     const scrollbarStyle = computed(() => {
         return {
             width: props.width,

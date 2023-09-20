@@ -6,23 +6,15 @@
 </template>
 
 <script setup lang="ts">
+    import type { ColorPickerSliderProps } from './types';
     import { createDragContainer, limitPrecision } from '@wink-ui/utils';
 
-    const props = withDefaults(
-        defineProps<{
-            render: (cvs: HTMLCanvasElement) => void;
-            width?: number;
-            height?: number;
-            slide?: number;
-            precision?: number;
-        }>(),
-        {
-            width: 15,
-            height: 100,
-            slide: 5,
-            precision: 2,
-        }
-    );
+    const props = withDefaults(defineProps<ColorPickerSliderProps>(), {
+        width: 15,
+        height: 100,
+        slide: 5,
+        precision: 2,
+    });
     const value = defineModel<number>({ required: true });
     value.value = limitPrecision(value.value, props.precision);
 

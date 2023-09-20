@@ -1,5 +1,5 @@
 <template>
-    <button :class="classList" :disabled="props.disabled || props.loading">
+    <button class="x-button" :class="classList" :disabled="props.disabled || props.loading">
         <span v-if="props.loading || props.icon || slots.icon" class="x-button__icon">
             <XIcon v-if="props.loading" animation="spin">
                 <Loading />
@@ -17,34 +17,19 @@
 </template>
 
 <script setup lang="ts">
-    import type { ThemeColor } from '@wink-ui/components';
+    import type { ButtonProps } from './types';
     import { XIcon } from '@wink-ui/components';
     import { Loading } from '@wink-ui/icons';
 
     defineOptions({
         name: 'XButton',
     });
-    const props = withDefaults(
-        defineProps<{
-            theme?: ThemeColor;
-            icon?: Component;
-            text?: boolean;
-            link?: boolean;
-            simple?: boolean;
-            round?: boolean;
-            circle?: boolean;
-            block?: boolean;
-            loading?: boolean;
-            disabled?: boolean;
-        }>(),
-        {
-            theme: 'default',
-        }
-    );
+    const props = withDefaults(defineProps<ButtonProps>(), {
+        theme: 'default',
+    });
     const slots = useSlots();
     const classList = computed(() => {
         return {
-            'x-button': true,
             [`--${props.theme}`]: true,
             '--link': props.link,
             '--text': props.text,

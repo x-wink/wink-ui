@@ -50,6 +50,7 @@
 </template>
 
 <script setup lang="ts">
+    import type { InputProps } from './types';
     import { Minus, Plus, Close, Hide, View } from '@wink-ui/icons';
     import { XBox, XButton } from '@wink-ui/components';
     defineOptions({
@@ -79,20 +80,9 @@
                 : {}),
         };
     });
-    const props = withDefaults(
-        defineProps<{
-            clearable?: boolean;
-            prefix?: string;
-            suffix?: string;
-            showPassword?: boolean;
-            showControls?: boolean;
-            stepStrictly?: boolean;
-            precision?: number | string;
-        }>(),
-        {
-            precision: 0,
-        }
-    );
+    const props = withDefaults(defineProps<InputProps>(), {
+        precision: 0,
+    });
     const slots = useSlots();
     const hasPrefix = computed(() => typeof props.prefix !== 'undefined' || slots.prefix);
     const hasSuffix = computed(() => typeof props.suffix !== 'undefined' || slots.suffix);

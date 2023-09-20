@@ -21,15 +21,13 @@
 </template>
 
 <script setup lang="ts">
+    import type { SelectSuffixProps } from './types';
     import { Close, Loading, ArrowDown } from '@wink-ui/icons';
     import { XButton, XIcon } from '@wink-ui/components';
-    const props = defineProps<{
-        clearable?: boolean;
-        empty: boolean;
-        hover: boolean;
-        loading: boolean;
-        visible: boolean;
-    }>();
+    defineOptions({
+        name: 'XSelectSuffix',
+    });
+    const props = defineProps<SelectSuffixProps>();
     const arrowStyle = computed(() => {
         return {
             transform: props.visible ? 'scaleY(-1)' : '',
@@ -43,7 +41,7 @@
     };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .x-select {
         &__clear {
             min-width: unset !important;

@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-    import type { ColorPickerFormat } from '@wink-ui/components';
+    import type { ColorPickerProps } from './types';
     import { XPopover } from '@wink-ui/components';
     import XColorBlock from './block.vue';
     import XColorSaturation from './saturation.vue';
@@ -34,14 +34,9 @@
     defineOptions({
         name: 'XColorPicker',
     });
-    const props = withDefaults(
-        defineProps<{
-            format?: ColorPickerFormat;
-        }>(),
-        {
-            format: 'hex',
-        }
-    );
+    const props = withDefaults(defineProps<ColorPickerProps>(), {
+        format: 'hex',
+    });
     const emits = defineEmits<{
         change: [value: string, old: string];
     }>();

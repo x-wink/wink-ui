@@ -11,14 +11,9 @@
 </template>
 
 <script setup lang="ts">
+    import type { ScrollbarBarProps } from './types';
     import { createDragableElement } from '@wink-ui/utils';
-    const props = defineProps<{
-        size: number;
-        position: number;
-        visible: boolean;
-        container?: HTMLElement;
-        vertical?: boolean;
-    }>();
+    const props = defineProps<ScrollbarBarProps>();
     const thumbStyle = computed(() => {
         return {
             [props.vertical ? 'height' : 'width']: `${props.size * 100}%`,

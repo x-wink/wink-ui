@@ -17,35 +17,20 @@
 </template>
 
 <script setup lang="ts">
-    import type { ValueProvider } from '@wink-ui/utils';
     import { getValue } from '@wink-ui/utils';
     import { isClientSide, useClickOutside } from '@wink-ui/utils';
-    import type { PopupPlacement } from './types';
+    import type { PopupPlacement, PopupProps } from './types';
     defineOptions({
         name: 'XPopup',
         inheritAttrs: false,
     });
     const attrs = useAttrs();
-    const props = withDefaults(
-        defineProps<{
-            static?: boolean;
-            arrow?: boolean;
-            placement?: PopupPlacement;
-            offset?: [number, number];
-            position?: [number, number];
-            target?: HTMLElement;
-            closeOnClickOutside?: boolean;
-            disabled?: boolean;
-            appendTo?: ValueProvider<string | HTMLElement>;
-            autoDestroy?: boolean;
-        }>(),
-        {
-            placement: 'bottom',
-            offset: () => [0, 0],
-            position: () => [0, 0],
-            appendTo: 'body',
-        }
-    );
+    const props = withDefaults(defineProps<PopupProps>(), {
+        placement: 'bottom',
+        offset: () => [0, 0],
+        position: () => [0, 0],
+        appendTo: 'body',
+    });
     const classList = computed(() => {
         return {
             '--static': props.static,

@@ -19,25 +19,17 @@
 
 <script setup lang="ts">
     import { XPopup } from '@wink-ui/components';
-    import type { PopoverTrigger } from './types';
+    import type { PopoverProps } from './types';
     import { debounce } from '@wink-ui/utils';
     defineOptions({
         name: 'XPopover',
         inheritAttrs: false,
     });
     const attrs = useAttrs();
-    const props = withDefaults(
-        defineProps<{
-            trigger?: PopoverTrigger;
-            triggerClass?: string;
-            dalay?: number;
-            disabled?: boolean;
-        }>(),
-        {
-            trigger: 'hover',
-            dalay: 100,
-        }
-    );
+    const props = withDefaults(defineProps<PopoverProps>(), {
+        trigger: 'hover',
+        dalay: 100,
+    });
 
     const visible = defineModel<boolean>({ required: false, default: false, local: true });
 

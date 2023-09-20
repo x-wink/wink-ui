@@ -48,38 +48,18 @@
 
 <script setup lang="ts">
     import { Close } from '@wink-ui/icons';
-    import type { ModalInputValue, InputType, ModalCloseReason } from '@wink-ui/components';
+    import type { ModalInputValue, ModalCloseReason, ModalProps } from './types';
     import { XPopup, XBox, XButton, XInput } from '@wink-ui/components';
     defineOptions({
         name: 'XModal',
     });
-    const props = withDefaults(
-        defineProps<{
-            title?: string;
-            content: string;
-            showCancel?: boolean;
-            showConfirm?: boolean;
-            showClose?: boolean;
-            showInput?: boolean;
-            cancelText?: string;
-            confirmText?: string;
-            cancelAttrs?: Record<string, unknown>;
-            comfirmAttrs?: Record<string, unknown>;
-            placeholder?: string;
-            inputType?: InputType;
-            inputAttrs?: Record<string, unknown>;
-            defaultValue?: ModalInputValue;
-            static?: boolean;
-            modal?: boolean;
-        }>(),
-        {
-            showConfirm: true,
-            cancelText: '取消',
-            confirmText: '确定',
-            defaultValue: '',
-            modal: true,
-        }
-    );
+    const props = withDefaults(defineProps<ModalProps>(), {
+        showConfirm: true,
+        cancelText: '取消',
+        confirmText: '确定',
+        defaultValue: '',
+        modal: true,
+    });
     const emits = defineEmits<{
         close: [reason: ModalCloseReason, value: ModalInputValue];
     }>();
