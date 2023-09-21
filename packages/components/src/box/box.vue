@@ -10,9 +10,9 @@
     defineOptions({
         name: 'XBox',
     });
-    const props = defineProps<BoxProps>();
+    const props = withDefaults(defineProps<BoxProps>(), { theme: 'default' });
     const classList = computed(() => {
-        return { '--animation': props.animation, '--shadow': props.shadow };
+        return { [`--${props.theme}`]: true, '--animation': props.animation, '--shadow': props.shadow };
     });
 </script>
 
@@ -21,21 +21,31 @@
         from {
             box-shadow: inset 0 0 15px var(--x-primary);
         }
+
         to {
             box-shadow: inset 0 0 0px #0000;
         }
     }
+
     .x-box {
         border: 2px solid var(--x-primary);
         border-radius: var(--x-border-radius);
         background: rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(1.2px);
         overflow: hidden;
-        &&.--shadow {
+
+        &.--shadow {
             box-shadow: inset 0 0 15px var(--x-primary);
         }
-        &&.--animation {
+
+        &.--animation {
             animation: xBoxBreathe 1s ease-in-out 0s infinite alternate-reverse;
         }
+
+        each(@themes, {
+        &.--@{value} {
+            border-color: .x-themes(@index)[@color];
+        }
+    });
     }
 </style>

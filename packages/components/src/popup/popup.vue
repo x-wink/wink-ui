@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-    import { getValue } from '@wink-ui/utils';
+    import { completeCssNumeric, getValue } from '@wink-ui/utils';
     import { isClientSide, useClickOutside } from '@wink-ui/utils';
-    import type { PopupPlacement, PopupProps } from './types';
+    import type { PopupPlacement, PopupPosition, PopupProps } from './types';
     import XTransition from '../common/transition.vue';
     defineOptions({
         name: 'XPopup',
@@ -29,9 +29,10 @@
     const props = withDefaults(defineProps<PopupProps>(), {
         placement: 'bottom',
         offset: () => [0, 0],
-        position: () => [0, 0],
+        position: () => [0, 0, 0, 0],
         appendTo: 'body',
     });
+    const position = toRef(props, 'position');
     const classList = computed(() => {
         return {
             '--static': props.static,
@@ -45,8 +46,10 @@
         return props.static
             ? {}
             : {
-                  left: pos.value[0] + 'px',
-                  top: pos.value[1] + 'px',
+                  top: completeCssNumeric(position.value[0]),
+                  right: completeCssNumeric(position.value[1]),
+                  bottom: completeCssNumeric(position.value[2]),
+                  left: completeCssNumeric(position.value[3]),
                   transform: `translate(${props.offset[0]}px, ${props.offset[1]}px)`,
               };
     });
@@ -79,12 +82,7 @@
         return visible.value;
     };
 
-    const pos = ref(props.position);
-    const calculatePopupPosition = (
-        el: HTMLElement,
-        target: HTMLElement,
-        placement: PopupPlacement
-    ): [number, number] => {
+    const calculatePopupPosition = (el: HTMLElement, target: HTMLElement, placement: PopupPlacement): PopupPosition => {
         const targetRect = target.getBoundingClientRect();
         const { width: targetWidth, height: targetHeight } = targetRect;
 
@@ -141,11 +139,11 @@
         left = Math.max(0, Math.min(document.body.offsetWidth - width, left));
         top = Math.max(0, Math.min(document.body.offsetHeight - height, top));
 
-        return [left, top];
+        return [top, void 0, void 0, left];
     };
     const updatePosition = () => {
         if (props.target && refsPopup.value) {
-            pos.value = calculatePopupPosition(refsPopup.value, props.target, props.placement);
+            position.value = calculatePopupPosition(refsPopup.value, props.target, props.placement);
         }
         requestAnimationFrame(updatePosition);
     };
@@ -195,6 +193,7 @@
         color: var(--x-white);
         background: var(--x-primary);
         padding: var(--x-gap-small);
+        margin: auto;
 
         &.--relative {
             position: absolute;

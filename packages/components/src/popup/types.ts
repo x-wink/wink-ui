@@ -1,4 +1,4 @@
-import type { ValueProvider } from '@wink-ui/utils';
+import type { CSSNumeric, ValueProvider } from '@wink-ui/utils';
 
 export const popupPlacements = [
     'top-left',
@@ -25,12 +25,18 @@ export const popupArrowPlacements = Array.from(
     new Set(popupPlacements.map((item) => item.split('-')[1] ?? 'center'))
 ) as PopupArrowPlacement[];
 
+export type PopupPosition = [
+    CSSNumeric | undefined,
+    CSSNumeric | undefined,
+    CSSNumeric | undefined,
+    CSSNumeric | undefined
+];
 export interface PopupProps {
     static?: boolean;
     arrow?: boolean;
     placement?: PopupPlacement;
     offset?: [number, number];
-    position?: [number, number];
+    position?: PopupPosition;
     target?: HTMLElement;
     closeOnClickOutside?: boolean;
     disabled?: boolean;

@@ -33,7 +33,7 @@
             .col-center();
             border-radius: var(--x-border-radius);
             width: var(--x-width-super);
-            height: var(--x-width);
+            height: var(--x-width-super);
             text-align: center;
             background: var(--x-white);
             color: var(--x-primary);

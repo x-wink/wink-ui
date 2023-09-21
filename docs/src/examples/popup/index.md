@@ -47,23 +47,23 @@ title: 弹出层
 
 ### 属性
 
-|    名称     |            说明             |                  类型                  | 默认值  |
-| :---------: | :-------------------------: | :------------------------------------: | :-----: |
-| modalValue  |            显示             |                boolean                 | `true`  |
-|   static    |          静态展示           |                boolean                 | `false` |
-|    arrow    |         是否有箭头          |                boolean                 | `false` |
-|  placement  |          箭头位置           | [PopupPlacement](#popupplacement-type) | bottom  |
-|  position   |          弹出层位置           |            [number, number]            | [0, 0]  |
-|   offset    |         弹出层偏移量          |            [number, number]            | [0, 0]  |
-|   target    | 定位目标，会覆盖 `position` |              HTMLElement               |    -    |
-|  disabled   |          禁用状态           |                boolean                 |  false  |
-|  appendTo   |          传送容器           |         string \| HTMLElement          |  body   |
-| autoDestroy |      关闭弹出层自动销毁       |                boolean                 |  false  |
+|    名称     |            说明             |                  类型                  |            默认值            |
+| :---------: | :-------------------------: | :------------------------------------: | :--------------------------: |
+| modalValue  |            显示             |                boolean                 |            `true`            |
+|   static    |          静态展示           |                boolean                 |           `false`            |
+|    arrow    |         是否有箭头          |                boolean                 |           `false`            |
+|  placement  |          箭头位置           | [PopupPlacement](#popupplacement-type) |            bottom            |
+|  position   |         弹出层位置          |  [PopupPosition](#popupposition-type)  | [0, undefined, undefined, 0] |
+|   offset    |        弹出层偏移量         |            [number, number]            |            [0, 0]            |
+|   target    | 定位目标，会覆盖 `position` |              HTMLElement               |              -               |
+|  disabled   |          禁用状态           |                boolean                 |            false             |
+|  appendTo   |          传送容器           |         string \| HTMLElement          |             body             |
+| autoDestroy |     关闭弹出层自动销毁      |                boolean                 |            false             |
 
 ### 事件
 
-|     名称     |       说明       |   触发时机   |          回调类型          |
-| :----------: | :--------------: | :----------: | :------------------------: |
+|     名称     |       说明       |    触发时机    |          回调类型          |
+| :----------: | :--------------: | :------------: | :------------------------: |
 | clickOutside | 方便手动控制显隐 | 点击弹出层外面 |         () => void         |
 |     open     |        -         |   弹出层显示   |         () => void         |
 |    close     |        -         |   弹出层隐藏   |         () => void         |
@@ -71,8 +71,8 @@ title: 弹出层
 
 ### 插槽
 
-|  名称   |     说明     | 类型定义 |
-| :-----: | :----------: | :------: |
+|  名称   |      说明      | 类型定义 |
+| :-----: | :------------: | :------: |
 | default | 弹出层主体内容 |    -     |
 
 ### 实例
@@ -96,6 +96,14 @@ title: 弹出层
 ### popupPlacements `const`
 
 弹出层箭头位置枚举数组，类型为 `PopupPlacement[]`
+
+### PopupPosition `type`
+
+弹出层位置，上右下左
+
+```ts
+type PopupPosition = [CSSNumeric | undefined, CSSNumeric | undefined, CSSNumeric | undefined, CSSNumeric | undefined];
+```
 
 <script setup>
 import PopupUse1 from './use1.vue';

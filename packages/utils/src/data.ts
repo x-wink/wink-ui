@@ -78,8 +78,8 @@ export type CSSNumericUnit = 'px' | 'deg' | 'rem' | 'em' | 'vw' | 'vh' | '%';
  * @param value 属性值
  * @param unit 单位，默认px
  */
-export const completeCssNumeric = (value: CSSNumeric, unit: CSSNumericUnit = 'px') =>
-    Number.isNaN(Number(value)) ? (value as string) : `${value}${unit}`;
+export const completeCssNumeric = (value: CSSNumeric | undefined, unit: CSSNumericUnit = 'px') =>
+    typeof value === 'undefined' ? void 0 : Number.isNaN(Number(value)) ? (value as string) : `${value}${unit}`;
 
 /**
  * 复制文本到粘贴板
