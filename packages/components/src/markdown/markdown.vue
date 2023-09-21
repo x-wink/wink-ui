@@ -35,7 +35,7 @@
                 line-height: 1.3;
                 margin: 0 var(--x-gap-mini);
                 padding: 0 var(--x-gap-mini);
-                background-color: (--x-fade-black);
+                background-color: var(--x-fade-black);
                 border-radius: var(--x-border-radius);
             }
             a {

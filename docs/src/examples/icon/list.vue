@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <ul>
-            <li v-for="(item, index) in all.icons" :key="index">
+            <li v-for="(item, index) in all.icons" :key="index" @click="handleCopy(item)">
                 <XIcon color="var(--x-primary)" size="32px">
                     <component :is="all[item]" />
                 </XIcon>
@@ -12,8 +12,13 @@
 </template>
 
 <script setup lang="ts">
-    import { XIcon } from 'wink-ui';
+    import { XIcon, copy } from 'wink-ui';
     import * as all from '@wink-ui/icons';
+    import type { IconName } from '@wink-ui/icons';
+
+    const handleCopy = (name: IconName) => {
+        copy(`<${name} />`);
+    };
 </script>
 
 <style scoped lang="less">

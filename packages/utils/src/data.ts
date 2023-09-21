@@ -65,7 +65,35 @@ export const mapConvert = <
         ) as Target;
     });
 
+/**
+ * CSS数值类型属性值
+ */
 export type CSSNumeric = number | string;
+/**
+ * CSS数值类型属性值单位
+ */
 export type CSSNumericUnit = 'px' | 'deg' | 'rem' | 'em' | 'vw' | 'vh' | '%';
+/**
+ * 补全CSS数值类型属性值单位
+ * @param value 属性值
+ * @param unit 单位，默认px
+ */
 export const completeCssNumeric = (value: CSSNumeric, unit: CSSNumericUnit = 'px') =>
     Number.isNaN(Number(value)) ? (value as string) : `${value}${unit}`;
+
+/**
+ * 复制文本到粘贴板
+ * @param content 文本内容
+ */
+export const copy = async (content: string) => {
+    try {
+        await navigator.clipboard.writeText(content);
+    } catch (error) {
+        const textarea = document.createElement('textarea');
+        textarea.value = content;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+};

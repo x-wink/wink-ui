@@ -78,3 +78,9 @@ type ValueProvider<T> = T | (() => T) | undefined;
 -   `mapRule` : `MapRule` 映射规则
 -   `defaultValue` ?: `Partial<Taget>`
 -   `return` : `Target`
+
+## copy `function`
+
+复制文本到粘贴板
+
+-   `content` : `string` 文本内容
