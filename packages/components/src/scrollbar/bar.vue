@@ -1,5 +1,5 @@
 <template>
-    <Transition name="scrollbar-fade">
+    <XTransition>
         <div
             v-show="horizontalVisible"
             class="x-scrollbar__bar"
@@ -7,11 +7,12 @@
         >
             <div ref="refsThumb" class="x-scrollbar__thumb" :style="thumbStyle"></div>
         </div>
-    </Transition>
+    </XTransition>
 </template>
 
 <script setup lang="ts">
     import type { ScrollbarBarProps } from './types';
+    import XTransition from '../common/transition.vue';
     import { createDragableElement } from '@wink-ui/utils';
     const props = defineProps<ScrollbarBarProps>();
     const thumbStyle = computed(() => {
@@ -81,20 +82,6 @@
             &:hover,
             &:active {
                 opacity: 1;
-            }
-        }
-        .scrollbar-fade {
-            &-enter-active {
-                transition: opacity 300ms ease-out;
-            }
-
-            &-leave-active {
-                transition: opacity 150ms ease-out;
-            }
-
-            &-enter-from,
-            &-leave-active {
-                opacity: 0;
             }
         }
     }

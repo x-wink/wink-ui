@@ -6,7 +6,7 @@
         <XText class="x-message__content" ellipsis :theme="props.theme">
             <slot>{{ props.content }}</slot>
         </XText>
-        <XClose v-if="props.closeable" class="x-message__close" @click="handleClose('close')" />
+        <IconButton v-if="props.closeable" class="x-message__close" rotate @click="handleClose('close')" />
     </XPopup>
 </template>
 
@@ -14,7 +14,7 @@
     import type { MessageProps } from './types';
     import type { MessageCloseReason } from '@wink-ui/components';
     import { XIcon, XPopup, XText } from '@wink-ui/components';
-    import XClose from '../common/close.vue';
+    import IconButton from '../common/icon-button.vue';
     defineOptions({
         name: 'XMessage',
     });
@@ -59,21 +59,6 @@
         }
         &__close {
             margin-left: var(--x-gap-mini);
-        }
-        &.popup-fade {
-            &-enter-active {
-                transition: transform 200ms ease-out, opacity 300ms ease-out;
-            }
-
-            &-leave-active {
-                transition: transform 100ms ease-out, opacity 150ms ease-out;
-            }
-
-            &-enter-from,
-            &-leave-active {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
         }
     }
 </style>

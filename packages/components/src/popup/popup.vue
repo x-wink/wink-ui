@@ -1,6 +1,6 @@
 <template>
     <Teleport :disabled="props.static" :to="container">
-        <Transition name="popup-fade">
+        <XTransition>
             <div
                 v-if="visible || !props.autoDestroy"
                 v-show="visible"
@@ -12,7 +12,7 @@
             >
                 <slot></slot>
             </div>
-        </Transition>
+        </XTransition>
     </Teleport>
 </template>
 
@@ -20,6 +20,7 @@
     import { getValue } from '@wink-ui/utils';
     import { isClientSide, useClickOutside } from '@wink-ui/utils';
     import type { PopupPlacement, PopupProps } from './types';
+    import XTransition from '../common/transition.vue';
     defineOptions({
         name: 'XPopup',
         inheritAttrs: false,
@@ -278,20 +279,6 @@
                     right: 0;
                     transform: translateX(50%) rotate(45deg);
                 }
-            }
-        }
-        &.popup-fade {
-            &-enter-active {
-                transition: opacity 300ms ease-out;
-            }
-
-            &-leave-active {
-                transition: opacity 150ms ease-out;
-            }
-
-            &-enter-from,
-            &-leave-active {
-                opacity: 0;
             }
         }
     }

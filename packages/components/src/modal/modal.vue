@@ -3,9 +3,7 @@
         <div class="x-modal__mask" :class="{ '--active': !props.static && props.modal }">
             <XBox class="x-modal__container" :style="containerStyle">
                 <div v-if="props.title" class="x-modal__header">{{ props.title }}</div>
-                <div v-if="props.showClose" class="x-modal__close">
-                    <XButton circle :icon="Close" text theme="error" @click="handleClose('close')" />
-                </div>
+                <IconButton v-if="props.showClose" class="x-modal__close" rotate @click="handleClose('close')" />
                 <div class="x-modal__body">
                     <div class="x-modal__content">
                         <slot>{{ props.content }}</slot>
@@ -47,8 +45,8 @@
 </template>
 
 <script setup lang="ts">
-    import { Close } from '@wink-ui/icons';
     import type { ModalInputValue, ModalCloseReason, ModalProps } from './types';
+    import IconButton from '../common/icon-button.vue';
     import { XPopup, XBox, XButton, XInput } from '@wink-ui/components';
     import { completeCssNumeric } from '@wink-ui/utils';
     defineOptions({
@@ -113,11 +111,6 @@
             position: absolute;
             right: var(--x-gap-mini);
             top: var(--x-gap-mini);
-            .x-button {
-                padding: 3px;
-                min-width: fit-content;
-                min-height: fit-content;
-            }
         }
         &__body {
             padding: var(--x-gap-small);

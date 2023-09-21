@@ -17,23 +17,16 @@
                 v-bind="inputAttrs"
             />
             <input v-else ref="refsInput" v-model="internalValue" autocomplete="off" v-bind="inputAttrs" />
-            <XButton
-                v-if="props.clearable && !isNumber"
-                circle
+            <IconButton
+                v-if="props.clearable && !isNumber && !!internalValue"
                 class="x-input__clear"
-                :class="{ '--active': !!internalValue }"
-                :icon="Close"
-                text
-                theme="error"
+                rotate
                 @click="handleClear"
             />
-            <XButton
-                v-if="isPassword && props.showPassword"
-                circle
+            <IconButton
+                v-if="isPassword && props.showPassword && !!internalValue"
                 class="x-input__show"
-                :class="{ '--active': !!internalValue }"
                 :icon="passwordVisible ? Hide : View"
-                text
                 theme="info"
                 @click="handlePasswordVisible"
             />
@@ -51,7 +44,8 @@
 
 <script setup lang="ts">
     import type { InputProps } from './types';
-    import { Minus, Plus, Close, Hide, View } from '@wink-ui/icons';
+    import IconButton from '../common/icon-button.vue';
+    import { Minus, Plus, Hide, View } from '@wink-ui/icons';
     import { XBox, XButton } from '@wink-ui/components';
     defineOptions({
         name: 'XInput',
@@ -86,7 +80,7 @@
     const slots = useSlots();
     const hasPrefix = computed(() => typeof props.prefix !== 'undefined' || slots.prefix);
     const hasSuffix = computed(() => typeof props.suffix !== 'undefined' || slots.suffix);
-    const isPassword = computed(() => inputAttrs.value.type === 'password');
+    const isPassword = computed(() => attrs.type === 'password');
     const isNumber = computed(() => modelModifiers.value.number || attrs.type === 'number');
 
     const modelModifiers = computed(() => (attrs.modelModifiers ?? {}) as Record<'lazy' | 'number' | 'trim', boolean>);
@@ -233,11 +227,9 @@
 
             .x-input__clear,
             .x-input__show {
-                transform: scale(0) rotate(90deg);
+                opacity: 0;
                 margin-left: -1em;
                 padding: 1px;
-                min-width: fit-content;
-                min-height: fit-content;
             }
         }
 
@@ -245,10 +237,8 @@
         &:hover {
             .x-input__clear,
             .x-input__show {
-                &.--active {
-                    transform: scale(1);
-                    margin-left: var(--x-gap-mini);
-                }
+                opacity: 1;
+                margin-left: var(--x-gap-mini);
             }
         }
     }
