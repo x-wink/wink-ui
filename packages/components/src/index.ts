@@ -10,6 +10,7 @@ export * from './divider';
 export * from './popup';
 export * from './popover';
 export * from './modal';
+export * from './message';
 export * from './virtual-list';
 
 export * from './menu';

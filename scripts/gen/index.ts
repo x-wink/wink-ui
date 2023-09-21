@@ -11,7 +11,7 @@ const name2Code = (name: string): string => {
 const replace = (source: string, title: string, name: string) => {
     return source.replaceAll('@@title', title).replaceAll('@@name', name).replaceAll('@@code', name2Code(name));
 };
-const root = './';
+const root = './src';
 const main = () => {
     const [, , title, name] = process.argv;
     if (!title) {
@@ -27,6 +27,6 @@ const main = () => {
     fs.writeFileSync(`${root}/${name}/${name}.vue`, replace(vue, title, name));
     fs.writeFileSync(`${root}/${name}/index.ts`, replace(entry, title, name));
     fs.writeFileSync(`${root}/${name}/types.ts`, replace(types, title, name));
-    fs.appendFileSync(`${root}/main.ts`, `export * from './${name}';\n`);
+    fs.appendFileSync(`${root}/index.ts`, `export * from './${name}';\n`);
 };
 main();

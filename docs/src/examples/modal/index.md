@@ -1,16 +1,16 @@
 ---
-title: 弹窗
+title: 模态框
 ---
 
-# 弹窗 Modal
+# 模态框 Modal
 
 ## 功能介绍
 
-弹窗组件
+模态框组件
 
 ## 使用方式
 
-### 普通弹窗
+### 普通模态框
 
 <br />
 <ModalUse1 />
@@ -65,7 +65,7 @@ title: 弹窗
 
 :::
 
-### 关闭弹窗
+### 关闭模态框
 
 <br />
 <ModalUse6 />
@@ -76,7 +76,7 @@ title: 弹窗
 
 :::
 
-### 动态弹窗
+### 动态模态框
 
 <br />
 <ModalUse7 />
@@ -91,7 +91,7 @@ title: 弹窗
 
 ::: tip
 
-基础 API 参考前往 [浮层 Popup](/examples/popup) 查看
+基础 API 参考前往 [弹出层 Popup](/examples/popup) 查看
 
 :::
 
@@ -123,7 +123,7 @@ title: 弹窗
 
 ### ModalCloseReason `type`
 
-弹窗关闭原因联合类型，可选值：
+模态框关闭原因联合类型，可选值：
 
 <ul>
     <li v-for="(item, index) in modalCloseReasons" :key="index">{{ item }}</li>
@@ -131,7 +131,7 @@ title: 弹窗
 
 ### modalCloseReasons `const`
 
-弹窗关闭原因枚举列表，类型为 [`ModalCloseReason[]`](#modalclosereason-type)
+模态框关闭原因枚举列表，类型为 [`ModalCloseReason[]`](#modalclosereason-type)
 
 <script setup>
 import { modalCloseReasons } from 'wink-ui';

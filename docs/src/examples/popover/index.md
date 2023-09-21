@@ -1,12 +1,12 @@
 ---
-title: 弹出气泡
+title: 气泡框
 ---
 
-# 弹出气泡 Popover
+# 气泡框 Popover
 
 ## 功能介绍
 
-基于 [浮层 Popup](/examples/popup) 封装的气泡弹出层，继承了其属性用法
+基于 [弹出层 Popup](/examples/popup) 封装的气泡弹出层，继承了其属性用法
 
 ## 使用方式
 
@@ -23,7 +23,7 @@ title: 弹出气泡
 
 ::: tip
 
-基础 API 参考前往 [浮层 Popup](/examples/popup) 查看
+基础 API 参考前往 [弹出层 Popup](/examples/popup) 查看
 
 :::
 

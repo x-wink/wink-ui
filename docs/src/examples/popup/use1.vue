@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <XPopup v-model="visible" static>普通浮层</XPopup>
+        <XPopup v-model="visible" static>普通弹出层</XPopup>
         <XPopup v-model="visible" arrow static style="margin-left: var(--x-gap)">带有箭头</XPopup>
     </div>
 </template>

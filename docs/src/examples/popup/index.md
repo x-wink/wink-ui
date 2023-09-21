@@ -1,8 +1,8 @@
 ---
-title: 浮层
+title: 弹出层
 ---
 
-# 浮层 Popup
+# 弹出层 Popup
 
 ## 功能介绍
 
@@ -10,7 +10,7 @@ title: 浮层
 
 ## 使用方式
 
-### 普通浮层
+### 普通弹出层
 
 <br />
 <PopupUse1 />
@@ -21,7 +21,7 @@ title: 浮层
 
 :::
 
-### 浮层位置
+### 弹出层位置
 
 <br />
 <PopupUse2 />
@@ -53,27 +53,27 @@ title: 浮层
 |   static    |          静态展示           |                boolean                 | `false` |
 |    arrow    |         是否有箭头          |                boolean                 | `false` |
 |  placement  |          箭头位置           | [PopupPlacement](#popupplacement-type) | bottom  |
-|  position   |          浮层位置           |            [number, number]            | [0, 0]  |
-|   offset    |         浮层偏移量          |            [number, number]            | [0, 0]  |
+|  position   |          弹出层位置           |            [number, number]            | [0, 0]  |
+|   offset    |         弹出层偏移量          |            [number, number]            | [0, 0]  |
 |   target    | 定位目标，会覆盖 `position` |              HTMLElement               |    -    |
 |  disabled   |          禁用状态           |                boolean                 |  false  |
 |  appendTo   |          传送容器           |         string \| HTMLElement          |  body   |
-| autoDestroy |      关闭浮层自动销毁       |                boolean                 |  false  |
+| autoDestroy |      关闭弹出层自动销毁       |                boolean                 |  false  |
 
 ### 事件
 
 |     名称     |       说明       |   触发时机   |          回调类型          |
 | :----------: | :--------------: | :----------: | :------------------------: |
-| clickOutside | 方便手动控制显隐 | 点击浮层外面 |         () => void         |
-|     open     |        -         |   浮层显示   |         () => void         |
-|    close     |        -         |   浮层隐藏   |         () => void         |
-|    change    |        -         | 浮层显隐切换 | (visible: boolean) => void |
+| clickOutside | 方便手动控制显隐 | 点击弹出层外面 |         () => void         |
+|     open     |        -         |   弹出层显示   |         () => void         |
+|    close     |        -         |   弹出层隐藏   |         () => void         |
+|    change    |        -         | 弹出层显隐切换 | (visible: boolean) => void |
 
 ### 插槽
 
 |  名称   |     说明     | 类型定义 |
 | :-----: | :----------: | :------: |
-| default | 浮层主体内容 |    -     |
+| default | 弹出层主体内容 |    -     |
 
 ### 实例
 
@@ -87,7 +87,7 @@ title: 浮层
 
 ### PopupPlacement `type`
 
-浮层箭头位置联合类型，可选值：
+弹出层箭头位置联合类型，可选值：
 
 <ul>
     <li v-for="(item, index) in popupPlacements" :key="index">{{ item }}</li>
@@ -95,7 +95,7 @@ title: 浮层
 
 ### popupPlacements `const`
 
-浮层箭头位置枚举数组，类型为 `PopupPlacement[]`
+弹出层箭头位置枚举数组，类型为 `PopupPlacement[]`
 
 <script setup>
 import PopupUse1 from './use1.vue';

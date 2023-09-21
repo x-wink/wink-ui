@@ -18,6 +18,6 @@
     const visible = ref(true);
     const handleClose = (reason: ModalCloseReason, value?: string | number) => {
         // eslint-disable-next-line no-alert
-        alert(`弹窗关闭（${reason}）：${value}`);
+        alert(`模态框关闭（${reason}）：${value}`);
     };
 </script>

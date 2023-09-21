@@ -6,6 +6,7 @@
     },
     "globals": {
         "defineModel": "readonly",
-        "HTMLElementTagNameMap": "readonly"
+        "HTMLElementTagNameMap": "readonly",
+        "NodeJS": "readonly"
     }
 }
