@@ -1,4 +1,5 @@
-import type { DynamicStyle, HTMLElementTagName } from '@wink-ui/components';
+import type { HTMLElementTagName } from '@wink-ui/components';
+import type { StyleValue } from 'vue';
 
 export interface ScrollbarProps {
     tag?: HTMLElementTagName;
@@ -9,8 +10,8 @@ export interface ScrollbarProps {
     always?: boolean;
     noresize?: boolean;
     native?: boolean;
-    containerStyle?: DynamicStyle;
-    wrapperStyle?: DynamicStyle;
+    containerStyle?: StyleValue;
+    wrapperStyle?: StyleValue;
 }
 
 export interface ScrollbarBarProps {

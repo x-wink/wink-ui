@@ -38,34 +38,40 @@ export const createDragContainer = (container: HTMLElement, cb: (x: number, y: n
  * 创建在可在容器范围内拖拽的元素，鼠标超出容器范围依然会触发拖拽
  * @param el 元素
  * @param container 容器
- * @param cb 拖拽回调，参数为鼠标坐标xy相对于容器宽高的值，相对值不会超出0~1范围
+ * @param hooks start开始拖拽，end结束拖拽，move拖拽移动，参数前两个为鼠标移动距离，后两个为鼠标坐标xy相对于容器宽高的值，相对值不会超出0~1范围
  * @returns 注销可拖拽元素，取消监听事件
  */
 export const createDragableElement = (
     el: HTMLElement,
     container: HTMLElement,
-    hooks: { start?: () => void; end?: () => void; move: (x: number, y: number) => void }
+    hooks: {
+        start?: () => void;
+        end?: () => void;
+        move: (offsetX: number, offsetY: number, positionX: number, positionY: number) => void;
+    }
 ) => {
-    let isDragging = false;
+    let start: [number, number] | undefined;
     const startDrag = (event: MouseEvent) => {
         event.preventDefault();
-        isDragging = true;
+        start = [event.clientX, event.clientY];
         hooks.start?.();
     };
     const drag = (event: MouseEvent) => {
-        if (isDragging) {
+        if (start) {
             const containerRect = container.getBoundingClientRect();
             const x = event.clientX - containerRect.left;
             const y = event.clientY - containerRect.top;
 
             hooks.move(
+                x - start[0],
+                y - start[1],
                 Math.min(Math.max(x / containerRect.width, 0), 1),
                 Math.min(Math.max(y / containerRect.height, 0), 1)
             );
         }
     };
     const stopDrag = () => {
-        isDragging = false;
+        start = void 0;
         hooks.end?.();
     };
     el.addEventListener('mousedown', startDrag);

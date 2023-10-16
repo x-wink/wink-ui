@@ -37,9 +37,9 @@
                     },
                     move: (x, y) => {
                         if (props.vertical) {
-                            container.scrollTo(container.scrollLeft, y * container.scrollHeight);
+                            container.scrollBy(0, y);
                         } else {
-                            container.scrollTo(x * container.scrollWidth, container.scrollTop);
+                            container.scrollBy(x, 0);
                         }
                     },
                 });
@@ -57,6 +57,8 @@
     .x-scrollbar {
         &__bar {
             position: absolute;
+            z-index: 10;
+            cursor: pointer;
             border-radius: var(--x-border-radius);
             &.--horizontal {
                 width: 100%;
