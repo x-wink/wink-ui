@@ -35,11 +35,11 @@
                     end: () => {
                         active.value = false;
                     },
-                    move: (x, y) => {
+                    move: ({ relative: [x, y] }) => {
                         if (props.vertical) {
-                            container.scrollBy(0, y);
+                            container.scrollTo(container.scrollLeft, y * container.scrollHeight);
                         } else {
-                            container.scrollBy(x, 0);
+                            container.scrollTo(x * container.scrollLeft, container.scrollTop);
                         }
                     },
                 });
