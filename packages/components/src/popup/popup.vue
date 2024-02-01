@@ -29,10 +29,13 @@
     const props = withDefaults(defineProps<PopupProps>(), {
         placement: 'bottom',
         offset: () => [0, 0],
-        position: () => [0, 0, 0, 0],
         appendTo: 'body',
     });
-    const position = toRef(props, 'position');
+    const position = defineModel<PopupPosition>('position', {
+        required: false,
+        default: () => [0, 0, 0, 0],
+        local: true,
+    });
     const classList = computed(() => {
         return {
             '--static': props.static,
@@ -184,6 +187,8 @@
 
 <style lang="less">
     .x-popup {
+        width: max-content;
+        height: max-content;
         border: none;
         border-radius: var(--x-border-radius);
         outline: none;

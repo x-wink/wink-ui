@@ -36,7 +36,6 @@ export interface PopupProps {
     arrow?: boolean;
     placement?: PopupPlacement;
     offset?: [number, number];
-    position?: PopupPosition;
     target?: HTMLElement;
     closeOnClickOutside?: boolean;
     disabled?: boolean;
