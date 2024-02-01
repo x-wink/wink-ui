@@ -6,6 +6,7 @@ export default defineConfig({
     lang: 'zh-CN',
     title: 'WINK-UI',
     description: 'A vue3 components libary',
+    head: [['link', { rel: 'icon', href: '/wink-ui/favicon.ico' }]],
     base: '/wink-ui/',
     srcDir: 'src',
     rewrites: {
@@ -14,8 +15,8 @@ export default defineConfig({
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         logo: {
-            dark: '/logo-dark.svg',
-            light: '/logo.svg',
+            dark: '/logo.png',
+            light: '/logo.png',
         },
         nav: [
             { text: '首页', link: '/' },
