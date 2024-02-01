@@ -102,7 +102,7 @@ export default defineConfig({
         footer: {
             message: '欢迎大家交流学习，拥抱开源',
             copyright:
-                '<a data-v-3a6926c8="" href="https://beian.miit.gov.cn/" target="_blank">湘ICP备2021019875号</a>',
+                '<a href="https://beian.miit.gov.cn/" target="_blank">湘ICP备2024041408号-1</a>',
         },
         editLink: {
             pattern: 'https://github.com/x-wink/wink-ui/tree/main/docs/src/:path',
