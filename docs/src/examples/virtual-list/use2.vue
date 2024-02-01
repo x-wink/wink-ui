@@ -1,5 +1,5 @@
 <template>
-    <XVirtualList always :data="list" style="height: 300px">
+    <XVirtualList always :columns="3" :data="list" style="height: 300px">
         <template #default="{ item, index }">
             <div class="item">{{ index + 1 }}.{{ item.text }}</div>
         </template>

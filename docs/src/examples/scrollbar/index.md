@@ -80,24 +80,28 @@ title: 滚动条
 
 ### 属性
 
-|      名称      |         说明         |                                 类型                                  | 默认值  |
-| :------------: | :------------------: | :-------------------------------------------------------------------: | :-----: |
-|      tag       | 滚动区域包裹元素标签 | [HTMLElementTagName](/common/base.md#htmlelementtagname-type) |   div   |
-|     width      |       固定宽度       |                                string                                 |  auto   |
-|     height     |       固定高度       |                                string                                 |  auto   |
-|    maxWidth    |       最大宽度       |                                string                                 |    -    |
-|   maxHeight    |       最大高度       |                                string                                 |    -    |
-|     always     |    滚动条总是显示    |                                boolean                                | `false` |
-|    noresize    |    不响应尺寸变化    |                                boolean                                | `false` |
-|     native     |    使用原生滚动条    |                                boolean                                | `false` |
-| containerStyle |     滚动容器样式     |                                Object                                 |    -    |
-|  wrapperStyle  |     内容包裹样式     |                                Object                                 |    -    |
+|         名称          |         说明         |                             类型                              | 默认值  |
+| :-------------------: | :------------------: | :-----------------------------------------------------------: | :-----: |
+|          tag          | 滚动区域包裹元素标签 | [HTMLElementTagName](/common/base.md#htmlelementtagname-type) |   div   |
+|         width         |       固定宽度       |                            string                             |  100%   |
+|        height         |       固定高度       |                            string                             |  100%   |
+|       maxWidth        |       最大宽度       |                            string                             |    -    |
+|       maxHeight       |       最大高度       |                            string                             |    -    |
+|        always         |    滚动条总是显示    |                            boolean                            | `false` |
+|       noresize        |    不响应尺寸变化    |                            boolean                            | `false` |
+|        native         |    使用原生滚动条    |                            boolean                            | `false` |
+|    containerStyle     |     滚动容器样式     |                          StyleValue                           |    -    |
+|     wrapperStyle      |     内容包裹样式     |                          StyleValue                           |    -    |
+|    containerClass     |     滚动容器类名     |                            string                             |    -    |
+|     wrapperClass      |     内容包裹类名     |                            string                             |    -    |
+| hiitBoundingThreshold |     触达边界阈值     |                            number                             |    0    |
 
 ### 事件
 
-|  名称  |     说明     | 触发时机 |            回调类型            |
-| :----: | :----------: | :------: | :----------------------------: |
-| scroll | 返回滚动距离 | 容器滚动 | (x: number, y: number) => void |
+|    名称     |          说明          |    触发时机    |                             回调类型                              |
+| :---------: | :--------------------: | :------------: | :---------------------------------------------------------------: |
+|   scroll    | 返回滚动位置和滚动距离 |    容器滚动    | (position: [number, number], distance: [number, number]) => void  |
+| hitBounding |   返回触达的边界方向   | 容器滚动到边界 | (direction: [BoundingDirection](#boundingdirection-type)) => void |
 
 ### 插槽
 
@@ -115,6 +119,14 @@ title: 滚动条
 |    scrollX    | 水平滚动到指定位置  |      (x: number) => void      |
 |    scrollY    | 垂直滚动到指定位置  |      (y: number) => void      |
 | refsContainer | 滚动容器 `ref` 引用 |       Ref\<HTMLElement>       |
+
+## 附加内容
+
+### BoundingDirection `type`
+
+```ts
+type BoundingDirection = 'top' | 'bottom' | 'left' | 'right';
+```
 
 <script setup>
 import ScrollbarUse1 from './use1.vue';

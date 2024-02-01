@@ -12,6 +12,9 @@ export interface ScrollbarProps {
     native?: boolean;
     containerStyle?: StyleValue;
     wrapperStyle?: StyleValue;
+    containerClass?: string;
+    wrapperClass?: string;
+    hitBoundingThreshold?: number;
 }
 
 export interface ScrollbarBarProps {
@@ -21,3 +24,5 @@ export interface ScrollbarBarProps {
     container?: HTMLElement;
     vertical?: boolean;
 }
+
+export type BoundingDirection = 'top' | 'bottom' | 'left' | 'right';

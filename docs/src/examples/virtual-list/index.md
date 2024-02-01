@@ -10,12 +10,25 @@ title: 虚拟列表
 
 ## 使用方式
 
+### 固定高度
+
 <br />
 <VirtualListUse1 />
 
 ::: details 查看代码
 
 <<< @/examples/virtual-list/use1.vue
+
+:::
+
+### 多列
+
+<br />
+<VirtualListUse2 />
+
+::: details 查看代码
+
+<<< @/examples/virtual-list/use2.vue
 
 :::
 
@@ -30,12 +43,12 @@ title: 虚拟列表
 
 ### 属性
 
-|   名称    |   说明   |  类型  | 默认值 |
-| :-------: | :------: | :----: | :----: |
-|   data    | 数据列表 |  T[]   |  必填  |
-|    id     | 标识字段 | string |   id   |
-|  height   | 列表高度 | number |  300   |
-| rowHeight | 元素高度 | number |   30   |
+|   名称    |    说明    |                             类型                              | 默认值 |
+| :-------: | :--------: | :-----------------------------------------------------------: | :----: |
+|   data    |  数据列表  |                              T[]                              |  必填  |
+| rowHeight |  元素高度  | [ValueProvider\<number\>](/common/data.md#valueprovider-type) |   30   |
+|  columns  |    列数    |                            number                             |   1    |
+|  buffer   | 预加载行数 |                            number                             |   1    |
 
 ### 事件
 
@@ -68,4 +81,5 @@ interface VirtualListItem<T> {
 
 <script setup>
 import VirtualListUse1 from './use1.vue';
+import VirtualListUse2 from './use2.vue';
 </script>

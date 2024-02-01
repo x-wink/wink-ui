@@ -13,7 +13,13 @@
             :style="props.containerStyle"
             @scroll="handleScroll"
         >
-            <component :is="props.tag" ref="refsWrapper" class="x-scrollbar__wrapper" :style="props.wrapperStyle">
+            <component
+                :is="props.tag"
+                ref="refsWrapper"
+                class="x-scrollbar__wrapper"
+                :class="wrapperClass"
+                :style="props.wrapperStyle"
+            >
                 <slot></slot>
             </component>
         </div>
@@ -37,15 +43,16 @@
 
 <script setup lang="ts">
     import Bar from './bar.vue';
-    import type { ScrollbarProps } from './types';
+    import type { ScrollbarProps, BoundingDirection } from './types';
 
     defineOptions({
         name: 'XScrollbar',
     });
     const props = withDefaults(defineProps<ScrollbarProps>(), {
         tag: 'div',
-        width: 'auto',
-        height: 'auto',
+        width: '100%',
+        height: '100%',
+        hitBoundingThreshold: 0,
     });
     const scrollbarStyle = computed(() => {
         return {
@@ -56,9 +63,15 @@
         };
     });
     const containerClass = computed(() => {
-        return {
-            '--native': props.native,
-        };
+        const res = [];
+        props.native && res.push('--native');
+        props.containerClass && res.push(props.containerClass);
+        return res;
+    });
+    const wrapperClass = computed(() => {
+        const res = [];
+        props.wrapperClass && res.push(props.wrapperClass);
+        return res;
     });
 
     const mouseInContainer = ref(false);
@@ -107,18 +120,35 @@
     };
 
     const emits = defineEmits<{
-        scroll: [x: number, y: number];
+        scroll: [position: [number, number], distance: [number, number]];
+        hitBounding: [direction: BoundingDirection];
     }>();
     let lastLeft = 0,
         lastTop = 0;
     const handleScroll = () => {
-        const { scrollLeft, scrollTop } = refsContainer.value!;
-        if (!props.native) {
-            internalUpdate(true);
+        if (refsContainer.value) {
+            const { scrollLeft, scrollTop, scrollWidth, scrollHeight, clientWidth, clientHeight } = refsContainer.value;
+            if (!props.native) {
+                internalUpdate(true);
+            }
+            emits('scroll', [scrollLeft, scrollTop], [scrollLeft - lastLeft, scrollTop - lastTop]);
+            if (scrollWidth > clientWidth) {
+                if (scrollLeft <= props.hitBoundingThreshold) {
+                    emits('hitBounding', 'left');
+                } else if (scrollWidth - clientWidth - scrollLeft <= props.hitBoundingThreshold) {
+                    emits('hitBounding', 'right');
+                }
+            }
+            if (scrollHeight > clientHeight) {
+                if (scrollTop <= props.hitBoundingThreshold) {
+                    emits('hitBounding', 'top');
+                } else if (scrollHeight - clientHeight - scrollTop <= props.hitBoundingThreshold) {
+                    emits('hitBounding', 'bottom');
+                }
+            }
+            lastLeft = scrollLeft;
+            lastTop = scrollTop;
         }
-        emits('scroll', scrollLeft - lastLeft, scrollTop - lastTop);
-        lastLeft = scrollLeft;
-        lastTop = scrollTop;
     };
 
     const internalUpdate = (onlyPosition = false) => {
