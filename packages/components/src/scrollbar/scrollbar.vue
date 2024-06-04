@@ -147,15 +147,17 @@
 
     // TODO 支持四个方向的触发
     const refsThresholdBox = ref<HTMLElement>();
-    const io = new IntersectionObserver(
-        () => {
-            emits('load');
-        },
-        { threshold: props.threshold }
-    );
-    onMounted(() => {
-        io.observe(refsThresholdBox.value!);
-    });
+    if (!import.meta.env.SSR) {
+        const io = new IntersectionObserver(
+            () => {
+                emits('load');
+            },
+            { threshold: props.threshold }
+        );
+        onMounted(() => {
+            io.observe(refsThresholdBox.value!);
+        });
+    }
 
     const containerWidth = ref(0);
     const containerHeight = ref(0);
