@@ -11,6 +11,7 @@
             class="x-scrollbar__container"
             :class="containerClass"
             :style="props.containerStyle"
+            v-bind="attrs"
             @scroll="handleScroll"
         >
             <component
@@ -21,6 +22,7 @@
                 :style="props.wrapperStyle"
             >
                 <slot></slot>
+                <div ref="refsThresholdBox" class="threshold-box"></div>
             </component>
         </div>
         <template v-if="!props.native">
@@ -42,17 +44,21 @@
 </template>
 
 <script setup lang="ts">
+    import { onMounted, onUnmounted, reactive, ref, computed, useAttrs } from 'vue';
     import Bar from './bar.vue';
-    import type { ScrollbarProps, BoundingDirection } from './types';
+    import type { ScrollbarProps } from './types';
+    import { watch } from 'vue';
 
     defineOptions({
         name: 'XScrollbar',
+        inheritAttrs: false,
     });
+    const attrs = useAttrs();
     const props = withDefaults(defineProps<ScrollbarProps>(), {
         tag: 'div',
         width: '100%',
         height: '100%',
-        hitBoundingThreshold: 0,
+        threshold: 0,
     });
     const scrollbarStyle = computed(() => {
         return {
@@ -77,6 +83,7 @@
     const mouseInContainer = ref(false);
     const handleMouseEnter = () => {
         mouseInContainer.value = true;
+        update();
     };
     const handleMouseLeave = () => {
         mouseInContainer.value = false;
@@ -121,75 +128,84 @@
 
     const emits = defineEmits<{
         scroll: [position: [number, number], distance: [number, number]];
-        hitBounding: [direction: BoundingDirection];
+        load: [];
+        resize: [width: number, height: number];
     }>();
     let lastLeft = 0,
         lastTop = 0;
     const handleScroll = () => {
         if (refsContainer.value) {
-            const { scrollLeft, scrollTop, scrollWidth, scrollHeight, clientWidth, clientHeight } = refsContainer.value;
+            const { scrollLeft, scrollTop } = refsContainer.value;
             if (!props.native) {
-                internalUpdate(true);
+                update(true);
             }
             emits('scroll', [scrollLeft, scrollTop], [scrollLeft - lastLeft, scrollTop - lastTop]);
-            if (scrollWidth > clientWidth) {
-                if (scrollLeft <= props.hitBoundingThreshold) {
-                    emits('hitBounding', 'left');
-                } else if (scrollWidth - clientWidth - scrollLeft <= props.hitBoundingThreshold) {
-                    emits('hitBounding', 'right');
-                }
-            }
-            if (scrollHeight > clientHeight) {
-                if (scrollTop <= props.hitBoundingThreshold) {
-                    emits('hitBounding', 'top');
-                } else if (scrollHeight - clientHeight - scrollTop <= props.hitBoundingThreshold) {
-                    emits('hitBounding', 'bottom');
-                }
-            }
             lastLeft = scrollLeft;
             lastTop = scrollTop;
         }
     };
 
-    const internalUpdate = (onlyPosition = false) => {
-        const { offsetWidth, offsetHeight, scrollWidth, scrollHeight, scrollLeft, scrollTop } = refsContainer.value!;
-        if (!onlyPosition) {
-            horizontalBar.exists = offsetWidth < scrollWidth;
-            horizontalBar.size = Math.max(0.1, offsetWidth / scrollWidth);
-            verticalBar.exists = offsetHeight < scrollHeight;
-            verticalBar.size = Math.max(0.1, offsetHeight / scrollHeight);
-        }
+    // TODO 支持四个方向的触发
+    const refsThresholdBox = ref<HTMLElement>();
+    const io = new IntersectionObserver(
+        () => {
+            emits('load');
+        },
+        { threshold: props.threshold }
+    );
+    onMounted(() => {
+        io.observe(refsThresholdBox.value!);
+    });
 
+    const containerWidth = ref(0);
+    const containerHeight = ref(0);
+    watch([containerWidth, containerHeight], ([width, height]) => {
+        emits('resize', width, height);
+    });
+    const update = (onlyPosition = false) => {
+        const { clientWidth, clientHeight, scrollWidth, scrollHeight, scrollLeft, scrollTop } = refsContainer.value!;
+        containerWidth.value = clientWidth;
+        containerHeight.value = clientHeight;
+        // TODO 滚动条支持限制最大尺寸，做尺寸和滚动距离的映射
+        if (!onlyPosition) {
+            horizontalBar.exists = clientWidth < scrollWidth;
+            horizontalBar.size = Math.max(0.1, clientWidth / scrollWidth);
+            verticalBar.exists = clientHeight < scrollHeight;
+            verticalBar.size = Math.max(0.1, clientHeight / scrollHeight);
+        }
         horizontalBar.position =
-            ((scrollLeft / (scrollWidth - offsetWidth)) * (1 - horizontalBar.size)) / horizontalBar.size;
+            ((scrollLeft / (scrollWidth - clientWidth)) * (1 - horizontalBar.size)) / horizontalBar.size;
         verticalBar.position =
-            ((scrollTop / (scrollHeight - offsetHeight)) * (1 - verticalBar.size)) / verticalBar.size;
-    };
-    const update = () => {
-        internalUpdate();
+            ((scrollTop / (scrollHeight - clientHeight)) * (1 - verticalBar.size)) / verticalBar.size;
     };
     if (!props.noresize && !props.native) {
         let ro: ResizeObserver;
         onMounted(() => {
-            update();
-            ro = new ResizeObserver(update);
+            ro = new ResizeObserver(() => {
+                update();
+            });
             ro.observe(refsContainer.value!);
             ro.observe(refsWrapper.value!);
         });
         onUnmounted(() => {
             ro.disconnect();
         });
+    } else {
+        onMounted(() => {
+            update();
+        });
     }
 
-    const api = {
+    defineExpose({
         update,
         scrollBy,
         scrollTo,
         scrollX,
         scrollY,
         refsContainer,
-    };
-    defineExpose(api);
+        containerWidth,
+        containerHeight,
+    });
 </script>
 
 <style lang="less">
@@ -203,17 +219,17 @@
             height: 100%;
             overflow: auto;
             &:not(.--native) {
+                overflow: hidden;
                 &::-webkit-scrollbar {
                     display: none;
                 }
             }
         }
         &__wrapper {
-            min-width: 100%;
-            min-height: 100%;
             width: fit-content;
             height: fit-content;
+            min-width: 100%;
+            min-height: 100%;
         }
     }
 </style>
-../main

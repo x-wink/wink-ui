@@ -14,7 +14,7 @@ export interface ScrollbarProps {
     wrapperStyle?: StyleValue;
     containerClass?: string;
     wrapperClass?: string;
-    hitBoundingThreshold?: number;
+    threshold?: number;
 }
 
 export interface ScrollbarBarProps {
@@ -24,5 +24,3 @@ export interface ScrollbarBarProps {
     container?: HTMLElement;
     vertical?: boolean;
 }
-
-export type BoundingDirection = 'top' | 'bottom' | 'left' | 'right';
