@@ -1,0 +1,10 @@
+import fs from 'fs';
+import { parse } from '@vue/compiler-sfc';
+import { parse as parseScript } from '@babel/parser';
+const code = 'scrollbar';
+const sourceCode = fs.readFileSync(`./packages/components/src/${code}/${code}.vue`, 'utf8');
+const ast = parse(sourceCode);
+const script = parseScript(ast.descriptor.scriptSetup!.content, { sourceType: 'module', plugins: ['typescript'] });
+fs.mkdirSync('./test', { recursive: true });
+fs.writeFileSync(`./test/${code}.json`, JSON.stringify(script));
+// fs.writeFileSync(`./test/${code}.md`, props.join('\n') + emits.join('\n') + expose.join('\n'));

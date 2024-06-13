@@ -1,7 +1,7 @@
 {
     "name": "wink-ui-monorepo",
     "version": "1.0.0",
-    "packageManager": "pnpm@7.28.0",
+    "type": "module",
     "scripts": {
         "dev": "pnpm -F @wink-ui/docs dev",
         "dev:icons": "pnpm -F @wink-ui/icons dev",
@@ -14,14 +14,17 @@
         "gen:components": "pnpm -F @wink-ui/components gen",
         "gen": "run-p \"gen:* {1} {2}\"",
         "release:docs": "pnpm -F @wink-ui/docs run release",
+        "doc": "ts-node-esm ./scripts/docs.ts",
         "lint": "eslint . --ext .vue,.ts,.tsx --fix --ignore-path .gitignore",
         "prettier": "prettier --write ./**/*.{vue,ts,tsx,less,json,md,html}",
         "prepare": "husky install && run-p plugins:* && pnpm build:icons"
     },
     "devDependencies": {
+        "@babel/parser": "^7.24.7",
         "@commitlint/cli": "^17.4.1",
         "@commitlint/config-conventional": "^17.4.0",
         "@types/node": "^18.14.6",
+        "@vue/compiler-sfc": "^3.4.27",
         "@xwink/eslint-config": "^1.0.1",
         "@xwink/sftp": "^1.0.2",
         "eslint": "^8.22.0",
